@@ -1,0 +1,10 @@
+D:\Project\C#\OOP\Cursova\Cursovaya\Cursovaya\bin\Debug\Cursovaya.exe.config
+D:\Project\C#\OOP\Cursova\Cursovaya\Cursovaya\bin\Debug\Cursovaya.exe
+D:\Project\C#\OOP\Cursova\Cursovaya\Cursovaya\bin\Debug\Cursovaya.pdb
+D:\Project\C#\OOP\Cursova\Cursovaya\Cursovaya\obj\Debug\Cursovaya.csprojAssemblyReference.cache
+D:\Project\C#\OOP\Cursova\Cursovaya\Cursovaya\obj\Debug\Cursovaya.Form1.resources
+D:\Project\C#\OOP\Cursova\Cursovaya\Cursovaya\obj\Debug\Cursovaya.Properties.Resources.resources
+D:\Project\C#\OOP\Cursova\Cursovaya\Cursovaya\obj\Debug\Cursovaya.csproj.GenerateResource.cache
+D:\Project\C#\OOP\Cursova\Cursovaya\Cursovaya\obj\Debug\Cursovaya.exe
+D:\Project\C#\OOP\Cursova\Cursovaya\Cursovaya\obj\Debug\Cursovaya.pdb
+D:\Project\C#\OOP\Cursova\Cursovaya\Cursovaya\obj\Debug\Cursovaya.Login.resources
