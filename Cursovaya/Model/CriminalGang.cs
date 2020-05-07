@@ -13,6 +13,8 @@ namespace Cursovaya.Model
         public List<CriminalGang> EnemyGangs { get; set; }
         public List<CriminalGang> AllyGang { get; set; }
         public string Features { get; set; }
+
+
         public string Country { get; set; }                          
     }
 }

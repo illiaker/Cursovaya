@@ -1,0 +1,14 @@
+D:\Project\C#\OOP\Cursova\Cursovaya\Admin\bin\Debug\Admin.exe.config
+D:\Project\C#\OOP\Cursova\Cursovaya\Admin\bin\Debug\Admin.exe
+D:\Project\C#\OOP\Cursova\Cursovaya\Admin\bin\Debug\Admin.pdb
+D:\Project\C#\OOP\Cursova\Cursovaya\Admin\bin\Debug\FileCabinetLibrary.dll
+D:\Project\C#\OOP\Cursova\Cursovaya\Admin\bin\Debug\FileCabinetLibrary.pdb
+D:\Project\C#\OOP\Cursova\Cursovaya\Admin\obj\Debug\Admin.csprojAssemblyReference.cache
+D:\Project\C#\OOP\Cursova\Cursovaya\Admin\obj\Debug\Admin.Properties.Resources.resources
+D:\Project\C#\OOP\Cursova\Cursovaya\Admin\obj\Debug\Admin.csproj.GenerateResource.cache
+D:\Project\C#\OOP\Cursova\Cursovaya\Admin\obj\Debug\Admin.csproj.CopyComplete
+D:\Project\C#\OOP\Cursova\Cursovaya\Admin\obj\Debug\Admin.exe
+D:\Project\C#\OOP\Cursova\Cursovaya\Admin\obj\Debug\Admin.pdb
+D:\Project\C#\OOP\Cursova\Cursovaya\Admin\bin\Debug\AdvancedWizard.dll
+D:\Project\C#\OOP\Cursova\Cursovaya\Admin\obj\Debug\Admin.MainMenu.resources
+D:\Project\C#\OOP\Cursova\Cursovaya\Admin\obj\Debug\Admin.Autorization.resources

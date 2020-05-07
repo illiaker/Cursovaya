@@ -14,10 +14,7 @@ namespace Cursovaya
         /// </summary>
         [STAThread]
         static void Main()
-        {
-            FileCabinet fileCabinet = new FileCabinet(new List<Criminal>(), new List<CriminalGang>());
-            fileCabinet.GenerateData(10);
-            fileCabinet.Save();
+        {            
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);            
             Application.Run(new Form1());

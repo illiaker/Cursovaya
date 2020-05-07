@@ -1,0 +1,5 @@
+D:\Project\C#\OOP\Cursova\Cursovaya\FileCabinetLibrary\bin\Debug\FileCabinetLibrary.dll
+D:\Project\C#\OOP\Cursova\Cursovaya\FileCabinetLibrary\bin\Debug\FileCabinetLibrary.pdb
+D:\Project\C#\OOP\Cursova\Cursovaya\FileCabinetLibrary\obj\Debug\FileCabinetLibrary.csprojAssemblyReference.cache
+D:\Project\C#\OOP\Cursova\Cursovaya\FileCabinetLibrary\obj\Debug\FileCabinetLibrary.dll
+D:\Project\C#\OOP\Cursova\Cursovaya\FileCabinetLibrary\obj\Debug\FileCabinetLibrary.pdb

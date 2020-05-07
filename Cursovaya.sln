@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29806.167
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cursovaya", "Cursovaya\Cursovaya.csproj", "{455B720F-B14D-432C-949D-FD680BB38BDE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileCabinetLibrary", "FileCabinetLibrary\FileCabinetLibrary.csproj", "{956A80FA-9723-4DFD-A526-987C8E6C23D6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdminView", "Admin\AdminView.csproj", "{1033BA08-FB35-43FD-9096-020704F95B6F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +13,14 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{455B720F-B14D-432C-949D-FD680BB38BDE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{455B720F-B14D-432C-949D-FD680BB38BDE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{455B720F-B14D-432C-949D-FD680BB38BDE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{455B720F-B14D-432C-949D-FD680BB38BDE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{956A80FA-9723-4DFD-A526-987C8E6C23D6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{956A80FA-9723-4DFD-A526-987C8E6C23D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{956A80FA-9723-4DFD-A526-987C8E6C23D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{956A80FA-9723-4DFD-A526-987C8E6C23D6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1033BA08-FB35-43FD-9096-020704F95B6F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1033BA08-FB35-43FD-9096-020704F95B6F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1033BA08-FB35-43FD-9096-020704F95B6F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1033BA08-FB35-43FD-9096-020704F95B6F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
