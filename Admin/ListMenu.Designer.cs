@@ -46,9 +46,15 @@
             this.BirthDay = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Profession = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.criminalsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.criminalsPage = new System.Windows.Forms.TabPage();
+            this.gangPage = new System.Windows.Forms.TabPage();
+            this.archivePage = new System.Windows.Forms.TabPage();
             this.menuStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.criminalsList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.criminalsBindingSource)).BeginInit();
+            this.tabControl1.SuspendLayout();
+            this.criminalsPage.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip
@@ -58,7 +64,7 @@
             this.criminalsToolStripMenuItem});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
-            this.menuStrip.Size = new System.Drawing.Size(764, 24);
+            this.menuStrip.Size = new System.Drawing.Size(745, 24);
             this.menuStrip.TabIndex = 2;
             this.menuStrip.Text = "menuStrip1";
             // 
@@ -95,21 +101,21 @@
             // addToolStripMenuItem
             // 
             this.addToolStripMenuItem.Name = "addToolStripMenuItem";
-            this.addToolStripMenuItem.Size = new System.Drawing.Size(115, 22);
+            this.addToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.addToolStripMenuItem.Text = "Add";
             this.addToolStripMenuItem.Click += new System.EventHandler(this.addToolStripMenuItem_Click);
             // 
             // deleteToolStripMenuItem
             // 
             this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
-            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(115, 22);
-            this.deleteToolStripMenuItem.Text = "Delete";
+            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.deleteToolStripMenuItem.Text = "Move to archive";
             this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
             // 
             // changeToolStripMenuItem
             // 
             this.changeToolStripMenuItem.Name = "changeToolStripMenuItem";
-            this.changeToolStripMenuItem.Size = new System.Drawing.Size(115, 22);
+            this.changeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.changeToolStripMenuItem.Text = "Change";
             this.changeToolStripMenuItem.Click += new System.EventHandler(this.changeToolStripMenuItem_Click);
             // 
@@ -136,11 +142,11 @@
             this.Profession});
             this.criminalsList.DataSource = this.criminalsBindingSource;
             this.criminalsList.GridColor = System.Drawing.SystemColors.AppWorkspace;
-            this.criminalsList.Location = new System.Drawing.Point(12, 27);
+            this.criminalsList.Location = new System.Drawing.Point(0, 0);
             this.criminalsList.Name = "criminalsList";
             this.criminalsList.ReadOnly = true;
             this.criminalsList.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.criminalsList.Size = new System.Drawing.Size(743, 417);
+            this.criminalsList.Size = new System.Drawing.Size(737, 396);
             this.criminalsList.TabIndex = 3;
             // 
             // txtName
@@ -192,12 +198,56 @@
             this.Profession.Name = "Profession";
             this.Profession.ReadOnly = true;
             // 
+            // tabControl1
+            // 
+            this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tabControl1.Controls.Add(this.criminalsPage);
+            this.tabControl1.Controls.Add(this.gangPage);
+            this.tabControl1.Controls.Add(this.archivePage);
+            this.tabControl1.Location = new System.Drawing.Point(0, 27);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(745, 422);
+            this.tabControl1.TabIndex = 4;
+            // 
+            // criminalsPage
+            // 
+            this.criminalsPage.Controls.Add(this.criminalsList);
+            this.criminalsPage.Location = new System.Drawing.Point(4, 22);
+            this.criminalsPage.Name = "criminalsPage";
+            this.criminalsPage.Padding = new System.Windows.Forms.Padding(3);
+            this.criminalsPage.Size = new System.Drawing.Size(737, 396);
+            this.criminalsPage.TabIndex = 0;
+            this.criminalsPage.Text = "Criminals";
+            this.criminalsPage.UseVisualStyleBackColor = true;
+            // 
+            // gangPage
+            // 
+            this.gangPage.Location = new System.Drawing.Point(4, 22);
+            this.gangPage.Name = "gangPage";
+            this.gangPage.Padding = new System.Windows.Forms.Padding(3);
+            this.gangPage.Size = new System.Drawing.Size(737, 396);
+            this.gangPage.TabIndex = 1;
+            this.gangPage.Text = "Gang";
+            this.gangPage.UseVisualStyleBackColor = true;
+            // 
+            // archivePage
+            // 
+            this.archivePage.Location = new System.Drawing.Point(4, 22);
+            this.archivePage.Name = "archivePage";
+            this.archivePage.Size = new System.Drawing.Size(737, 396);
+            this.archivePage.TabIndex = 2;
+            this.archivePage.Text = "Archive";
+            this.archivePage.UseVisualStyleBackColor = true;
+            // 
             // ListMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(764, 450);
-            this.Controls.Add(this.criminalsList);
+            this.ClientSize = new System.Drawing.Size(745, 450);
+            this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.menuStrip);
             this.MainMenuStrip = this.menuStrip;
             this.Name = "ListMenu";
@@ -207,6 +257,8 @@
             this.menuStrip.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.criminalsList)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.criminalsBindingSource)).EndInit();
+            this.tabControl1.ResumeLayout(false);
+            this.criminalsPage.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -230,5 +282,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Nationality;
         private System.Windows.Forms.DataGridViewTextBoxColumn BirthDay;
         private System.Windows.Forms.DataGridViewTextBoxColumn Profession;
+        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabPage criminalsPage;
+        private System.Windows.Forms.TabPage gangPage;
+        private System.Windows.Forms.TabPage archivePage;
     }
 }

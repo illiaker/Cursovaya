@@ -21,19 +21,35 @@ namespace AdminView.Presenter
             listView.AddCriminalEvent += ListView_AddCriminalEvent;
             listView.LoadEvent += ListView_LoadEvent;
             listView.SaveEvent += ListView_SaveEvent;
-            listView.DeleteEvent += ListView_DeleteEvent;
+            listView.MoveToArchiveEvent += ListView_MoveToArchiveEvent;
         }
 
-        private void ListView_DeleteEvent(object sender, EventArgs e)
+        private void ListView_MoveToArchiveEvent(object sender, EventArgs e)
+
         {
-            fileCabinet.Criminals.Remove((Criminal)listView.List.CurrentRow.DataBoundItem);
-            Refresh();
+            var i = MessageBox.Show("Are you sure you want to move this criminal to archive?","Conirm", MessageBoxButtons.YesNo);
+            if (i == DialogResult.Yes)
+            {
+                fileCabinet.MoveToArchive((Criminal)listView.List.CurrentRow.DataBoundItem);
+                fileCabinet.Save();
+                Refresh();
+            }
         }
 
         private void ListView_LoadEvent(object sender, EventArgs e)
         {
-            fileCabinet.Load();
-            Refresh();
+            try
+            {
+                fileCabinet.Load();
+                Refresh();
+            }
+            catch (Exception)
+            {
+                               
+            }
+            
+            
+            
         }
 
         private void ListView_SaveEvent(object sender, EventArgs e)
@@ -48,7 +64,9 @@ namespace AdminView.Presenter
             if(ci.ShowDialog() == DialogResult.OK)
             {
                 fileCabinet.Criminals.Add(ci.Criminal);
-                Refresh();              
+                fileCabinet.Save();
+                Refresh();
+                
 
             }
         }

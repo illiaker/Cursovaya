@@ -155,6 +155,11 @@
             // heightBox
             // 
             this.heightBox.Location = new System.Drawing.Point(279, 142);
+            this.heightBox.Maximum = new decimal(new int[] {
+            300,
+            0,
+            0,
+            0});
             this.heightBox.Name = "heightBox";
             this.heightBox.Size = new System.Drawing.Size(122, 20);
             this.heightBox.TabIndex = 8;
@@ -590,7 +595,7 @@
             // countryWhereWantedBox
             // 
             this.countryWhereWantedBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.countryWhereWantedBox.ForeColor = System.Drawing.SystemColors.Window;
+            this.countryWhereWantedBox.ForeColor = System.Drawing.SystemColors.MenuText;
             this.countryWhereWantedBox.FormattingEnabled = true;
             this.countryWhereWantedBox.Items.AddRange(new object[] {
             "Afghanistan",
@@ -889,7 +894,7 @@
             this.Name = "CriminalInfo";
             this.RightToLeftLayout = true;
             this.Text = "CriminalInfo";
-            this.TextChanged += new System.EventHandler(this.CriminalInfo_TextChanged);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.CriminalInfo_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.CriminalImage)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.heightBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ageBox)).EndInit();

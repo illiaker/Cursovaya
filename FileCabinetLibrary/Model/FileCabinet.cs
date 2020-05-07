@@ -25,7 +25,7 @@ namespace Cursovaya.Model
         }
         //Картотека = коллекция преступников + колекция банд
 
-
+        public List<Criminal> Archive { get; set; }
 
 
         public List<Criminal> Criminals { get; set; }
@@ -54,6 +54,12 @@ namespace Cursovaya.Model
         //    }
 
         //}
+
+        public void MoveToArchive(Criminal criminal)
+        {
+            Criminals.Remove(criminal);
+            Archive.Add(criminal);
+        }
 
         public void Add(CriminalGang gang)
         {

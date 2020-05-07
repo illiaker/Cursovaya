@@ -47,11 +47,11 @@ namespace AdminView
         public event EventHandler SaveEvent;
 
         
-        public event EventHandler DeleteEvent;
+        public event EventHandler MoveToArchiveEvent;
 
         private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            DeleteEvent(sender, e);
+            MoveToArchiveEvent(sender, e);
         }
     }
 }

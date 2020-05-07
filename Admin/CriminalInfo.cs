@@ -21,8 +21,7 @@ namespace AdminView
             Criminal = new Criminal();
             
         }
-
-        public bool IsChanged { get; set; } = false;
+       
 
         public CriminalInfo(Criminal criminal)
         {
@@ -74,9 +73,6 @@ namespace AdminView
             
         }
 
-        private void CriminalInfo_TextChanged(object sender, EventArgs e)
-        {
-            IsChanged = true;
-        }
+        
     }
 }
