@@ -38,6 +38,11 @@
             this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.changeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.criminalsList = new System.Windows.Forms.DataGridView();
+            this.criminalsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.criminalsPage = new System.Windows.Forms.TabPage();
+            this.gangPage = new System.Windows.Forms.TabPage();
+            this.archivePage = new System.Windows.Forms.TabPage();
             this.txtName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Surname = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Alias = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -45,11 +50,6 @@
             this.Nationality = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.BirthDay = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Profession = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.criminalsBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.criminalsPage = new System.Windows.Forms.TabPage();
-            this.gangPage = new System.Windows.Forms.TabPage();
-            this.archivePage = new System.Windows.Forms.TabPage();
             this.menuStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.criminalsList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.criminalsBindingSource)).BeginInit();
@@ -123,7 +123,6 @@
             // 
             this.criminalsList.AllowUserToAddRows = false;
             this.criminalsList.AllowUserToDeleteRows = false;
-            this.criminalsList.AllowUserToOrderColumns = true;
             this.criminalsList.AllowUserToResizeColumns = false;
             this.criminalsList.AllowUserToResizeRows = false;
             this.criminalsList.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -143,11 +142,56 @@
             this.criminalsList.DataSource = this.criminalsBindingSource;
             this.criminalsList.GridColor = System.Drawing.SystemColors.AppWorkspace;
             this.criminalsList.Location = new System.Drawing.Point(0, 0);
+            this.criminalsList.MultiSelect = false;
             this.criminalsList.Name = "criminalsList";
             this.criminalsList.ReadOnly = true;
             this.criminalsList.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.criminalsList.Size = new System.Drawing.Size(737, 396);
             this.criminalsList.TabIndex = 3;
+            // 
+            // tabControl1
+            // 
+            this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tabControl1.Controls.Add(this.criminalsPage);
+            this.tabControl1.Controls.Add(this.gangPage);
+            this.tabControl1.Controls.Add(this.archivePage);
+            this.tabControl1.Location = new System.Drawing.Point(0, 27);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(745, 422);
+            this.tabControl1.TabIndex = 4;
+            // 
+            // criminalsPage
+            // 
+            this.criminalsPage.Controls.Add(this.criminalsList);
+            this.criminalsPage.Location = new System.Drawing.Point(4, 22);
+            this.criminalsPage.Name = "criminalsPage";
+            this.criminalsPage.Padding = new System.Windows.Forms.Padding(3);
+            this.criminalsPage.Size = new System.Drawing.Size(737, 396);
+            this.criminalsPage.TabIndex = 0;
+            this.criminalsPage.Text = "Criminals";
+            this.criminalsPage.UseVisualStyleBackColor = true;
+            // 
+            // gangPage
+            // 
+            this.gangPage.Location = new System.Drawing.Point(4, 22);
+            this.gangPage.Name = "gangPage";
+            this.gangPage.Padding = new System.Windows.Forms.Padding(3);
+            this.gangPage.Size = new System.Drawing.Size(737, 396);
+            this.gangPage.TabIndex = 1;
+            this.gangPage.Text = "Gang";
+            this.gangPage.UseVisualStyleBackColor = true;
+            // 
+            // archivePage
+            // 
+            this.archivePage.Location = new System.Drawing.Point(4, 22);
+            this.archivePage.Name = "archivePage";
+            this.archivePage.Size = new System.Drawing.Size(737, 396);
+            this.archivePage.TabIndex = 2;
+            this.archivePage.Text = "Archive";
+            this.archivePage.UseVisualStyleBackColor = true;
             // 
             // txtName
             // 
@@ -198,50 +242,6 @@
             this.Profession.Name = "Profession";
             this.Profession.ReadOnly = true;
             // 
-            // tabControl1
-            // 
-            this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tabControl1.Controls.Add(this.criminalsPage);
-            this.tabControl1.Controls.Add(this.gangPage);
-            this.tabControl1.Controls.Add(this.archivePage);
-            this.tabControl1.Location = new System.Drawing.Point(0, 27);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(745, 422);
-            this.tabControl1.TabIndex = 4;
-            // 
-            // criminalsPage
-            // 
-            this.criminalsPage.Controls.Add(this.criminalsList);
-            this.criminalsPage.Location = new System.Drawing.Point(4, 22);
-            this.criminalsPage.Name = "criminalsPage";
-            this.criminalsPage.Padding = new System.Windows.Forms.Padding(3);
-            this.criminalsPage.Size = new System.Drawing.Size(737, 396);
-            this.criminalsPage.TabIndex = 0;
-            this.criminalsPage.Text = "Criminals";
-            this.criminalsPage.UseVisualStyleBackColor = true;
-            // 
-            // gangPage
-            // 
-            this.gangPage.Location = new System.Drawing.Point(4, 22);
-            this.gangPage.Name = "gangPage";
-            this.gangPage.Padding = new System.Windows.Forms.Padding(3);
-            this.gangPage.Size = new System.Drawing.Size(737, 396);
-            this.gangPage.TabIndex = 1;
-            this.gangPage.Text = "Gang";
-            this.gangPage.UseVisualStyleBackColor = true;
-            // 
-            // archivePage
-            // 
-            this.archivePage.Location = new System.Drawing.Point(4, 22);
-            this.archivePage.Name = "archivePage";
-            this.archivePage.Size = new System.Drawing.Size(737, 396);
-            this.archivePage.TabIndex = 2;
-            this.archivePage.Text = "Archive";
-            this.archivePage.UseVisualStyleBackColor = true;
-            // 
             // ListMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -275,6 +275,10 @@
         private System.Windows.Forms.ToolStripMenuItem changeToolStripMenuItem;
         private System.Windows.Forms.BindingSource criminalsBindingSource;
         private System.Windows.Forms.DataGridView criminalsList;
+        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabPage criminalsPage;
+        private System.Windows.Forms.TabPage gangPage;
+        private System.Windows.Forms.TabPage archivePage;
         private System.Windows.Forms.DataGridViewTextBoxColumn txtName;
         private System.Windows.Forms.DataGridViewTextBoxColumn Surname;
         private System.Windows.Forms.DataGridViewTextBoxColumn Alias;
@@ -282,9 +286,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Nationality;
         private System.Windows.Forms.DataGridViewTextBoxColumn BirthDay;
         private System.Windows.Forms.DataGridViewTextBoxColumn Profession;
-        private System.Windows.Forms.TabControl tabControl1;
-        private System.Windows.Forms.TabPage criminalsPage;
-        private System.Windows.Forms.TabPage gangPage;
-        private System.Windows.Forms.TabPage archivePage;
     }
 }

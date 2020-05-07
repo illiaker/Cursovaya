@@ -62,8 +62,6 @@
             this.lastHouseBox = new System.Windows.Forms.TextBox();
             this.lastStreetBox = new System.Windows.Forms.TextBox();
             this.lastcityBox = new System.Windows.Forms.TextBox();
-            this.label14 = new System.Windows.Forms.Label();
-            this.professionBox = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
             this.countryWhereWantedBox = new System.Windows.Forms.ComboBox();
             this.label16 = new System.Windows.Forms.Label();
@@ -72,11 +70,14 @@
             this.saveButton = new System.Windows.Forms.Button();
             this.canselButton = new System.Windows.Forms.Button();
             this.ganglabel = new System.Windows.Forms.LinkLabel();
+            this.professionBox = new System.Windows.Forms.RichTextBox();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.CriminalImage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.heightBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ageBox)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // CriminalImage
@@ -567,26 +568,10 @@
             this.lastcityBox.Size = new System.Drawing.Size(100, 20);
             this.lastcityBox.TabIndex = 0;
             // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(187, 228);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(56, 13);
-            this.label14.TabIndex = 21;
-            this.label14.Text = "Profession";
-            // 
-            // professionBox
-            // 
-            this.professionBox.Location = new System.Drawing.Point(279, 221);
-            this.professionBox.Name = "professionBox";
-            this.professionBox.Size = new System.Drawing.Size(122, 20);
-            this.professionBox.TabIndex = 22;
-            // 
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(187, 261);
+            this.label15.Location = new System.Drawing.Point(179, 370);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(75, 26);
             this.label15.TabIndex = 23;
@@ -794,7 +779,7 @@
             "Yemen",
             "Zambia",
             "Zimbabwe"});
-            this.countryWhereWantedBox.Location = new System.Drawing.Point(279, 261);
+            this.countryWhereWantedBox.Location = new System.Drawing.Point(282, 375);
             this.countryWhereWantedBox.Name = "countryWhereWantedBox";
             this.countryWhereWantedBox.Size = new System.Drawing.Size(122, 21);
             this.countryWhereWantedBox.TabIndex = 24;
@@ -802,7 +787,7 @@
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(187, 339);
+            this.label16.Location = new System.Drawing.Point(182, 411);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(72, 13);
             this.label16.TabIndex = 25;
@@ -818,7 +803,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(439, 334);
+            this.button1.Location = new System.Drawing.Point(439, 401);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 27;
@@ -848,12 +833,30 @@
             // ganglabel
             // 
             this.ganglabel.AutoSize = true;
-            this.ganglabel.Location = new System.Drawing.Point(307, 339);
+            this.ganglabel.Location = new System.Drawing.Point(306, 411);
             this.ganglabel.Name = "ganglabel";
             this.ganglabel.Size = new System.Drawing.Size(33, 13);
             this.ganglabel.TabIndex = 30;
             this.ganglabel.TabStop = true;
             this.ganglabel.Text = "None";
+            // 
+            // professionBox
+            // 
+            this.professionBox.Location = new System.Drawing.Point(6, 19);
+            this.professionBox.Name = "professionBox";
+            this.professionBox.Size = new System.Drawing.Size(245, 102);
+            this.professionBox.TabIndex = 31;
+            this.professionBox.Text = "";
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.professionBox);
+            this.groupBox3.Location = new System.Drawing.Point(176, 225);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(257, 127);
+            this.groupBox3.TabIndex = 32;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Description";
             // 
             // CriminalInfo
             // 
@@ -861,6 +864,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CausesValidation = false;
             this.ClientSize = new System.Drawing.Size(883, 450);
+            this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.ganglabel);
             this.Controls.Add(this.canselButton);
             this.Controls.Add(this.saveButton);
@@ -869,8 +873,6 @@
             this.Controls.Add(this.label16);
             this.Controls.Add(this.countryWhereWantedBox);
             this.Controls.Add(this.label15);
-            this.Controls.Add(this.professionBox);
-            this.Controls.Add(this.label14);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.CriminalImage);
             this.Controls.Add(this.groupBox1);
@@ -902,6 +904,7 @@
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -942,8 +945,6 @@
         private System.Windows.Forms.TextBox lastHouseBox;
         private System.Windows.Forms.TextBox lastStreetBox;
         private System.Windows.Forms.TextBox lastcityBox;
-        private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.TextBox professionBox;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.ComboBox countryWhereWantedBox;
         private System.Windows.Forms.Label label16;
@@ -952,5 +953,7 @@
         private System.Windows.Forms.Button saveButton;
         private System.Windows.Forms.Button canselButton;
         private System.Windows.Forms.LinkLabel ganglabel;
+        private System.Windows.Forms.RichTextBox professionBox;
+        private System.Windows.Forms.GroupBox groupBox3;
     }
 }
