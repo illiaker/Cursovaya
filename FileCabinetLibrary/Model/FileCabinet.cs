@@ -16,12 +16,14 @@ namespace Cursovaya.Model
         {
             Criminals = criminals;
             CriminalGangs = criminalGangs;
+            
         }
 
         public FileCabinet()
         {
             Criminals = new List<Criminal>();
             CriminalGangs = new List<CriminalGang>();
+            Archive = new List<Criminal>();
         }
         //Картотека = коллекция преступников + колекция банд
 
@@ -60,7 +62,11 @@ namespace Cursovaya.Model
             Criminals.Remove(criminal);
             Archive.Add(criminal);
         }
-
+        public void MoveToList(Criminal criminal)
+        {
+            Criminals.Add(criminal);
+            Archive.Remove(criminal);
+        }
         public void Add(CriminalGang gang)
         {
             CriminalGangs.Add(gang);

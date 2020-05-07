@@ -3,6 +3,7 @@ using Cursovaya.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Collections;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -22,6 +23,15 @@ namespace AdminView.Presenter
             listView.LoadEvent += ListView_LoadEvent;
             listView.SaveEvent += ListView_SaveEvent;
             listView.MoveToArchiveEvent += ListView_MoveToArchiveEvent;
+            listView.MoveToListevent += ListView_MoveToListevent;
+        }
+
+        private void ListView_MoveToListevent(object sender, EventArgs e)
+        {
+            fileCabinet.MoveToList((Criminal)listView.ArchiveList.CurrentRow.DataBoundItem);            
+            Refresh(listView.CBS, fileCabinet.Criminals);
+            Refresh(listView.ABS, fileCabinet.Archive);
+            fileCabinet.Save();
         }
 
         private void ListView_MoveToArchiveEvent(object sender, EventArgs e)
@@ -32,7 +42,8 @@ namespace AdminView.Presenter
             {
                 fileCabinet.MoveToArchive((Criminal)listView.List.CurrentRow.DataBoundItem);
                 fileCabinet.Save();
-                Refresh();
+                Refresh(listView.CBS, fileCabinet.Criminals);
+                Refresh(listView.ABS, fileCabinet.Archive);
             }
         }
 
@@ -41,7 +52,8 @@ namespace AdminView.Presenter
             try
             {
                 fileCabinet.Load();
-                Refresh();
+                Refresh(listView.CBS, fileCabinet.Criminals);
+                Refresh(listView.ABS, fileCabinet.Archive);
             }
             catch (Exception)
             {
@@ -65,16 +77,16 @@ namespace AdminView.Presenter
             {
                 fileCabinet.Criminals.Add(ci.Criminal);
                 fileCabinet.Save();
-                Refresh();
+                Refresh(listView.CBS, fileCabinet.Criminals);
                 
 
             }
         }
 
-        private void Refresh()
+        private void Refresh(BindingSource dataGrid, IEnumerable link)
         {
-            listView.CBS.DataSource = null;
-            listView.CBS.DataSource = fileCabinet.Criminals;
+            dataGrid.DataSource = null;
+            dataGrid.DataSource = link;
             listView.List.AutoGenerateColumns = false;
         }
 

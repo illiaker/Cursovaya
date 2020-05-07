@@ -21,11 +21,14 @@ namespace AdminView
         }
         
         public DataGridView List { get { return criminalsList; } set { criminalsList = value; } }
+        public DataGridView ArchiveList { get { return archiveList; } set { archiveList = value; } }
         public event EventHandler LoadEvent = null;
         private void ListMenu_Load(object sender, EventArgs e)
         {
            LoadEvent(sender, e);
         }
+
+        public BindingSource ABS { get => archiveBindingSource; set => archiveBindingSource = value; }
 
         public BindingSource CBS { get => criminalsBindingSource; set => criminalsBindingSource = value; }
         public event EventHandler AddCriminalEvent = null;
@@ -52,6 +55,11 @@ namespace AdminView
         private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
         {
             MoveToArchiveEvent(sender, e);
+        }
+        public event EventHandler MoveToListevent = null;
+        private void moveToListToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MoveToListevent(sender, e);
         }
     }
 }

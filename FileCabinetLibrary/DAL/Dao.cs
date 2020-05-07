@@ -36,7 +36,8 @@ namespace Cursovaya.DAL
                 var serializer = new BinaryFormatter();
                 FileCabinet st = (FileCabinet)serializer.Deserialize(stream);
                 Copy(st.Criminals, fileCabinet.Criminals);
-                Copy(st.CriminalGangs, fileCabinet.CriminalGangs);                
+                Copy(st.CriminalGangs, fileCabinet.CriminalGangs);
+                Copy(st.Archive, fileCabinet.Archive);
             }
 
             void Copy<T>(List<T> from, List<T> to)
