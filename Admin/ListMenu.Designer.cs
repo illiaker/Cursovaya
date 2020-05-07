@@ -38,8 +38,6 @@
             this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.changeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.criminalsList = new System.Windows.Forms.DataGridView();
-            this.criminalsBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.fileCabinetBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.txtName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Surname = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Alias = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -47,10 +45,10 @@
             this.Nationality = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.BirthDay = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Profession = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.criminalsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.menuStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.criminalsList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.criminalsBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileCabinetBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip
@@ -119,6 +117,7 @@
             // 
             this.criminalsList.AllowUserToAddRows = false;
             this.criminalsList.AllowUserToDeleteRows = false;
+            this.criminalsList.AllowUserToOrderColumns = true;
             this.criminalsList.AllowUserToResizeColumns = false;
             this.criminalsList.AllowUserToResizeRows = false;
             this.criminalsList.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -143,15 +142,6 @@
             this.criminalsList.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.criminalsList.Size = new System.Drawing.Size(743, 417);
             this.criminalsList.TabIndex = 3;
-            // 
-            // criminalsBindingSource
-            // 
-            this.criminalsBindingSource.DataMember = "Criminals";
-            this.criminalsBindingSource.DataSource = this.fileCabinetBindingSource;
-            // 
-            // fileCabinetBindingSource
-            // 
-            this.fileCabinetBindingSource.DataSource = typeof(Cursovaya.Model.FileCabinet);
             // 
             // txtName
             // 
@@ -217,7 +207,6 @@
             this.menuStrip.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.criminalsList)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.criminalsBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileCabinetBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -233,7 +222,7 @@
         private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem changeToolStripMenuItem;
         private System.Windows.Forms.BindingSource criminalsBindingSource;
-        private System.Windows.Forms.BindingSource fileCabinetBindingSource;
+        private System.Windows.Forms.DataGridView criminalsList;
         private System.Windows.Forms.DataGridViewTextBoxColumn txtName;
         private System.Windows.Forms.DataGridViewTextBoxColumn Surname;
         private System.Windows.Forms.DataGridViewTextBoxColumn Alias;
@@ -241,6 +230,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Nationality;
         private System.Windows.Forms.DataGridViewTextBoxColumn BirthDay;
         private System.Windows.Forms.DataGridViewTextBoxColumn Profession;
-        private System.Windows.Forms.DataGridView criminalsList;
     }
 }

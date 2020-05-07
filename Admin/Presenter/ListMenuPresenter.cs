@@ -60,15 +60,6 @@ namespace AdminView.Presenter
             listView.List.AutoGenerateColumns = false;
         }
 
-        /*private void ListView_LoadEvent(object sender, EventArgs e)
-        {
-            fileCabinet.GenerateData(20);
-            ObjectCollection coll = new ObjectCollection(listView.List);
-            foreach (var i in fileCabinet.GetCriminals())
-            {
-                coll.Add(i.ToString());
-            }
-            listView.List.Items.AddRange(coll);
-        }*/
+       
     }
 }
