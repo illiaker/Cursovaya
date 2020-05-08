@@ -24,8 +24,7 @@ namespace AdminView.Presenter
             if(auView.Password == admin.Password && auView.Login == admin.Login)
             {
                 auView.Close();
-                
-                new AdminPanel().Show();
+                auView.ListMenu.IsUser = false;                
             }
             else
             {

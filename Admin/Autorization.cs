@@ -13,11 +13,14 @@ namespace AdminView
 {
     public partial class Autorization : Form
     {
-        public Autorization(MainMenu mm)
+        public Autorization(ListMenu lm)
         {
             InitializeComponent();
+            ListMenu = lm;
             new AutorizationPresenter(this);
+
         }
+        public ListMenu ListMenu { get; set; }
         public string Login { get { return login.Text; } set { login.Text = value; } }
         public string Password { get { return password.Text; } set { password.Text = value; } }
 

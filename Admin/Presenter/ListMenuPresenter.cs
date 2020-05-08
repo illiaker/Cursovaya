@@ -24,6 +24,29 @@ namespace AdminView.Presenter
             listView.SaveEvent += ListView_SaveEvent;
             listView.MoveToArchiveEvent += ListView_MoveToArchiveEvent;
             listView.MoveToListevent += ListView_MoveToListevent;
+            listView.AutorizationEvent += ListView_AutorizationEvent;
+            listView.OnUserCahngeEvent += OnUserChange;
+        }
+
+        private void ListView_AutorizationEvent(object sender, KeyEventArgs e)
+        {
+
+           
+            if( e.KeyCode == Keys.Insert && e.Control)
+            {
+                new Autorization(listView).ShowDialog();
+            }
+        }
+        public void OnUserChange(bool b)
+        {
+            if (b)
+            {
+                listView.MenuStrip.Hide();
+            }
+            else
+            {
+                listView.MenuStrip.Show();
+            }
         }
 
         private void ListView_MoveToListevent(object sender, EventArgs e)
@@ -35,7 +58,6 @@ namespace AdminView.Presenter
         }
 
         private void ListView_MoveToArchiveEvent(object sender, EventArgs e)
-
         {
             var i = MessageBox.Show("Are you sure you want to move this criminal to archive?","Conirm", MessageBoxButtons.YesNo);
             if (i == DialogResult.Yes)
@@ -52,6 +74,7 @@ namespace AdminView.Presenter
             try
             {
                 fileCabinet.Load();
+                listView.MenuStrip.Hide();
                 Refresh(listView.CBS, fileCabinet.Criminals);
                 Refresh(listView.ABS, fileCabinet.Archive);
             }

@@ -25,7 +25,7 @@ namespace Cursovaya.Model
         
         public string Adress { get; set; }
         public string LastAdress { get; set; }
-        public string Profession { get; set; }
+        public string Description { get; set; }
         public string CountryWhereWanted { get; set; }
         public CriminalGang Gang{ get; set; }
         public Guid Id { get; set; }

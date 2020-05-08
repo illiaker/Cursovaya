@@ -66,7 +66,7 @@
             this.countryWhereWantedBox = new System.Windows.Forms.ComboBox();
             this.label16 = new System.Windows.Forms.Label();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
-            this.button1 = new System.Windows.Forms.Button();
+            this.chooseButton = new System.Windows.Forms.Button();
             this.saveButton = new System.Windows.Forms.Button();
             this.canselButton = new System.Windows.Forms.Button();
             this.ganglabel = new System.Windows.Forms.LinkLabel();
@@ -801,14 +801,14 @@
             this.linkLabel1.Size = new System.Drawing.Size(0, 13);
             this.linkLabel1.TabIndex = 26;
             // 
-            // button1
+            // chooseButton
             // 
-            this.button1.Location = new System.Drawing.Point(439, 401);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 27;
-            this.button1.Text = "Chose";
-            this.button1.UseVisualStyleBackColor = true;
+            this.chooseButton.Location = new System.Drawing.Point(439, 401);
+            this.chooseButton.Name = "chooseButton";
+            this.chooseButton.Size = new System.Drawing.Size(75, 23);
+            this.chooseButton.TabIndex = 27;
+            this.chooseButton.Text = "Chose";
+            this.chooseButton.UseVisualStyleBackColor = true;
             // 
             // saveButton
             // 
@@ -868,7 +868,7 @@
             this.Controls.Add(this.ganglabel);
             this.Controls.Add(this.canselButton);
             this.Controls.Add(this.saveButton);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.chooseButton);
             this.Controls.Add(this.linkLabel1);
             this.Controls.Add(this.label16);
             this.Controls.Add(this.countryWhereWantedBox);
@@ -949,7 +949,7 @@
         private System.Windows.Forms.ComboBox countryWhereWantedBox;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.LinkLabel linkLabel1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button chooseButton;
         private System.Windows.Forms.Button saveButton;
         private System.Windows.Forms.Button canselButton;
         private System.Windows.Forms.LinkLabel ganglabel;

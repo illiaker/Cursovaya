@@ -37,39 +37,44 @@
             this.addToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.changeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.moveToListToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.criminalsList = new System.Windows.Forms.DataGridView();
-            this.criminalsBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.criminalsPage = new System.Windows.Forms.TabPage();
-            this.gangPage = new System.Windows.Forms.TabPage();
-            this.archivePage = new System.Windows.Forms.TabPage();
             this.txtName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Surname = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Alias = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Gender = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Nationality = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.BirthDay = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Profession = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.descriptionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.criminalsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.criminalsBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
+            this.fileCabinetBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.criminalsPage = new System.Windows.Forms.TabPage();
+            this.gangPage = new System.Windows.Forms.TabPage();
+            this.archivePage = new System.Windows.Forms.TabPage();
             this.archiveList = new System.Windows.Forms.DataGridView();
-            this.archiveBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.moveToListToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.surnameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.aliasDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ageDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.genderDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nationalityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.birthDayDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.professionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.fileCabinetBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.archiveBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.criminalsBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.menuStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.criminalsList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.criminalsBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.criminalsBindingSource2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fileCabinetBindingSource)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.criminalsPage.SuspendLayout();
             this.archivePage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.archiveList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.archiveBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileCabinetBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.criminalsBindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip
@@ -117,23 +122,30 @@
             // addToolStripMenuItem
             // 
             this.addToolStripMenuItem.Name = "addToolStripMenuItem";
-            this.addToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.addToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
             this.addToolStripMenuItem.Text = "Add";
             this.addToolStripMenuItem.Click += new System.EventHandler(this.addToolStripMenuItem_Click);
             // 
             // deleteToolStripMenuItem
             // 
             this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
-            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
             this.deleteToolStripMenuItem.Text = "Move to archive";
             this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
             // 
             // changeToolStripMenuItem
             // 
             this.changeToolStripMenuItem.Name = "changeToolStripMenuItem";
-            this.changeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.changeToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
             this.changeToolStripMenuItem.Text = "Change";
             this.changeToolStripMenuItem.Click += new System.EventHandler(this.changeToolStripMenuItem_Click);
+            // 
+            // moveToListToolStripMenuItem
+            // 
+            this.moveToListToolStripMenuItem.Name = "moveToListToolStripMenuItem";
+            this.moveToListToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
+            this.moveToListToolStripMenuItem.Text = "Move to list";
+            this.moveToListToolStripMenuItem.Click += new System.EventHandler(this.moveToListToolStripMenuItem_Click);
             // 
             // criminalsList
             // 
@@ -151,7 +163,8 @@
             this.Gender,
             this.Nationality,
             this.BirthDay,
-            this.Profession});
+            this.descriptionDataGridViewTextBoxColumn,
+            this.idDataGridViewTextBoxColumn});
             this.criminalsList.DataSource = this.criminalsBindingSource;
             this.criminalsList.Dock = System.Windows.Forms.DockStyle.Fill;
             this.criminalsList.GridColor = System.Drawing.SystemColors.AppWorkspace;
@@ -162,6 +175,75 @@
             this.criminalsList.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.criminalsList.Size = new System.Drawing.Size(731, 390);
             this.criminalsList.TabIndex = 3;
+            // 
+            // txtName
+            // 
+            this.txtName.DataPropertyName = "Name";
+            this.txtName.HeaderText = "Name";
+            this.txtName.Name = "txtName";
+            this.txtName.ReadOnly = true;
+            // 
+            // Surname
+            // 
+            this.Surname.DataPropertyName = "Surname";
+            this.Surname.HeaderText = "Surname";
+            this.Surname.Name = "Surname";
+            this.Surname.ReadOnly = true;
+            // 
+            // Alias
+            // 
+            this.Alias.DataPropertyName = "Alias";
+            this.Alias.HeaderText = "Alias";
+            this.Alias.Name = "Alias";
+            this.Alias.ReadOnly = true;
+            // 
+            // Gender
+            // 
+            this.Gender.DataPropertyName = "Gender";
+            this.Gender.HeaderText = "Gender";
+            this.Gender.Name = "Gender";
+            this.Gender.ReadOnly = true;
+            // 
+            // Nationality
+            // 
+            this.Nationality.DataPropertyName = "Nationality";
+            this.Nationality.HeaderText = "Nationality";
+            this.Nationality.Name = "Nationality";
+            this.Nationality.ReadOnly = true;
+            // 
+            // BirthDay
+            // 
+            this.BirthDay.DataPropertyName = "BirthDay";
+            this.BirthDay.HeaderText = "BirthDay";
+            this.BirthDay.Name = "BirthDay";
+            this.BirthDay.ReadOnly = true;
+            // 
+            // descriptionDataGridViewTextBoxColumn
+            // 
+            this.descriptionDataGridViewTextBoxColumn.DataPropertyName = "Description";
+            this.descriptionDataGridViewTextBoxColumn.HeaderText = "Description";
+            this.descriptionDataGridViewTextBoxColumn.Name = "descriptionDataGridViewTextBoxColumn";
+            this.descriptionDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // idDataGridViewTextBoxColumn
+            // 
+            this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
+            this.idDataGridViewTextBoxColumn.HeaderText = "Id";
+            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
+            this.idDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // criminalsBindingSource
+            // 
+            this.criminalsBindingSource.DataSource = this.criminalsBindingSource2;
+            // 
+            // criminalsBindingSource2
+            // 
+            this.criminalsBindingSource2.DataMember = "Criminals";
+            this.criminalsBindingSource2.DataSource = this.fileCabinetBindingSource;
+            // 
+            // fileCabinetBindingSource
+            // 
+            this.fileCabinetBindingSource.DataSource = typeof(Cursovaya.Model.FileCabinet);
             // 
             // tabControl1
             // 
@@ -208,55 +290,6 @@
             this.archivePage.Text = "Archive";
             this.archivePage.UseVisualStyleBackColor = true;
             // 
-            // txtName
-            // 
-            this.txtName.DataPropertyName = "Name";
-            this.txtName.HeaderText = "Name";
-            this.txtName.Name = "txtName";
-            this.txtName.ReadOnly = true;
-            // 
-            // Surname
-            // 
-            this.Surname.DataPropertyName = "Surname";
-            this.Surname.HeaderText = "Surname";
-            this.Surname.Name = "Surname";
-            this.Surname.ReadOnly = true;
-            // 
-            // Alias
-            // 
-            this.Alias.DataPropertyName = "Alias";
-            this.Alias.HeaderText = "Alias";
-            this.Alias.Name = "Alias";
-            this.Alias.ReadOnly = true;
-            // 
-            // Gender
-            // 
-            this.Gender.DataPropertyName = "Gender";
-            this.Gender.HeaderText = "Gender";
-            this.Gender.Name = "Gender";
-            this.Gender.ReadOnly = true;
-            // 
-            // Nationality
-            // 
-            this.Nationality.DataPropertyName = "Nationality";
-            this.Nationality.HeaderText = "Nationality";
-            this.Nationality.Name = "Nationality";
-            this.Nationality.ReadOnly = true;
-            // 
-            // BirthDay
-            // 
-            this.BirthDay.DataPropertyName = "BirthDay";
-            this.BirthDay.HeaderText = "BirthDay";
-            this.BirthDay.Name = "BirthDay";
-            this.BirthDay.ReadOnly = true;
-            // 
-            // Profession
-            // 
-            this.Profession.DataPropertyName = "Profession";
-            this.Profession.HeaderText = "Profession";
-            this.Profession.Name = "Profession";
-            this.Profession.ReadOnly = true;
-            // 
             // archiveList
             // 
             this.archiveList.AllowUserToAddRows = false;
@@ -271,7 +304,7 @@
             this.genderDataGridViewTextBoxColumn,
             this.nationalityDataGridViewTextBoxColumn,
             this.birthDayDataGridViewTextBoxColumn,
-            this.professionDataGridViewTextBoxColumn});
+            this.Description});
             this.archiveList.DataSource = this.archiveBindingSource;
             this.archiveList.Dock = System.Windows.Forms.DockStyle.Fill;
             this.archiveList.GridColor = System.Drawing.SystemColors.ButtonShadow;
@@ -281,18 +314,6 @@
             this.archiveList.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.archiveList.Size = new System.Drawing.Size(737, 396);
             this.archiveList.TabIndex = 0;
-            // 
-            // archiveBindingSource
-            // 
-            this.archiveBindingSource.DataMember = "Archive";
-            this.archiveBindingSource.DataSource = this.fileCabinetBindingSource;
-            // 
-            // moveToListToolStripMenuItem
-            // 
-            this.moveToListToolStripMenuItem.Name = "moveToListToolStripMenuItem";
-            this.moveToListToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.moveToListToolStripMenuItem.Text = "Move to list";
-            this.moveToListToolStripMenuItem.Click += new System.EventHandler(this.moveToListToolStripMenuItem_Click);
             // 
             // surnameDataGridViewTextBoxColumn
             // 
@@ -336,16 +357,22 @@
             this.birthDayDataGridViewTextBoxColumn.Name = "birthDayDataGridViewTextBoxColumn";
             this.birthDayDataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // professionDataGridViewTextBoxColumn
+            // Description
             // 
-            this.professionDataGridViewTextBoxColumn.DataPropertyName = "Profession";
-            this.professionDataGridViewTextBoxColumn.HeaderText = "Profession";
-            this.professionDataGridViewTextBoxColumn.Name = "professionDataGridViewTextBoxColumn";
-            this.professionDataGridViewTextBoxColumn.ReadOnly = true;
+            this.Description.DataPropertyName = "Description";
+            this.Description.HeaderText = "Description";
+            this.Description.Name = "Description";
+            this.Description.ReadOnly = true;
             // 
-            // fileCabinetBindingSource
+            // archiveBindingSource
             // 
-            this.fileCabinetBindingSource.DataSource = typeof(Cursovaya.Model.FileCabinet);
+            this.archiveBindingSource.DataMember = "Archive";
+            this.archiveBindingSource.DataSource = this.fileCabinetBindingSource;
+            // 
+            // criminalsBindingSource1
+            // 
+            this.criminalsBindingSource1.DataMember = "Criminals";
+            this.criminalsBindingSource1.DataSource = this.fileCabinetBindingSource;
             // 
             // ListMenu
             // 
@@ -354,20 +381,24 @@
             this.ClientSize = new System.Drawing.Size(745, 450);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.menuStrip);
+            this.KeyPreview = true;
             this.MainMenuStrip = this.menuStrip;
             this.Name = "ListMenu";
             this.Text = "ListMenu";
             this.Load += new System.EventHandler(this.ListMenu_Load);
+            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.ListMenu_KeyDown);
             this.menuStrip.ResumeLayout(false);
             this.menuStrip.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.criminalsList)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.criminalsBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.criminalsBindingSource2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fileCabinetBindingSource)).EndInit();
             this.tabControl1.ResumeLayout(false);
             this.criminalsPage.ResumeLayout(false);
             this.archivePage.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.archiveList)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.archiveBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileCabinetBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.criminalsBindingSource1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -388,24 +419,27 @@
         private System.Windows.Forms.TabPage criminalsPage;
         private System.Windows.Forms.TabPage gangPage;
         private System.Windows.Forms.TabPage archivePage;
-        private System.Windows.Forms.DataGridViewTextBoxColumn txtName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Surname;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Alias;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Gender;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Nationality;
-        private System.Windows.Forms.DataGridViewTextBoxColumn BirthDay;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Profession;
         private System.Windows.Forms.DataGridView archiveList;
         private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.BindingSource archiveBindingSource;
+        private System.Windows.Forms.BindingSource fileCabinetBindingSource;
+        private System.Windows.Forms.ToolStripMenuItem moveToListToolStripMenuItem;
         private System.Windows.Forms.DataGridViewTextBoxColumn surnameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn aliasDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn ageDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn genderDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn nationalityDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn birthDayDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn professionDataGridViewTextBoxColumn;
-        private System.Windows.Forms.BindingSource archiveBindingSource;
-        private System.Windows.Forms.BindingSource fileCabinetBindingSource;
-        private System.Windows.Forms.ToolStripMenuItem moveToListToolStripMenuItem;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Description;
+        private System.Windows.Forms.BindingSource criminalsBindingSource1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn txtName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Surname;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Alias;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Gender;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Nationality;
+        private System.Windows.Forms.DataGridViewTextBoxColumn BirthDay;
+        private System.Windows.Forms.DataGridViewTextBoxColumn descriptionDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
+        private System.Windows.Forms.BindingSource criminalsBindingSource2;
     }
 }

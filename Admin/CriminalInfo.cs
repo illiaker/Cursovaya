@@ -23,9 +23,60 @@ namespace AdminView
         }
        
 
-        public CriminalInfo(Criminal criminal)
+        public CriminalInfo(Criminal criminal, bool isUser)
         {
             InitializeComponent();
+            if (isUser)
+            {
+                foreach (Control i in Controls)
+                {
+                    TextBox t = i as TextBox;
+                    if (t != null)
+                    {
+                        t.ReadOnly = true;
+
+                    }
+                    ComboBox c = i as ComboBox;
+                    if (c != null)
+                    {
+                        c.Enabled = false;
+                    }
+                    NumericUpDown n = i as NumericUpDown;
+                    if (n != null)
+                    {
+                        n.ReadOnly = true;
+                    }
+                    DateTimePicker d = i as DateTimePicker;
+                    if (d != null)
+                    {
+                        d.Enabled = false;
+                    }
+                    GroupBox g = i as GroupBox;
+                    if (g != null)
+                    {
+                        foreach (Control j in g.Controls)
+                        {
+                            TextBox tb = j as TextBox;
+                            if (tb != null)
+                            {
+                                tb.ReadOnly = true;
+
+                            }
+                            RichTextBox rb = j as RichTextBox;
+                            if (rb != null)
+                            {
+                                rb.ReadOnly = true;
+
+                            }
+                        }
+                    }
+
+
+                }
+                OpenImage.Hide();
+                saveButton.Hide();
+                chooseButton.Hide();
+            }
             Criminal = criminal;
             nameBox.Text = Criminal.Name;
             CriminalImage.Image = Criminal.Image;
@@ -36,7 +87,7 @@ namespace AdminView
             genderBox.SelectedItem = Criminal.Gender;
             nationalityBox.SelectedItem = Criminal.Nationality;
             birthdayBox.Value = Criminal.BirthDay;
-            professionBox.Text = Criminal.Profession;
+            professionBox.Text = Criminal.Description;
             countryWhereWantedBox.SelectedItem = Criminal.CountryWhereWanted;
             ganglabel.Text = Criminal.Gang != null ? Criminal.Gang.Name : "None"; 
 
@@ -67,7 +118,7 @@ namespace AdminView
                 Criminal.Gender = (string)genderBox.SelectedItem;
                 Criminal.Nationality = (string)nationalityBox.SelectedItem;
                 Criminal.BirthDay = birthdayBox.Value;
-                Criminal.Profession = professionBox.Text;
+                Criminal.Description = professionBox.Text;
                 Criminal.CountryWhereWanted = (string)countryWhereWantedBox.SelectedItem;
             }
             

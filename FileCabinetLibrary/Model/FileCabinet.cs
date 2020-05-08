@@ -90,6 +90,7 @@ namespace Cursovaya.Model
         public void Load()
         {
             new Dao(this).Load();
+           
         }
     }
 }
