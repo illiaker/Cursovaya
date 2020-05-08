@@ -28,8 +28,6 @@ namespace Cursovaya.Model
         //Картотека = коллекция преступников + колекция банд
 
         public List<Criminal> Archive { get; set; }
-
-
         public List<Criminal> Criminals { get; set; }
         public List<CriminalGang> CriminalGangs { get; set; }
 

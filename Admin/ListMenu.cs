@@ -21,18 +21,20 @@ namespace AdminView
         }
         
         public MenuStrip MenuStrip { get => menuStrip; set => menuStrip = value; }
-        public bool IsUser { get; set; } = true;
+        public bool IsUser { get; set; } = false;
         public DataGridView List { get { return criminalsList; } set { criminalsList = value; } }
+        public DataGridView GangList { get => gangGridView; set => gangGridView = value; }
         public DataGridView ArchiveList { get { return archiveList; } set { archiveList = value; } }
         public event EventHandler LoadEvent = null;
         private void ListMenu_Load(object sender, EventArgs e)
         {
            LoadEvent(sender, e);
+            OnUserCahngeEvent(IsUser);
         }
         public delegate void MyDel(bool b);
         public event MyDel OnUserCahngeEvent = null;
         public BindingSource ABS { get => archiveBindingSource; set => archiveBindingSource = value; }
-
+        public BindingSource GBS { get => criminalGangsBindingSource; set => criminalGangsBindingSource = value; }
         public BindingSource CBS { get => criminalsBindingSource; set => criminalsBindingSource = value; }
         public event EventHandler AddCriminalEvent = null;
         private void addToolStripMenuItem_Click(object sender, EventArgs e)
@@ -73,6 +75,12 @@ namespace AdminView
         {
             AutorizationEvent(sender, e);
             OnUserCahngeEvent(IsUser);
+        }
+        public event EventHandler AddGangEvent;
+        private void addToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            AddGangEvent(sender, e);
+            SaveEvent(sender, e);
         }
     }
 }

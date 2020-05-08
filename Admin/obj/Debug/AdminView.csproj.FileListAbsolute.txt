@@ -13,3 +13,4 @@ D:\Project\C#\OOP\Cursova\Cursovaya\Admin\obj\Debug\Admin.exe
 D:\Project\C#\OOP\Cursova\Cursovaya\Admin\obj\Debug\Admin.pdb
 D:\Project\C#\OOP\Cursova\Cursovaya\Admin\obj\Debug\AdminView.CriminalInfo.resources
 D:\Project\C#\OOP\Cursova\Cursovaya\Admin\obj\Debug\AdminView.ListMenu.resources
+D:\Project\C#\OOP\Cursova\Cursovaya\Admin\obj\Debug\AdminView.GangInfo.resources

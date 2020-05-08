@@ -26,6 +26,17 @@ namespace AdminView.Presenter
             listView.MoveToListevent += ListView_MoveToListevent;
             listView.AutorizationEvent += ListView_AutorizationEvent;
             listView.OnUserCahngeEvent += OnUserChange;
+            listView.AddGangEvent += ListView_AddGangEvent;
+        }
+
+        private void ListView_AddGangEvent(object sender, EventArgs e)
+        {
+            var gi = new GangInfo();
+            if(gi.ShowDialog() == DialogResult.OK)
+            {
+                fileCabinet.CriminalGangs.Add(gi.Gang);
+                Refresh(listView.GBS, fileCabinet.CriminalGangs);
+            }
         }
 
         private void ListView_AutorizationEvent(object sender, KeyEventArgs e)
@@ -77,6 +88,7 @@ namespace AdminView.Presenter
                 listView.MenuStrip.Hide();
                 Refresh(listView.CBS, fileCabinet.Criminals);
                 Refresh(listView.ABS, fileCabinet.Archive);
+                Refresh(listView.GBS, fileCabinet.CriminalGangs);
             }
             catch (Exception)
             {
@@ -100,8 +112,7 @@ namespace AdminView.Presenter
             {
                 fileCabinet.Criminals.Add(ci.Criminal);
                 fileCabinet.Save();
-                Refresh(listView.CBS, fileCabinet.Criminals);
-                
+                Refresh(listView.CBS, fileCabinet.Criminals);                
 
             }
         }

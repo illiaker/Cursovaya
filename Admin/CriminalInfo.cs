@@ -18,14 +18,27 @@ namespace AdminView
         public CriminalInfo()
         {
             InitializeComponent();
-            Criminal = new Criminal();
-            
+            Criminal = new Criminal();            
         }
        
 
         public CriminalInfo(Criminal criminal, bool isUser)
         {
             InitializeComponent();
+            Criminal = criminal;
+            nameBox.Text = Criminal.Name;
+            CriminalImage.Image = Criminal.Image;
+            surnameBox.Text = Criminal.Surname;
+            aliasBox.Text = Criminal.Alias;
+            heightBox.Value = Criminal.Height;
+            ageBox.Value = Criminal.Age;
+            genderBox.SelectedItem = Criminal.Gender;
+            nationalityBox.SelectedItem = Criminal.Nationality;
+            birthdayBox.Value = Criminal.BirthDay;
+            professionBox.Text = Criminal.Description;
+            countryWhereWantedBox.SelectedItem = Criminal.CountryWhereWanted;
+            ganglabel.Text = Criminal.Gang != null ? Criminal.Gang.Name : "None";
+            
             if (isUser)
             {
                 foreach (Control i in Controls)
@@ -73,23 +86,20 @@ namespace AdminView
 
 
                 }
+                label.Hide();
+                IdLable.Hide();
                 OpenImage.Hide();
                 saveButton.Hide();
                 chooseButton.Hide();
             }
-            Criminal = criminal;
-            nameBox.Text = Criminal.Name;
-            CriminalImage.Image = Criminal.Image;
-            surnameBox.Text = Criminal.Surname;
-            aliasBox.Text = Criminal.Alias;
-            heightBox.Value = Criminal.Height;
-            ageBox.Value = Criminal.Age;
-            genderBox.SelectedItem = Criminal.Gender;
-            nationalityBox.SelectedItem = Criminal.Nationality;
-            birthdayBox.Value = Criminal.BirthDay;
-            professionBox.Text = Criminal.Description;
-            countryWhereWantedBox.SelectedItem = Criminal.CountryWhereWanted;
-            ganglabel.Text = Criminal.Gang != null ? Criminal.Gang.Name : "None"; 
+            else
+            {
+                label.Show();
+                IdLable.Show();
+                IdLable.Text = Criminal.Id.ToString();
+            }
+            
+           
 
         }
         private void OpenImage_Click(object sender, EventArgs e)
@@ -120,10 +130,22 @@ namespace AdminView
                 Criminal.BirthDay = birthdayBox.Value;
                 Criminal.Description = professionBox.Text;
                 Criminal.CountryWhereWanted = (string)countryWhereWantedBox.SelectedItem;
+                Criminal.Id = Guid.NewGuid(); 
             }
             
         }
 
-        
+        private void ganglabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            if (Criminal.Gang != null)
+            {
+                new GangInfo(Criminal.Gang, true).ShowDialog();
+            }
+        }
+
+        private void chooseButton_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

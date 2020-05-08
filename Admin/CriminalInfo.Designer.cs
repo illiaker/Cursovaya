@@ -72,6 +72,8 @@
             this.ganglabel = new System.Windows.Forms.LinkLabel();
             this.professionBox = new System.Windows.Forms.RichTextBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.label = new System.Windows.Forms.Label();
+            this.IdLable = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.CriminalImage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.heightBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ageBox)).BeginInit();
@@ -803,12 +805,13 @@
             // 
             // chooseButton
             // 
-            this.chooseButton.Location = new System.Drawing.Point(439, 401);
+            this.chooseButton.Location = new System.Drawing.Point(430, 401);
             this.chooseButton.Name = "chooseButton";
             this.chooseButton.Size = new System.Drawing.Size(75, 23);
             this.chooseButton.TabIndex = 27;
             this.chooseButton.Text = "Chose";
             this.chooseButton.UseVisualStyleBackColor = true;
+            this.chooseButton.Click += new System.EventHandler(this.chooseButton_Click);
             // 
             // saveButton
             // 
@@ -833,12 +836,13 @@
             // ganglabel
             // 
             this.ganglabel.AutoSize = true;
-            this.ganglabel.Location = new System.Drawing.Point(306, 411);
+            this.ganglabel.Location = new System.Drawing.Point(317, 411);
             this.ganglabel.Name = "ganglabel";
             this.ganglabel.Size = new System.Drawing.Size(33, 13);
             this.ganglabel.TabIndex = 30;
             this.ganglabel.TabStop = true;
             this.ganglabel.Text = "None";
+            this.ganglabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.ganglabel_LinkClicked);
             // 
             // professionBox
             // 
@@ -858,12 +862,31 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Description";
             // 
+            // label
+            // 
+            this.label.AutoSize = true;
+            this.label.Location = new System.Drawing.Point(543, 339);
+            this.label.Name = "label";
+            this.label.Size = new System.Drawing.Size(18, 13);
+            this.label.TabIndex = 33;
+            this.label.Text = "ID";
+            // 
+            // IdLable
+            // 
+            this.IdLable.AutoSize = true;
+            this.IdLable.Location = new System.Drawing.Point(585, 339);
+            this.IdLable.Name = "IdLable";
+            this.IdLable.Size = new System.Drawing.Size(0, 13);
+            this.IdLable.TabIndex = 34;
+            // 
             // CriminalInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CausesValidation = false;
             this.ClientSize = new System.Drawing.Size(883, 450);
+            this.Controls.Add(this.IdLable);
+            this.Controls.Add(this.label);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.ganglabel);
             this.Controls.Add(this.canselButton);
@@ -955,5 +978,7 @@
         private System.Windows.Forms.LinkLabel ganglabel;
         private System.Windows.Forms.RichTextBox professionBox;
         private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.Label label;
+        private System.Windows.Forms.Label IdLable;
     }
 }

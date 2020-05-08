@@ -49,12 +49,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AdminPanel.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="AdminPanel.Designer.cs">
-      <DependentUpon>AdminPanel.cs</DependentUpon>
-    </Compile>
     <Compile Include="Autorization.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -66,6 +60,12 @@
     </Compile>
     <Compile Include="CriminalInfo.Designer.cs">
       <DependentUpon>CriminalInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GangInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GangInfo.Designer.cs">
+      <DependentUpon>GangInfo.cs</DependentUpon>
     </Compile>
     <Compile Include="InfoPanel.cs">
       <SubType>Form</SubType>
@@ -88,6 +88,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="CriminalInfo.resx">
       <DependentUpon>CriminalInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GangInfo.resx">
+      <DependentUpon>GangInfo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ListMenu.resx">
       <DependentUpon>ListMenu.cs</DependentUpon>
