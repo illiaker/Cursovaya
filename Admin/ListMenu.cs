@@ -21,7 +21,7 @@ namespace AdminView
         }
         
         public MenuStrip MenuStrip { get => menuStrip; set => menuStrip = value; }
-        public bool IsUser { get; set; } = false;
+        public bool IsUser { get; set; } = true;
         public DataGridView List { get { return criminalsList; } set { criminalsList = value; } }
         public DataGridView GangList { get => gangGridView; set => gangGridView = value; }
         public DataGridView ArchiveList { get { return archiveList; } set { archiveList = value; } }
@@ -80,6 +80,12 @@ namespace AdminView
         private void addToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             AddGangEvent(sender, e);
+            SaveEvent(sender, e);
+        }
+        public event EventHandler DeleteEvent;
+        private void deleteToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            DeleteEvent(sender, e);
             SaveEvent(sender, e);
         }
     }

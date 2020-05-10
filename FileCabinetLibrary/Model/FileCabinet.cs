@@ -31,6 +31,10 @@ namespace Cursovaya.Model
         public List<Criminal> Criminals { get; set; }
         public List<CriminalGang> CriminalGangs { get; set; }
 
+        
+
+
+
         //public void GenerateData(int n)
         //{
         //    for (int i = 0; i < n; i++)
@@ -42,7 +46,7 @@ namespace Cursovaya.Model
         //           Surname = $"Surname{i}",
 
         //        });
-                
+
         //    }
 
         //    for (int i = 0; i < n; i++)

@@ -27,6 +27,13 @@ namespace AdminView.Presenter
             listView.AutorizationEvent += ListView_AutorizationEvent;
             listView.OnUserCahngeEvent += OnUserChange;
             listView.AddGangEvent += ListView_AddGangEvent;
+            listView.DeleteEvent += ListView_DeleteEvent;
+        }
+
+        private void ListView_DeleteEvent(object sender, EventArgs e)
+        {
+            fileCabinet.Criminals.Remove((Criminal)listView.List.CurrentRow.DataBoundItem);
+            Refresh(listView.CBS, fileCabinet.Criminals);
         }
 
         private void ListView_AddGangEvent(object sender, EventArgs e)

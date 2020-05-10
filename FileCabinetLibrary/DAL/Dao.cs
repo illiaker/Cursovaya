@@ -20,6 +20,8 @@ namespace Cursovaya.DAL
             fileCabinet = store;
         }
 
+       
+
         public void Save()
         {
             using (Stream stream = File.Create(filePath))

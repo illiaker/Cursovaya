@@ -41,7 +41,7 @@
             this.gangImageBox = new System.Windows.Forms.PictureBox();
             this.imageChoseButton = new System.Windows.Forms.Button();
             this.choseimageDialog = new System.Windows.Forms.OpenFileDialog();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.countryBox = new System.Windows.Forms.ComboBox();
             this.saveButton = new System.Windows.Forms.Button();
             this.cancelButton = new System.Windows.Forms.Button();
             this.featuresBox.SuspendLayout();
@@ -112,6 +112,7 @@
             this.leaderChoseButton.TabIndex = 5;
             this.leaderChoseButton.Text = "Chose";
             this.leaderChoseButton.UseVisualStyleBackColor = true;
+            this.leaderChoseButton.Click += new System.EventHandler(this.leaderChoseButton_Click);
             // 
             // foundationDateLabel
             // 
@@ -160,11 +161,11 @@
             // 
             this.choseimageDialog.FileName = "openFileDialog1";
             // 
-            // comboBox1
+            // countryBox
             // 
-            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
+            this.countryBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.countryBox.FormattingEnabled = true;
+            this.countryBox.Items.AddRange(new object[] {
             "Afghanistan",
             "Albania",
             "Algeria",
@@ -361,10 +362,10 @@
             "Yemen",
             "Zambia",
             "Zimbabwe"});
-            this.comboBox1.Location = new System.Drawing.Point(305, 126);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(138, 21);
-            this.comboBox1.TabIndex = 12;
+            this.countryBox.Location = new System.Drawing.Point(305, 126);
+            this.countryBox.Name = "countryBox";
+            this.countryBox.Size = new System.Drawing.Size(138, 21);
+            this.countryBox.TabIndex = 12;
             // 
             // saveButton
             // 
@@ -393,7 +394,7 @@
             this.ClientSize = new System.Drawing.Size(795, 433);
             this.Controls.Add(this.cancelButton);
             this.Controls.Add(this.saveButton);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.countryBox);
             this.Controls.Add(this.imageChoseButton);
             this.Controls.Add(this.gangImageBox);
             this.Controls.Add(this.foundationtimebox);
@@ -407,6 +408,7 @@
             this.Controls.Add(this.nameLabel);
             this.Name = "GangInfo";
             this.Text = "GangInfo";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.GangInfo_FormClosing);
             this.featuresBox.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gangImageBox)).EndInit();
             this.ResumeLayout(false);
@@ -429,7 +431,7 @@
         private System.Windows.Forms.PictureBox gangImageBox;
         private System.Windows.Forms.Button imageChoseButton;
         private System.Windows.Forms.OpenFileDialog choseimageDialog;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox countryBox;
         private System.Windows.Forms.Button saveButton;
         private System.Windows.Forms.Button cancelButton;
     }

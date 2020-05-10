@@ -37,5 +37,20 @@ namespace AdminView
                 MessageBox.Show("There is no such file");
             }
         }
+
+        private void GangInfo_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if(DialogResult == DialogResult.OK)
+            {
+                Gang.Name = nameBox.Name;
+                Gang.Country = (string)countryBox.SelectedItem;
+                
+            }
+        }
+
+        private void leaderChoseButton_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
