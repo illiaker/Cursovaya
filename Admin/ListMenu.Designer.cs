@@ -38,9 +38,12 @@
             this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.changeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.moveToListToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.deleteToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.gangToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.changeToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.criminalsList = new System.Windows.Forms.DataGridView();
+            this.Image = new System.Windows.Forms.DataGridViewImageColumn();
             this.txtName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Surname = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Alias = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -74,7 +77,6 @@
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.archiveBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.criminalsBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.deleteToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.criminalsList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.criminalsBindingSource)).BeginInit();
@@ -163,10 +165,18 @@
             this.moveToListToolStripMenuItem.Text = "Move to list";
             this.moveToListToolStripMenuItem.Click += new System.EventHandler(this.moveToListToolStripMenuItem_Click);
             // 
+            // deleteToolStripMenuItem1
+            // 
+            this.deleteToolStripMenuItem1.Name = "deleteToolStripMenuItem1";
+            this.deleteToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.deleteToolStripMenuItem1.Text = "Delete";
+            this.deleteToolStripMenuItem1.Click += new System.EventHandler(this.deleteToolStripMenuItem1_Click);
+            // 
             // gangToolStripMenuItem
             // 
             this.gangToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.addToolStripMenuItem1});
+            this.addToolStripMenuItem1,
+            this.changeToolStripMenuItem1});
             this.gangToolStripMenuItem.Name = "gangToolStripMenuItem";
             this.gangToolStripMenuItem.Size = new System.Drawing.Size(47, 20);
             this.gangToolStripMenuItem.Text = "Gang";
@@ -174,9 +184,16 @@
             // addToolStripMenuItem1
             // 
             this.addToolStripMenuItem1.Name = "addToolStripMenuItem1";
-            this.addToolStripMenuItem1.Size = new System.Drawing.Size(96, 22);
+            this.addToolStripMenuItem1.Size = new System.Drawing.Size(115, 22);
             this.addToolStripMenuItem1.Text = "Add";
             this.addToolStripMenuItem1.Click += new System.EventHandler(this.addToolStripMenuItem1_Click);
+            // 
+            // changeToolStripMenuItem1
+            // 
+            this.changeToolStripMenuItem1.Name = "changeToolStripMenuItem1";
+            this.changeToolStripMenuItem1.Size = new System.Drawing.Size(115, 22);
+            this.changeToolStripMenuItem1.Text = "Change";
+            this.changeToolStripMenuItem1.Click += new System.EventHandler(this.changeToolStripMenuItem1_Click);
             // 
             // criminalsList
             // 
@@ -188,6 +205,7 @@
             this.criminalsList.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
             this.criminalsList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.criminalsList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Image,
             this.txtName,
             this.Surname,
             this.Alias,
@@ -204,8 +222,17 @@
             this.criminalsList.Name = "criminalsList";
             this.criminalsList.ReadOnly = true;
             this.criminalsList.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.criminalsList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.criminalsList.Size = new System.Drawing.Size(837, 393);
             this.criminalsList.TabIndex = 3;
+            // 
+            // Image
+            // 
+            this.Image.DataPropertyName = "Image";
+            this.Image.HeaderText = "Image";
+            this.Image.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.Image.Name = "Image";
+            this.Image.ReadOnly = true;
             // 
             // txtName
             // 
@@ -316,6 +343,8 @@
             // 
             this.gangGridView.AllowUserToAddRows = false;
             this.gangGridView.AllowUserToDeleteRows = false;
+            this.gangGridView.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.gangGridView.AutoGenerateColumns = false;
             this.gangGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gangGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -326,10 +355,13 @@
             this.countryDataGridViewTextBoxColumn});
             this.gangGridView.DataSource = this.criminalGangsBindingSource;
             this.gangGridView.Location = new System.Drawing.Point(0, 0);
+            this.gangGridView.MultiSelect = false;
             this.gangGridView.Name = "gangGridView";
             this.gangGridView.ReadOnly = true;
+            this.gangGridView.RowHeadersVisible = false;
             this.gangGridView.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.gangGridView.Size = new System.Drawing.Size(543, 285);
+            this.gangGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.gangGridView.Size = new System.Drawing.Size(503, 285);
             this.gangGridView.TabIndex = 0;
             // 
             // dataGridViewTextBoxColumn1
@@ -405,6 +437,7 @@
             this.archiveList.Name = "archiveList";
             this.archiveList.ReadOnly = true;
             this.archiveList.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.archiveList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.archiveList.Size = new System.Drawing.Size(843, 399);
             this.archiveList.TabIndex = 0;
             // 
@@ -474,13 +507,6 @@
             this.criminalsBindingSource1.DataMember = "Criminals";
             this.criminalsBindingSource1.DataSource = this.fileCabinetBindingSource;
             // 
-            // deleteToolStripMenuItem1
-            // 
-            this.deleteToolStripMenuItem1.Name = "deleteToolStripMenuItem1";
-            this.deleteToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
-            this.deleteToolStripMenuItem1.Text = "Delete";
-            this.deleteToolStripMenuItem1.Click += new System.EventHandler(this.deleteToolStripMenuItem1_Click);
-            // 
             // ListMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -535,14 +561,6 @@
         private System.Windows.Forms.BindingSource fileCabinetBindingSource;
         private System.Windows.Forms.ToolStripMenuItem moveToListToolStripMenuItem;
         private System.Windows.Forms.BindingSource criminalsBindingSource1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn txtName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Surname;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Alias;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Gender;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Nationality;
-        private System.Windows.Forms.DataGridViewTextBoxColumn BirthDay;
-        private System.Windows.Forms.DataGridViewTextBoxColumn descriptionDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
         private System.Windows.Forms.BindingSource criminalsBindingSource2;
         private System.Windows.Forms.DataGridViewTextBoxColumn surnameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn aliasDataGridViewTextBoxColumn;
@@ -562,5 +580,15 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn leaderDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn countryDataGridViewTextBoxColumn;
         private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItem1;
+        private System.Windows.Forms.DataGridViewImageColumn Image;
+        private System.Windows.Forms.DataGridViewTextBoxColumn txtName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Surname;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Alias;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Gender;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Nationality;
+        private System.Windows.Forms.DataGridViewTextBoxColumn BirthDay;
+        private System.Windows.Forms.DataGridViewTextBoxColumn descriptionDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
+        private System.Windows.Forms.ToolStripMenuItem changeToolStripMenuItem1;
     }
 }

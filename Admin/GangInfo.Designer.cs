@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.nameLabel = new System.Windows.Forms.Label();
-            this.featuresBox = new System.Windows.Forms.GroupBox();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.featuresBoxContainer = new System.Windows.Forms.GroupBox();
+            this.featuresBox = new System.Windows.Forms.RichTextBox();
             this.countrylabel = new System.Windows.Forms.Label();
             this.leaderLabel = new System.Windows.Forms.Label();
             this.leaderlinkedLabel = new System.Windows.Forms.LinkLabel();
@@ -44,7 +44,11 @@
             this.countryBox = new System.Windows.Forms.ComboBox();
             this.saveButton = new System.Windows.Forms.Button();
             this.cancelButton = new System.Windows.Forms.Button();
-            this.featuresBox.SuspendLayout();
+            this.IdLabelText = new System.Windows.Forms.Label();
+            this.IdLabelValue = new System.Windows.Forms.Label();
+            this.editButton = new System.Windows.Forms.Button();
+            this.showButton = new System.Windows.Forms.Button();
+            this.featuresBoxContainer.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gangImageBox)).BeginInit();
             this.SuspendLayout();
             // 
@@ -57,24 +61,24 @@
             this.nameLabel.TabIndex = 0;
             this.nameLabel.Text = "Name";
             // 
+            // featuresBoxContainer
+            // 
+            this.featuresBoxContainer.Controls.Add(this.featuresBox);
+            this.featuresBoxContainer.Location = new System.Drawing.Point(547, 23);
+            this.featuresBoxContainer.Name = "featuresBoxContainer";
+            this.featuresBoxContainer.Size = new System.Drawing.Size(200, 136);
+            this.featuresBoxContainer.TabIndex = 1;
+            this.featuresBoxContainer.TabStop = false;
+            this.featuresBoxContainer.Text = "Features";
+            // 
             // featuresBox
             // 
-            this.featuresBox.Controls.Add(this.richTextBox1);
-            this.featuresBox.Location = new System.Drawing.Point(547, 23);
+            this.featuresBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.featuresBox.Location = new System.Drawing.Point(3, 16);
             this.featuresBox.Name = "featuresBox";
-            this.featuresBox.Size = new System.Drawing.Size(200, 136);
-            this.featuresBox.TabIndex = 1;
-            this.featuresBox.TabStop = false;
-            this.featuresBox.Text = "Features";
-            // 
-            // richTextBox1
-            // 
-            this.richTextBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.richTextBox1.Location = new System.Drawing.Point(3, 16);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(194, 117);
-            this.richTextBox1.TabIndex = 0;
-            this.richTextBox1.Text = "";
+            this.featuresBox.Size = new System.Drawing.Size(194, 117);
+            this.featuresBox.TabIndex = 0;
+            this.featuresBox.Text = "";
             // 
             // countrylabel
             // 
@@ -387,11 +391,52 @@
             this.cancelButton.Text = "Cancel";
             this.cancelButton.UseVisualStyleBackColor = true;
             // 
+            // IdLabelText
+            // 
+            this.IdLabelText.AutoSize = true;
+            this.IdLabelText.Location = new System.Drawing.Point(214, 304);
+            this.IdLabelText.Name = "IdLabelText";
+            this.IdLabelText.Size = new System.Drawing.Size(16, 13);
+            this.IdLabelText.TabIndex = 15;
+            this.IdLabelText.Text = "Id";
+            // 
+            // IdLabelValue
+            // 
+            this.IdLabelValue.AutoSize = true;
+            this.IdLabelValue.Location = new System.Drawing.Point(256, 304);
+            this.IdLabelValue.Name = "IdLabelValue";
+            this.IdLabelValue.Size = new System.Drawing.Size(0, 13);
+            this.IdLabelValue.TabIndex = 16;
+            // 
+            // editButton
+            // 
+            this.editButton.Location = new System.Drawing.Point(217, 382);
+            this.editButton.Name = "editButton";
+            this.editButton.Size = new System.Drawing.Size(138, 23);
+            this.editButton.TabIndex = 17;
+            this.editButton.Text = "Edit gang members";
+            this.editButton.UseVisualStyleBackColor = true;
+            this.editButton.Click += new System.EventHandler(this.editButton_Click);
+            // 
+            // showButton
+            // 
+            this.showButton.Location = new System.Drawing.Point(217, 340);
+            this.showButton.Name = "showButton";
+            this.showButton.Size = new System.Drawing.Size(138, 23);
+            this.showButton.TabIndex = 18;
+            this.showButton.Text = "Show gang members";
+            this.showButton.UseVisualStyleBackColor = true;
+            this.showButton.Click += new System.EventHandler(this.showButton_Click);
+            // 
             // GangInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(795, 433);
+            this.Controls.Add(this.showButton);
+            this.Controls.Add(this.editButton);
+            this.Controls.Add(this.IdLabelValue);
+            this.Controls.Add(this.IdLabelText);
             this.Controls.Add(this.cancelButton);
             this.Controls.Add(this.saveButton);
             this.Controls.Add(this.countryBox);
@@ -404,12 +449,12 @@
             this.Controls.Add(this.leaderlinkedLabel);
             this.Controls.Add(this.leaderLabel);
             this.Controls.Add(this.countrylabel);
-            this.Controls.Add(this.featuresBox);
+            this.Controls.Add(this.featuresBoxContainer);
             this.Controls.Add(this.nameLabel);
             this.Name = "GangInfo";
             this.Text = "GangInfo";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.GangInfo_FormClosing);
-            this.featuresBox.ResumeLayout(false);
+            this.featuresBoxContainer.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gangImageBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -419,8 +464,8 @@
         #endregion
 
         private System.Windows.Forms.Label nameLabel;
-        private System.Windows.Forms.GroupBox featuresBox;
-        private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.GroupBox featuresBoxContainer;
+        private System.Windows.Forms.RichTextBox featuresBox;
         private System.Windows.Forms.Label countrylabel;
         private System.Windows.Forms.Label leaderLabel;
         private System.Windows.Forms.LinkLabel leaderlinkedLabel;
@@ -434,5 +479,9 @@
         private System.Windows.Forms.ComboBox countryBox;
         private System.Windows.Forms.Button saveButton;
         private System.Windows.Forms.Button cancelButton;
+        private System.Windows.Forms.Label IdLabelText;
+        private System.Windows.Forms.Label IdLabelValue;
+        private System.Windows.Forms.Button editButton;
+        private System.Windows.Forms.Button showButton;
     }
 }

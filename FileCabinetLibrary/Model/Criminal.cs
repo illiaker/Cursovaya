@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -8,9 +9,12 @@ using System.Threading.Tasks;
 namespace Cursovaya.Model
 {
     [Serializable]
-    public class Criminal
+    public class Criminal : IDisplayedCriminal
     {
-        
+        public Criminal()
+        {
+            Id = Guid.NewGuid();
+        }
         public Bitmap Image { get; set; }
         public string Name { get; set; }
         public string Surname { get; set; }
@@ -28,11 +32,6 @@ namespace Cursovaya.Model
         public string Description { get; set; }
         public string CountryWhereWanted { get; set; }
         public CriminalGang Gang{ get; set; }
-        public Guid Id { get; set; }
-
-        
-
-
-       
+        public Guid Id { get;private set; }       
     }
 }

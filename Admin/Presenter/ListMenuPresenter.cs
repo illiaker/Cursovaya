@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.ListBox;
+using Admin;
 
 namespace AdminView.Presenter
 {
@@ -18,7 +19,7 @@ namespace AdminView.Presenter
         public ListMenuPresenter(ListMenu lView)
         {
             listView = lView;
-            fileCabinet = new FileCabinet();
+            fileCabinet = FileCabinet.GetInstance();
             listView.AddCriminalEvent += ListView_AddCriminalEvent;
             listView.LoadEvent += ListView_LoadEvent;
             listView.SaveEvent += ListView_SaveEvent;
@@ -28,12 +29,15 @@ namespace AdminView.Presenter
             listView.OnUserCahngeEvent += OnUserChange;
             listView.AddGangEvent += ListView_AddGangEvent;
             listView.DeleteEvent += ListView_DeleteEvent;
+           
         }
 
+       
         private void ListView_DeleteEvent(object sender, EventArgs e)
         {
             fileCabinet.Criminals.Remove((Criminal)listView.List.CurrentRow.DataBoundItem);
-            Refresh(listView.CBS, fileCabinet.Criminals);
+            listView.CBS.ResetBindings(false);
+           
         }
 
         private void ListView_AddGangEvent(object sender, EventArgs e)
@@ -42,7 +46,8 @@ namespace AdminView.Presenter
             if(gi.ShowDialog() == DialogResult.OK)
             {
                 fileCabinet.CriminalGangs.Add(gi.Gang);
-                Refresh(listView.GBS, fileCabinet.CriminalGangs);
+                listView.GBS.ResetBindings(false);
+                
             }
         }
 
@@ -59,7 +64,7 @@ namespace AdminView.Presenter
         {
             if (b)
             {
-                listView.MenuStrip.Hide();
+                //listView.MenuStrip.Hide();
             }
             else
             {
@@ -69,9 +74,9 @@ namespace AdminView.Presenter
 
         private void ListView_MoveToListevent(object sender, EventArgs e)
         {
-            fileCabinet.MoveToList((Criminal)listView.ArchiveList.CurrentRow.DataBoundItem);            
-            Refresh(listView.CBS, fileCabinet.Criminals);
-            Refresh(listView.ABS, fileCabinet.Archive);
+            fileCabinet.MoveToList((Criminal)listView.ArchiveList.CurrentRow.DataBoundItem);
+            listView.CBS.ResetBindings(false);
+            listView.ABS.ResetBindings(false);            
             fileCabinet.Save();
         }
 
@@ -82,8 +87,8 @@ namespace AdminView.Presenter
             {
                 fileCabinet.MoveToArchive((Criminal)listView.List.CurrentRow.DataBoundItem);
                 fileCabinet.Save();
-                Refresh(listView.CBS, fileCabinet.Criminals);
-                Refresh(listView.ABS, fileCabinet.Archive);
+                listView.CBS.ResetBindings(false);
+                listView.ABS.ResetBindings(false);
             }
         }
 
@@ -92,10 +97,13 @@ namespace AdminView.Presenter
             try
             {
                 fileCabinet.Load();
-                listView.MenuStrip.Hide();
-                Refresh(listView.CBS, fileCabinet.Criminals);
-                Refresh(listView.ABS, fileCabinet.Archive);
-                Refresh(listView.GBS, fileCabinet.CriminalGangs);
+                
+                listView.CBS.DataSource = fileCabinet.Criminals;
+                listView.ABS.DataSource = fileCabinet.Archive;
+                listView.GBS.DataSource = fileCabinet.CriminalGangs;                
+                listView.CBS.ResetBindings(false);
+                listView.ABS.ResetBindings(false);
+                listView.GBS.ResetBindings(false);                
             }
             catch (Exception)
             {
@@ -119,18 +127,13 @@ namespace AdminView.Presenter
             {
                 fileCabinet.Criminals.Add(ci.Criminal);
                 fileCabinet.Save();
-                Refresh(listView.CBS, fileCabinet.Criminals);                
+                listView.CBS.ResetBindings(false);
+                              
 
             }
         }
 
-        private void Refresh(BindingSource dataGrid, IEnumerable link)
-        {
-            dataGrid.DataSource = null;
-            dataGrid.DataSource = link;
-            listView.List.AutoGenerateColumns = false;
-        }
-
+        
        
     }
 }

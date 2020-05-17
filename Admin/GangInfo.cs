@@ -1,4 +1,5 @@
-﻿using Cursovaya.Model;
+﻿using Admin;
+using Cursovaya.Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -17,12 +18,20 @@ namespace AdminView
         {
             InitializeComponent();
             Gang = new CriminalGang();
+            FileCabinet = FileCabinet.GetInstance();
         }
         public CriminalGang Gang { get; set; }
+        public FileCabinet FileCabinet { get; set; }
         public GangInfo(CriminalGang gang, bool isUser)
         {
             InitializeComponent();
             Gang = gang;
+            FileCabinet = FileCabinet.GetInstance();
+            nameBox.Text = Gang.Name;
+            foundationtimebox.Value = Gang.FoundationDate;
+            countryBox.SelectedItem = Gang.Country;
+            gangImageBox.Image = Gang.Image;
+            featuresBox.Text = Gang.Features;
         }
 
         private void imageChoseButton_Click(object sender, EventArgs e)
@@ -42,8 +51,11 @@ namespace AdminView
         {
             if(DialogResult == DialogResult.OK)
             {
-                Gang.Name = nameBox.Name;
-                Gang.Country = (string)countryBox.SelectedItem;
+                Gang.Name = nameBox.Text;
+                Gang.Image = (Bitmap)gangImageBox.Image;
+                Gang.FoundationDate = foundationtimebox.Value;
+                Gang.Features = featuresBox.Text;
+                Gang.Country = (string)countryBox.SelectedItem;                
                 
             }
         }
@@ -51,6 +63,24 @@ namespace AdminView
         private void leaderChoseButton_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void showButton_Click(object sender, EventArgs e)
+        {
+            new CriminalsList(Gang.GetCriminals()).ShowDialog();
+        }
+
+        private void editButton_Click(object sender, EventArgs e)
+        {
+           var cl = new CriminalsList(FileCabinet.GanglessCriminals());
+            if(cl.ShowDialog() == DialogResult.OK)
+            {
+                Gang.GangMambers = cl.GangMembers;
+                foreach(Criminal c in cl.GangMembers)
+                {
+                    c.Gang = Gang;
+                }
+            }
         }
     }
 }

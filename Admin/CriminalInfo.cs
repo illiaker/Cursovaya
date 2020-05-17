@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,17 +16,21 @@ namespace AdminView
     {
 
         public Criminal Criminal { get; private set; }
+        public bool IsUser { get; set; }
         public CriminalInfo()
         {
             InitializeComponent();
-            Criminal = new Criminal();            
+            Criminal = new Criminal();
+            
         }
        
 
         public CriminalInfo(Criminal criminal, bool isUser)
         {
+            
             InitializeComponent();
             Criminal = criminal;
+            IsUser = isUser;
             nameBox.Text = Criminal.Name;
             CriminalImage.Image = Criminal.Image;
             surnameBox.Text = Criminal.Surname;
@@ -46,7 +51,9 @@ namespace AdminView
                     TextBox t = i as TextBox;
                     if (t != null)
                     {
+                        
                         t.ReadOnly = true;
+                        
 
                     }
                     ComboBox c = i as ComboBox;
@@ -83,8 +90,6 @@ namespace AdminView
                             }
                         }
                     }
-
-
                 }
                 label.Hide();
                 IdLable.Hide();
@@ -129,8 +134,7 @@ namespace AdminView
                 Criminal.Nationality = (string)nationalityBox.SelectedItem;
                 Criminal.BirthDay = birthdayBox.Value;
                 Criminal.Description = professionBox.Text;
-                Criminal.CountryWhereWanted = (string)countryWhereWantedBox.SelectedItem;
-                Criminal.Id = Guid.NewGuid(); 
+                Criminal.CountryWhereWanted = (string)countryWhereWantedBox.SelectedItem;                
             }
             
         }
@@ -139,7 +143,7 @@ namespace AdminView
         {
             if (Criminal.Gang != null)
             {
-                new GangInfo(Criminal.Gang, true).ShowDialog();
+                 new GangInfo(Criminal.Gang, IsUser).ShowDialog();
             }
         }
 

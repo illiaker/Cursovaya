@@ -12,14 +12,19 @@ namespace Cursovaya.Model
     [Serializable]
     public class FileCabinet
     {
-        public FileCabinet(List<Criminal> criminals, List<CriminalGang> criminalGangs)
+        static private FileCabinet fileCabinet;
+        static public FileCabinet GetInstance()
         {
-            Criminals = criminals;
-            CriminalGangs = criminalGangs;
-            
+            if (fileCabinet == null)
+            {
+                fileCabinet = new FileCabinet();
+            }
+
+            return fileCabinet;
         }
 
-        public FileCabinet()
+       
+        protected FileCabinet()
         {
             Criminals = new List<Criminal>();
             CriminalGangs = new List<CriminalGang>();
@@ -32,6 +37,16 @@ namespace Cursovaya.Model
         public List<CriminalGang> CriminalGangs { get; set; }
 
         
+        public List<IDisplayedCriminal> GetCriminals()
+        {
+            List<IDisplayedCriminal> res = new List<IDisplayedCriminal>();
+            foreach(Criminal c in Criminals)
+            {
+                res.Add(c);
+
+            }
+            return res;
+        }
 
 
 
@@ -68,30 +83,33 @@ namespace Cursovaya.Model
         {
             Criminals.Add(criminal);
             Archive.Remove(criminal);
-        }
-        public void Add(CriminalGang gang)
-        {
-            CriminalGangs.Add(gang);
-        }
+        }        
         public void Add(Criminal criminal)
         {
             Criminals.Add(criminal);
         }
-        public IEnumerable<Criminal> GetCriminals()
+        
+        public List<IDisplayedCriminal> GanglessCriminals()
         {
-            return Criminals;
+            List<IDisplayedCriminal> res = new List<IDisplayedCriminal>();
+            foreach(Criminal c in Criminals)
+            {
+                if (c.Gang == null)
+                {
+                    res.Add(c);
+                }               
+            }
+            return res;
         }
-        public IEnumerable<CriminalGang> GetGangs()
-        {
-            return CriminalGangs;
-        }
+       
+        
         public void Save()
         {
-            new Dao(this).Save();
+            new Dao(fileCabinet).Save();
         }
         public void Load()
         {
-            new Dao(this).Load();
+            new Dao(fileCabinet).Load();
            
         }
     }

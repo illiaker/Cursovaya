@@ -55,6 +55,12 @@
     <Compile Include="Autorization.Designer.cs">
       <DependentUpon>Autorization.cs</DependentUpon>
     </Compile>
+    <Compile Include="CriminalsList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CriminalsList.Designer.cs">
+      <DependentUpon>CriminalsList.cs</DependentUpon>
+    </Compile>
     <Compile Include="CriminalInfo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -66,12 +72,6 @@
     </Compile>
     <Compile Include="GangInfo.Designer.cs">
       <DependentUpon>GangInfo.cs</DependentUpon>
-    </Compile>
-    <Compile Include="InfoPanel.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="InfoPanel.Designer.cs">
-      <DependentUpon>InfoPanel.cs</DependentUpon>
     </Compile>
     <Compile Include="ListMenu.cs">
       <SubType>Form</SubType>
@@ -85,6 +85,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Autorization.resx">
       <DependentUpon>Autorization.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CriminalsList.resx">
+      <DependentUpon>CriminalsList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CriminalInfo.resx">
       <DependentUpon>CriminalInfo.cs</DependentUpon>

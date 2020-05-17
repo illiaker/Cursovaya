@@ -48,6 +48,7 @@ namespace AdminView
             var ci = new CriminalInfo((Criminal)List.CurrentRow.DataBoundItem, IsUser);
             if(ci.ShowDialog() == DialogResult.OK)
             {
+                CBS.ResetBindings(false);
                 SaveEvent(sender, e);
             }
             
@@ -87,6 +88,17 @@ namespace AdminView
         {
             DeleteEvent(sender, e);
             SaveEvent(sender, e);
+        }
+        
+        private void changeToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            var changeresult = new GangInfo((CriminalGang)GangList.CurrentRow.DataBoundItem, IsUser).ShowDialog(); 
+            if(changeresult == DialogResult.OK)
+            {
+                GangList.CommitEdit(DataGridViewDataErrorContexts.Commit);
+                GBS.ResetBindings(false);
+                SaveEvent(sender, e);
+            }
         }
     }
 }

@@ -109,6 +109,7 @@
             // 
             // nameBox
             // 
+            this.nameBox.ForeColor = System.Drawing.SystemColors.WindowText;
             this.nameBox.Location = new System.Drawing.Point(279, 23);
             this.nameBox.Name = "nameBox";
             this.nameBox.Size = new System.Drawing.Size(122, 20);

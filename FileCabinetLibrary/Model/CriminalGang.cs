@@ -10,6 +10,13 @@ namespace Cursovaya.Model
     [Serializable]
     public class CriminalGang
     {
+        public CriminalGang()
+        {
+            GangMambers = new List<Criminal>();
+            EnemyGangs = new List<CriminalGang>();
+            AllyGang = new List<CriminalGang>();
+            Id = Guid.NewGuid();
+        }
         public Bitmap Image { get; set; }
         public string Name { get; set; }
         public List<Criminal> GangMambers { get; set; }
@@ -18,6 +25,17 @@ namespace Cursovaya.Model
         public string Features { get; set; }
         public DateTime FoundationDate { get; set; }
         public Criminal Leader { get; set; }
-        public string Country { get; set; }                          
+        public string Country { get; set; }  
+        
+        public Guid Id { get; private set; }
+        public List<IDisplayedCriminal> GetCriminals()
+        {
+            List<IDisplayedCriminal> res = new List<IDisplayedCriminal>();
+            foreach(Criminal c in GangMambers)
+            {
+                res.Add(c);
+            }
+            return res;
+        }
     }
 }
