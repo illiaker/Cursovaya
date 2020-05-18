@@ -24,7 +24,7 @@ namespace AdminView.Presenter
             if(auView.Password == admin.Password && auView.Login == admin.Login)
             {
                 auView.Close();
-                auView.ListMenu.IsUser = false;                
+                User.Role = "admin";                
             }
             else
             {

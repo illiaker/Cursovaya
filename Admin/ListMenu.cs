@@ -1,4 +1,6 @@
-﻿using AdminView.Presenter;
+﻿using Admin;
+using Admin.Presenter;
+using AdminView.Presenter;
 using Cursovaya.Model;
 using System;
 using System.Collections.Generic;
@@ -12,27 +14,28 @@ using System.Windows.Forms;
 
 namespace AdminView
 {
-    public partial class ListMenu : Form
+    public partial class ListMenu : Form, ISort
     {
         public ListMenu()
         {
             InitializeComponent();
             new ListMenuPresenter(this);
+            new SortPresenter(this);
         }
         
         public MenuStrip MenuStrip { get => menuStrip; set => menuStrip = value; }
-        public bool IsUser { get; set; } = true;
+       
         public DataGridView List { get { return criminalsList; } set { criminalsList = value; } }
         public DataGridView GangList { get => gangGridView; set => gangGridView = value; }
         public DataGridView ArchiveList { get { return archiveList; } set { archiveList = value; } }
         public event EventHandler LoadEvent = null;
         private void ListMenu_Load(object sender, EventArgs e)
         {
-           LoadEvent(sender, e);
-            OnUserCahngeEvent(IsUser);
+            LoadEvent(sender, e);
+            OnUserCahngeEvent(sender, e);
         }
-        public delegate void MyDel(bool b);
-        public event MyDel OnUserCahngeEvent = null;
+        
+        public event EventHandler OnUserCahngeEvent = null;
         public BindingSource ABS { get => archiveBindingSource; set => archiveBindingSource = value; }
         public BindingSource GBS { get => criminalGangsBindingSource; set => criminalGangsBindingSource = value; }
         public BindingSource CBS { get => criminalsBindingSource; set => criminalsBindingSource = value; }
@@ -45,7 +48,7 @@ namespace AdminView
 
         private void changeToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var ci = new CriminalInfo((Criminal)List.CurrentRow.DataBoundItem, IsUser);
+            var ci = new CriminalInfo((Criminal)List.CurrentRow.DataBoundItem);
             if(ci.ShowDialog() == DialogResult.OK)
             {
                 CBS.ResetBindings(false);
@@ -75,7 +78,7 @@ namespace AdminView
         private void ListMenu_KeyDown(object sender, KeyEventArgs e)
         {
             AutorizationEvent(sender, e);
-            OnUserCahngeEvent(IsUser);
+            OnUserCahngeEvent(sender, e);
         }
         public event EventHandler AddGangEvent;
         private void addToolStripMenuItem1_Click(object sender, EventArgs e)
@@ -92,12 +95,37 @@ namespace AdminView
         
         private void changeToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            var changeresult = new GangInfo((CriminalGang)GangList.CurrentRow.DataBoundItem, IsUser).ShowDialog(); 
+            var changeresult = new GangInfo((CriminalGang)GangList.CurrentRow.DataBoundItem).ShowDialog(); 
             if(changeresult == DialogResult.OK)
             {
                 GangList.CommitEdit(DataGridViewDataErrorContexts.Commit);
                 GBS.ResetBindings(false);
                 SaveEvent(sender, e);
+            }
+        }
+        public event EventHandler SearchEvent;
+        public event EventHandler ResetEvent;
+        private void searchBox_TextChanged(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrWhiteSpace(searchBox.Text))
+            {
+                SearchEvent(sender, e);
+            }
+            else
+            {
+                ResetEvent(sender, e);
+            }
+        }
+        public event EventHandler NationalityChangedEvent;
+        private void nationalityBox_SelectedValueChanged(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrWhiteSpace((string)nationalityBox.SelectedItem))
+            {
+                NationalityChangedEvent(sender, e);
+            }
+            else
+            {
+                ResetEvent(sender, e);
             }
         }
     }

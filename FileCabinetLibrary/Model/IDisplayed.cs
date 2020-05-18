@@ -16,6 +16,7 @@ namespace Cursovaya.Model
         string Gender { get; set; }
         string Nationality { get; set; }
         DateTime BirthDay { get; set; }   
-        string Description { get; set; }
+        string Description { get; set; }        
+        
     }
 }

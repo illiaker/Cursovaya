@@ -26,53 +26,21 @@ namespace Cursovaya.Model
        
         protected FileCabinet()
         {
-            Criminals = new List<Criminal>();
+            Criminals = new List<IDisplayedCriminal>();
             CriminalGangs = new List<CriminalGang>();
-            Archive = new List<Criminal>();
+            Archive = new List<IDisplayedCriminal>();
         }
         //Картотека = коллекция преступников + колекция банд
 
-        public List<Criminal> Archive { get; set; }
-        public List<Criminal> Criminals { get; set; }
-        public List<CriminalGang> CriminalGangs { get; set; }
+        public List<IDisplayedCriminal> Archive { get; set; }
+        public List<IDisplayedCriminal> Criminals { get; set; }
+        public List<CriminalGang> CriminalGangs { get; set; }        
+       
 
-        
-        public List<IDisplayedCriminal> GetCriminals()
-        {
-            List<IDisplayedCriminal> res = new List<IDisplayedCriminal>();
-            foreach(Criminal c in Criminals)
-            {
-                res.Add(c);
-
-            }
-            return res;
-        }
+       
 
 
 
-        //public void GenerateData(int n)
-        //{
-        //    for (int i = 0; i < n; i++)
-        //    {
-        //        Criminals.Add(new Criminal
-        //        {
-        //            Image = new Bitmap("D:/Project/C#/OOP/Cursova/Cursovaya/Images/criminal.png"),
-        //           Name = $"Name{i}",
-        //           Surname = $"Surname{i}",
-
-        //        });
-
-        //    }
-
-        //    for (int i = 0; i < n; i++)
-        //    {
-        //        CriminalGangs.Add(new CriminalGang()
-        //        {
-
-        //        });
-        //    }
-
-        //}
 
         public void MoveToArchive(Criminal criminal)
         {
@@ -89,7 +57,7 @@ namespace Cursovaya.Model
             Criminals.Add(criminal);
         }
         
-        public List<IDisplayedCriminal> GanglessCriminals()
+        public List<IDisplayedCriminal> GetGanglessCriminals()
         {
             List<IDisplayedCriminal> res = new List<IDisplayedCriminal>();
             foreach(Criminal c in Criminals)
@@ -102,7 +70,30 @@ namespace Cursovaya.Model
             return res;
         }
        
-        
+        public List<IDisplayedCriminal> Search(string surneme)
+        {
+            List<IDisplayedCriminal> res = new List<IDisplayedCriminal>();
+            foreach (Criminal c in Criminals)
+            {
+                if (c.Surname.Contains(surneme))
+                {
+                    res.Add(c);
+                }
+            }
+            return res;
+        }
+        public List<IDisplayedCriminal> Nationality(string nationality)
+        {
+            List<IDisplayedCriminal> res = new List<IDisplayedCriminal>();
+            foreach (Criminal c in Criminals)
+            {
+                if (c.Nationality==nationality)
+                {
+                    res.Add(c);
+                }
+            }
+            return res;
+        }
         public void Save()
         {
             new Dao(fileCabinet).Save();

@@ -16,7 +16,7 @@ namespace AdminView
     {
 
         public Criminal Criminal { get; private set; }
-        public bool IsUser { get; set; }
+        
         public CriminalInfo()
         {
             InitializeComponent();
@@ -25,12 +25,12 @@ namespace AdminView
         }
        
 
-        public CriminalInfo(Criminal criminal, bool isUser)
+        public CriminalInfo(Criminal criminal)
         {
             
             InitializeComponent();
             Criminal = criminal;
-            IsUser = isUser;
+            
             nameBox.Text = Criminal.Name;
             CriminalImage.Image = Criminal.Image;
             surnameBox.Text = Criminal.Surname;
@@ -44,7 +44,7 @@ namespace AdminView
             countryWhereWantedBox.SelectedItem = Criminal.CountryWhereWanted;
             ganglabel.Text = Criminal.Gang != null ? Criminal.Gang.Name : "None";
             
-            if (isUser)
+            if (User.Role == "user")
             {
                 foreach (Control i in Controls)
                 {
@@ -143,7 +143,7 @@ namespace AdminView
         {
             if (Criminal.Gang != null)
             {
-                 new GangInfo(Criminal.Gang, IsUser).ShowDialog();
+                 new GangInfo(Criminal.Gang).ShowDialog();
             }
         }
 

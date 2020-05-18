@@ -71,7 +71,7 @@
             // 
             // Log_In
             // 
-            this.Log_In.Location = new System.Drawing.Point(175, 178);
+            this.Log_In.Location = new System.Drawing.Point(145, 178);
             this.Log_In.Name = "Log_In";
             this.Log_In.Size = new System.Drawing.Size(75, 23);
             this.Log_In.TabIndex = 4;
@@ -81,7 +81,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(76, 178);
+            this.button1.Location = new System.Drawing.Point(49, 178);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 5;
@@ -93,13 +93,14 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(324, 262);
+            this.ClientSize = new System.Drawing.Size(274, 239);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.Log_In);
             this.Controls.Add(this.passwordLabel);
             this.Controls.Add(this.loginLabel);
             this.Controls.Add(this.password);
             this.Controls.Add(this.login);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "Autorization";
             this.Text = "Autorization";
             this.ResumeLayout(false);

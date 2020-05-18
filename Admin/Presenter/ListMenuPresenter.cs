@@ -29,10 +29,16 @@ namespace AdminView.Presenter
             listView.OnUserCahngeEvent += OnUserChange;
             listView.AddGangEvent += ListView_AddGangEvent;
             listView.DeleteEvent += ListView_DeleteEvent;
+            listView.ResetEvent += ListView_ResetEvent;
            
         }
 
-       
+        private void ListView_ResetEvent(object sender, EventArgs e)
+        {
+            listView.CBS.DataSource = fileCabinet.Criminals;
+            listView.CBS.ResetBindings(false);
+        }
+
         private void ListView_DeleteEvent(object sender, EventArgs e)
         {
             fileCabinet.Criminals.Remove((Criminal)listView.List.CurrentRow.DataBoundItem);
@@ -46,6 +52,7 @@ namespace AdminView.Presenter
             if(gi.ShowDialog() == DialogResult.OK)
             {
                 fileCabinet.CriminalGangs.Add(gi.Gang);
+                listView.GBS.DataSource = fileCabinet.CriminalGangs;
                 listView.GBS.ResetBindings(false);
                 
             }
@@ -60,11 +67,11 @@ namespace AdminView.Presenter
                 new Autorization(listView).ShowDialog();
             }
         }
-        public void OnUserChange(bool b)
+        public void OnUserChange(object sender, EventArgs e)
         {
-            if (b)
+            if (User.Role == "user")
             {
-                //listView.MenuStrip.Hide();
+                listView.MenuStrip.Hide();
             }
             else
             {
@@ -96,8 +103,7 @@ namespace AdminView.Presenter
         {
             try
             {
-                fileCabinet.Load();
-                
+                fileCabinet.Load();                
                 listView.CBS.DataSource = fileCabinet.Criminals;
                 listView.ABS.DataSource = fileCabinet.Archive;
                 listView.GBS.DataSource = fileCabinet.CriminalGangs;                
@@ -127,6 +133,7 @@ namespace AdminView.Presenter
             {
                 fileCabinet.Criminals.Add(ci.Criminal);
                 fileCabinet.Save();
+                listView.CBS.DataSource = fileCabinet.Criminals;
                 listView.CBS.ResetBindings(false);
                               
 

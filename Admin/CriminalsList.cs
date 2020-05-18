@@ -1,4 +1,5 @@
-﻿using Cursovaya.Model;
+﻿using Admin.Presenter;
+using Cursovaya.Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,12 +14,14 @@ namespace Admin
 {
     public partial class CriminalsList : Form
     {
-       public  List<Criminal> GangMembers{ get; set; }
+       public  List<IDisplayedCriminal> GangMembers{ get; set; }
         List<IDisplayedCriminal> CriminalsToSelect { get; set; }
+        public BindingSource CBS { get => criminalBindingSourse; set => criminalBindingSourse = value; }
+
         public CriminalsList(List<IDisplayedCriminal> criminals)
         {
-            InitializeComponent();
-            GangMembers = new List<Criminal>();
+            InitializeComponent();            
+            GangMembers = new List<IDisplayedCriminal>();
             CriminalsToSelect = criminals;
             criminalList.DataSource = criminalBindingSourse;
             criminalBindingSourse.DataSource = criminals;
@@ -27,6 +30,7 @@ namespace Admin
             criminalBindingSourse.ResetBindings(false);
         }
 
+        
         private void selectButton_Click(object sender, EventArgs e)
         {
             foreach(DataGridViewRow r in criminalList.SelectedRows)
@@ -35,7 +39,52 @@ namespace Admin
                 GangMembers.Add(c);
                 CriminalsToSelect.Remove(c);
             }
+            CBS.DataSource = CriminalsToSelect;
             criminalBindingSourse.ResetBindings(false);
+        }
+
+        private void searchBox_TextChanged(object sender, EventArgs e)
+        {
+            if(string.IsNullOrWhiteSpace(searchBox.Text))
+            {
+                CBS.DataSource = CriminalsToSelect;
+                CBS.ResetBindings(false);
+            }
+            else
+            {
+                List<IDisplayedCriminal> displayedCriminals = new List<IDisplayedCriminal>();
+                foreach(Criminal c in CriminalsToSelect)
+                {
+                    if(c.Surname.Contains(searchBox.Text))
+                    {
+                        displayedCriminals.Add(c);
+                    }
+                }
+                CBS.DataSource = displayedCriminals;
+                CBS.ResetBindings(false);
+            }
+        }
+
+        private void nationalityBox_SelectedValueChanged(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace((string)nationalityBox.SelectedItem))
+            {
+                CBS.DataSource = CriminalsToSelect;
+                CBS.ResetBindings(false);
+            }
+            else
+            {
+                List<IDisplayedCriminal> displayedCriminals = new List<IDisplayedCriminal>();
+                foreach (Criminal c in CriminalsToSelect)
+                {
+                    if (c.Nationality == (string)nationalityBox.SelectedItem)
+                    {
+                        displayedCriminals.Add(c);
+                    }
+                }
+                CBS.DataSource = displayedCriminals;
+                CBS.ResetBindings(false);
+            }
         }
     }
 }

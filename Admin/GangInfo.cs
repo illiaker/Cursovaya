@@ -22,7 +22,7 @@ namespace AdminView
         }
         public CriminalGang Gang { get; set; }
         public FileCabinet FileCabinet { get; set; }
-        public GangInfo(CriminalGang gang, bool isUser)
+        public GangInfo(CriminalGang gang)
         {
             InitializeComponent();
             Gang = gang;
@@ -32,6 +32,11 @@ namespace AdminView
             countryBox.SelectedItem = Gang.Country;
             gangImageBox.Image = Gang.Image;
             featuresBox.Text = Gang.Features;
+            IdLabelValue.Text = Gang.Id.ToString();
+            if(User.Role == "user")
+            {
+
+            }
         }
 
         private void imageChoseButton_Click(object sender, EventArgs e)
@@ -67,17 +72,18 @@ namespace AdminView
 
         private void showButton_Click(object sender, EventArgs e)
         {
-            new CriminalsList(Gang.GetCriminals()).ShowDialog();
+            new CriminalsList(Gang.GangMambers).ShowDialog();
         }
 
         private void editButton_Click(object sender, EventArgs e)
         {
-           var cl = new CriminalsList(FileCabinet.GanglessCriminals());
+           var cl = new CriminalsList(FileCabinet.GetGanglessCriminals());
             if(cl.ShowDialog() == DialogResult.OK)
             {
-                Gang.GangMambers = cl.GangMembers;
+                
                 foreach(Criminal c in cl.GangMembers)
                 {
+                    Gang.GangMambers.Add(c);
                     c.Gang = Gang;
                 }
             }
