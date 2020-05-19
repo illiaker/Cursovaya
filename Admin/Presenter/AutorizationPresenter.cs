@@ -8,9 +8,7 @@ namespace AdminView.Presenter
 {
     class AutorizationPresenter
     {
-        Cursovaya.Model.Admin admin;
-        Autorization auView;
-       
+        //Constructor
         public AutorizationPresenter(Autorization au)
         {
             auView = au;
@@ -19,12 +17,18 @@ namespace AdminView.Presenter
             auView.LogInEvent += AuView_LogInEvent;
         }
 
+        #region Fields
+        Cursovaya.Model.Admin admin;
+        Autorization auView;
+        #endregion
+
+        #region EventHandlers
         private void AuView_LogInEvent(object sender, EventArgs e)
         {
-            if(auView.Password == admin.Password && auView.Login == admin.Login)
+            if (auView.Password == admin.Password && auView.Login == admin.Login)
             {
                 auView.Close();
-                User.Role = "admin";                
+                User.Role = "admin";
             }
             else
             {
@@ -33,5 +37,7 @@ namespace AdminView.Presenter
                 auView.Password = "";
             }
         }
+        #endregion
+
     }
 }

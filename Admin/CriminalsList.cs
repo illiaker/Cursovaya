@@ -14,10 +14,9 @@ namespace Admin
 {
     public partial class CriminalsList : Form
     {
-       public  List<IDisplayedCriminal> GangMembers{ get; set; }
-        List<IDisplayedCriminal> CriminalsToSelect { get; set; }
-        public BindingSource CBS { get => criminalBindingSourse; set => criminalBindingSourse = value; }
+        
 
+        //Constructor
         public CriminalsList(List<IDisplayedCriminal> criminals)
         {
             InitializeComponent();            
@@ -30,10 +29,16 @@ namespace Admin
             criminalBindingSourse.ResetBindings(false);
         }
 
-        
+        #region Properties
+        public List<IDisplayedCriminal> GangMembers { get; set; }
+        List<IDisplayedCriminal> CriminalsToSelect { get; set; }
+        public BindingSource CBS { get => criminalBindingSourse; set => criminalBindingSourse = value; }
+        #endregion
+
+        #region EventHandlers
         private void selectButton_Click(object sender, EventArgs e)
         {
-            foreach(DataGridViewRow r in criminalList.SelectedRows)
+            foreach (DataGridViewRow r in criminalList.SelectedRows)
             {
                 Criminal c = (Criminal)r.DataBoundItem;
                 GangMembers.Add(c);
@@ -45,7 +50,7 @@ namespace Admin
 
         private void searchBox_TextChanged(object sender, EventArgs e)
         {
-            if(string.IsNullOrWhiteSpace(searchBox.Text))
+            if (string.IsNullOrWhiteSpace(searchBox.Text))
             {
                 CBS.DataSource = CriminalsToSelect;
                 CBS.ResetBindings(false);
@@ -53,9 +58,9 @@ namespace Admin
             else
             {
                 List<IDisplayedCriminal> displayedCriminals = new List<IDisplayedCriminal>();
-                foreach(Criminal c in CriminalsToSelect)
+                foreach (Criminal c in CriminalsToSelect)
                 {
-                    if(c.Surname.Contains(searchBox.Text))
+                    if (c.Surname.Contains(searchBox.Text))
                     {
                         displayedCriminals.Add(c);
                     }
@@ -86,5 +91,7 @@ namespace Admin
                 CBS.ResetBindings(false);
             }
         }
+        #endregion
+
     }
 }
