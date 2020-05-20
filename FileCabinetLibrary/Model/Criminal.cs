@@ -25,10 +25,9 @@ namespace Cursovaya.Model
         public int Age { get; set; }
         public string Gender { get; set; }
         public string Nationality { get; set; }
-        public DateTime BirthDay { get; set; }      
-        
-        public string Adress { get; set; }
-        public string LastAdress { get; set; }
+        public DateTime BirthDay { get; set; }
+        public Adress Adress { get; set; }
+        public Adress LastAdress { get; set; }
         public string Description { get; set; }
         public string CountryWhereWanted { get; set; }
         public CriminalGang Gang{ get; set; }

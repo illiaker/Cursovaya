@@ -44,6 +44,7 @@
   <ItemGroup>
     <Compile Include="DAL\Dao.cs" />
     <Compile Include="Model\Admin.cs" />
+    <Compile Include="Model\Adress.cs" />
     <Compile Include="Model\Criminal.cs" />
     <Compile Include="Model\CriminalGang.cs" />
     <Compile Include="Model\FileCabinet.cs" />

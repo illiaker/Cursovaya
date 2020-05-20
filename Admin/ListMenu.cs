@@ -22,89 +22,113 @@ namespace AdminView
             new ListMenuPresenter(this);
             new SortPresenter(this);
         }
-        
-        public MenuStrip MenuStrip { get => menuStrip; set => menuStrip = value; }
-       
+        #region Events
+        public event EventHandler LoadEvent = null;
+
+        public event EventHandler OnUserCahngeEvent = null;
+
+        public event EventHandler AddCriminalEvent = null;
+
+        public event EventHandler SaveEvent;
+
+        public event EventHandler MoveToArchiveEvent;
+
+        public event EventHandler MoveToListevent = null;        
+
+        public event KeyEventHandler AutorizationEvent;
+
+        public event EventHandler AddGangEvent;
+
+        public event EventHandler DeleteEvent;
+
+        public event EventHandler SearchEvent;
+
+        public event EventHandler ResetEvent;
+
+        public event EventHandler NationalityChangedEvent;
+        public event EventHandler TabChanged;
+        #endregion
+
+        #region Properties
+        public MenuStrip MenuStrip { get => adminMenuStrip; set => adminMenuStrip = value; }
         public DataGridView List { get { return criminalsList; } set { criminalsList = value; } }
         public DataGridView GangList { get => gangGridView; set => gangGridView = value; }
         public DataGridView ArchiveList { get { return archiveList; } set { archiveList = value; } }
-        public event EventHandler LoadEvent = null;
+        public BindingSource ABS { get => archiveBindingSource; set => archiveBindingSource = value; }
+        public BindingSource GBS { get => criminalGangsBindingSource; set => criminalGangsBindingSource = value; }
+        public BindingSource CBS { get => criminalsBindingSource; set => criminalsBindingSource = value; }
+
+        #endregion
+
+        #region EventHandlers
         private void ListMenu_Load(object sender, EventArgs e)
         {
             LoadEvent(sender, e);
             OnUserCahngeEvent(sender, e);
         }
-        
-        public event EventHandler OnUserCahngeEvent = null;
-        public BindingSource ABS { get => archiveBindingSource; set => archiveBindingSource = value; }
-        public BindingSource GBS { get => criminalGangsBindingSource; set => criminalGangsBindingSource = value; }
-        public BindingSource CBS { get => criminalsBindingSource; set => criminalsBindingSource = value; }
-        public event EventHandler AddCriminalEvent = null;
         private void addToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            AddCriminalEvent(sender, e);
-            SaveEvent(sender, e);
+            AddCriminalEvent(sender, e);           
         }
-
         private void changeToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var ci = new CriminalInfo((Criminal)List.CurrentRow.DataBoundItem);
-            if(ci.ShowDialog() == DialogResult.OK)
+            if (ci.ShowDialog() == DialogResult.OK)
             {
-                CBS.ResetBindings(false);
-                SaveEvent(sender, e);
+                CBS.ResetBindings(false);                
             }
-            
+
+        }
+        private void showInfoButton_Click(object sender, EventArgs e)
+        {
+            var c = (DataGridView)listControl.SelectedTab.Controls[0];
+            var i = c.CurrentRow.DataBoundItem;
+            if(i is Criminal)
+            {
+                new CriminalInfo((Criminal)i).ShowDialog();                
+            }
+            if(i is CriminalGang)
+            {
+                new GangInfo((CriminalGang)i).ShowDialog();
+            }
         }
 
-        
-        public event EventHandler SaveEvent;
+            
 
-        
-        public event EventHandler MoveToArchiveEvent;
-
+        private void tabControl1_Selecting(object sender, TabControlCancelEventArgs e)
+        {
+            TabChanged(sender, e);
+        }
         private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
         {
             MoveToArchiveEvent(sender, e);
         }
-        public event EventHandler MoveToListevent = null;
         private void moveToListToolStripMenuItem_Click(object sender, EventArgs e)
         {
             MoveToListevent(sender, e);
         }
-
-        public event KeyEventHandler AutorizationEvent;
-
         private void ListMenu_KeyDown(object sender, KeyEventArgs e)
         {
             AutorizationEvent(sender, e);
             OnUserCahngeEvent(sender, e);
         }
-        public event EventHandler AddGangEvent;
         private void addToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            AddGangEvent(sender, e);
-            SaveEvent(sender, e);
+            AddGangEvent(sender, e);            
         }
-        public event EventHandler DeleteEvent;
         private void deleteToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            DeleteEvent(sender, e);
-            SaveEvent(sender, e);
+            DeleteEvent(sender, e);            
         }
-        
         private void changeToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            var changeresult = new GangInfo((CriminalGang)GangList.CurrentRow.DataBoundItem).ShowDialog(); 
-            if(changeresult == DialogResult.OK)
+            var changeresult = new GangInfo((CriminalGang)GangList.CurrentRow.DataBoundItem).ShowDialog();
+            if (changeresult == DialogResult.OK)
             {
                 GangList.CommitEdit(DataGridViewDataErrorContexts.Commit);
-                GBS.ResetBindings(false);
-                SaveEvent(sender, e);
+                GBS.ResetBindings(false);                
             }
         }
-        public event EventHandler SearchEvent;
-        public event EventHandler ResetEvent;
         private void searchBox_TextChanged(object sender, EventArgs e)
         {
             if (!string.IsNullOrWhiteSpace(searchBox.Text))
@@ -116,7 +140,6 @@ namespace AdminView
                 ResetEvent(sender, e);
             }
         }
-        public event EventHandler NationalityChangedEvent;
         private void nationalityBox_SelectedValueChanged(object sender, EventArgs e)
         {
             if (!string.IsNullOrWhiteSpace((string)nationalityBox.SelectedItem))
@@ -128,5 +151,18 @@ namespace AdminView
                 ResetEvent(sender, e);
             }
         }
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            User.Role = "user";
+            OnUserCahngeEvent(sender, e);
+        }
+        private void ListMenu_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            SaveEvent(sender, e);
+        }
+
+        #endregion
+
+
     }
 }

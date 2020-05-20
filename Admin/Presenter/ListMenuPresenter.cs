@@ -14,8 +14,8 @@ namespace AdminView.Presenter
 {
     class ListMenuPresenter
     {
-        ListMenu listView;
-        FileCabinet fileCabinet;
+        
+        //Constructor
         public ListMenuPresenter(ListMenu lView)
         {
             listView = lView;
@@ -30,39 +30,56 @@ namespace AdminView.Presenter
             listView.AddGangEvent += ListView_AddGangEvent;
             listView.DeleteEvent += ListView_DeleteEvent;
             listView.ResetEvent += ListView_ResetEvent;
+            listView.TabChanged += ListView_TabChanged;
            
         }
 
+        
+
+        #region Field
+        ListMenu listView;
+        FileCabinet fileCabinet;
+        #endregion
+
+        #region EventHandler
+        private void ListView_TabChanged(object sender, EventArgs e)
+        {
+            TabControl tc = sender as TabControl;
+            foreach(TabPage c in tc.TabPages)
+            {
+                if(c != tc.SelectedTab)
+                {
+                    c.SuspendLayout();    
+                }                
+            }
+        }
         private void ListView_ResetEvent(object sender, EventArgs e)
         {
             listView.CBS.DataSource = fileCabinet.Criminals;
             listView.CBS.ResetBindings(false);
         }
-
         private void ListView_DeleteEvent(object sender, EventArgs e)
         {
             fileCabinet.Criminals.Remove((Criminal)listView.List.CurrentRow.DataBoundItem);
             listView.CBS.ResetBindings(false);
-           
-        }
 
+        }
         private void ListView_AddGangEvent(object sender, EventArgs e)
         {
             var gi = new GangInfo();
-            if(gi.ShowDialog() == DialogResult.OK)
+            if (gi.ShowDialog() == DialogResult.OK)
             {
                 fileCabinet.CriminalGangs.Add(gi.Gang);
                 listView.GBS.DataSource = fileCabinet.CriminalGangs;
                 listView.GBS.ResetBindings(false);
-                
+
             }
         }
-
         private void ListView_AutorizationEvent(object sender, KeyEventArgs e)
         {
 
-           
-            if( e.KeyCode == Keys.Insert && e.Control)
+
+            if (e.KeyCode == Keys.Insert && e.Control)
             {
                 new Autorization(listView).ShowDialog();
             }
@@ -78,18 +95,17 @@ namespace AdminView.Presenter
                 listView.MenuStrip.Show();
             }
         }
-
         private void ListView_MoveToListevent(object sender, EventArgs e)
         {
             fileCabinet.MoveToList((Criminal)listView.ArchiveList.CurrentRow.DataBoundItem);
             listView.CBS.ResetBindings(false);
-            listView.ABS.ResetBindings(false);            
+            listView.ABS.ResetBindings(false);
             fileCabinet.Save();
         }
 
         private void ListView_MoveToArchiveEvent(object sender, EventArgs e)
         {
-            var i = MessageBox.Show("Are you sure you want to move this criminal to archive?","Conirm", MessageBoxButtons.YesNo);
+            var i = MessageBox.Show("Are you sure you want to move this criminal to archive?", "Conirm", MessageBoxButtons.YesNo);
             if (i == DialogResult.Yes)
             {
                 fileCabinet.MoveToArchive((Criminal)listView.List.CurrentRow.DataBoundItem);
@@ -103,44 +119,41 @@ namespace AdminView.Presenter
         {
             try
             {
-                fileCabinet.Load();                
+                fileCabinet.Load();
                 listView.CBS.DataSource = fileCabinet.Criminals;
                 listView.ABS.DataSource = fileCabinet.Archive;
-                listView.GBS.DataSource = fileCabinet.CriminalGangs;                
+                listView.GBS.DataSource = fileCabinet.CriminalGangs;
                 listView.CBS.ResetBindings(false);
                 listView.ABS.ResetBindings(false);
-                listView.GBS.ResetBindings(false);                
+                listView.GBS.ResetBindings(false);
             }
             catch (Exception)
             {
-                               
-            }
-            
-            
-            
-        }
 
+            }
+
+
+
+        }
         private void ListView_SaveEvent(object sender, EventArgs e)
         {
             fileCabinet.Save();
-            
-        }
 
+        }
         private void ListView_AddCriminalEvent(object sender, EventArgs e)
         {
             var ci = new CriminalInfo();
-            if(ci.ShowDialog() == DialogResult.OK)
+            if (ci.ShowDialog() == DialogResult.OK)
             {
                 fileCabinet.Criminals.Add(ci.Criminal);
                 fileCabinet.Save();
                 listView.CBS.DataSource = fileCabinet.Criminals;
                 listView.CBS.ResetBindings(false);
-                              
+
 
             }
         }
+        #endregion
 
-        
-       
     }
 }

@@ -10,8 +10,12 @@ namespace Admin.Presenter
 {
     class SortPresenter
     {
+        #region Field
         ISort form;
         FileCabinet fileCabinet;
+        #endregion
+
+        //Constructor
         public SortPresenter(ISort form)
         {
             this.form = form;
@@ -21,12 +25,12 @@ namespace Admin.Presenter
             
         }
 
-        
+        #region MyRegion
         private void Form_SearchEvent(object sender, EventArgs e)
         {
-            
+
             TextBox s = (TextBox)sender;
-            
+
             form.CBS.DataSource = fileCabinet.Search(s.Text);
             form.CBS.ResetBindings(false);
         }
@@ -37,5 +41,7 @@ namespace Admin.Presenter
             form.CBS.DataSource = fileCabinet.Nationality((string)b.SelectedItem);
             form.CBS.ResetBindings(false);
         }
+        #endregion
+
     }
 }

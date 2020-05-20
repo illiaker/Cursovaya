@@ -15,16 +15,14 @@ namespace AdminView
     public partial class CriminalInfo : Form
     {
 
-        public Criminal Criminal { get; private set; }
         
+        //Constructors
         public CriminalInfo()
         {
             InitializeComponent();
             Criminal = new Criminal();
             
-        }
-       
-
+        }   
         public CriminalInfo(Criminal criminal)
         {
             
@@ -43,6 +41,19 @@ namespace AdminView
             professionBox.Text = Criminal.Description;
             countryWhereWantedBox.SelectedItem = Criminal.CountryWhereWanted;
             ganglabel.Text = Criminal.Gang != null ? Criminal.Gang.Name : "None";
+            if (Criminal.Adress != null)
+            {
+                cityBox.Text = Criminal.Adress.City;
+                streetBox.Text = Criminal.Adress.Street;
+                houseBox.Text = Criminal.Adress.House;
+            }
+            if (Criminal.LastAdress != null)
+            {
+                lastcityBox.Text = Criminal.LastAdress.City;
+                lastStreetBox.Text = Criminal.LastAdress.Street;
+                lastHouseBox.Text = Criminal.LastAdress.House;
+            }
+
             
             if (User.Role == "user")
             {
@@ -107,6 +118,12 @@ namespace AdminView
            
 
         }
+
+        #region Properties
+        public Criminal Criminal { get; private set; }
+        #endregion
+
+        #region EventHandlers
         private void OpenImage_Click(object sender, EventArgs e)
         {
             ChooseCriminalImage.ShowDialog();
@@ -134,16 +151,18 @@ namespace AdminView
                 Criminal.Nationality = (string)nationalityBox.SelectedItem;
                 Criminal.BirthDay = birthdayBox.Value;
                 Criminal.Description = professionBox.Text;
-                Criminal.CountryWhereWanted = (string)countryWhereWantedBox.SelectedItem;                
+                Criminal.CountryWhereWanted = (string)countryWhereWantedBox.SelectedItem;
+                Criminal.Adress = new Adress(cityBox.Text, streetBox.Text, houseBox.Text);
+                Criminal.LastAdress = new Adress(lastcityBox.Text, lastStreetBox.Text, lastHouseBox.Text);
             }
-            
+
         }
 
         private void ganglabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             if (Criminal.Gang != null)
             {
-                 new GangInfo(Criminal.Gang).ShowDialog();
+                new GangInfo(Criminal.Gang).ShowDialog();
             }
         }
 
@@ -151,5 +170,7 @@ namespace AdminView
         {
 
         }
+        #endregion
+
     }
 }

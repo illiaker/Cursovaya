@@ -70,12 +70,13 @@ namespace Cursovaya.Model
             return res;
         }
        
-        public List<IDisplayedCriminal> Search(string surneme)
+        public List<IDisplayedCriminal> Search(string surname)
         {
+            surname = surname.ToLower();
             List<IDisplayedCriminal> res = new List<IDisplayedCriminal>();
             foreach (Criminal c in Criminals)
             {
-                if (c.Surname.Contains(surneme))
+                if (c.Surname.ToLower().Contains(surname))
                 {
                     res.Add(c);
                 }
