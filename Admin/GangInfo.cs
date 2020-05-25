@@ -1,5 +1,6 @@
 ﻿using Admin;
 using Cursovaya.Model;
+using FileCabinetLibrary.Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -32,22 +33,20 @@ namespace AdminView
             gangImageBox.Image = Gang.Image;
             featuresBox.Text = Gang.Features;
             IdLabelValue.Text = Gang.Id.ToString();
-            if(User.Role == "user")
+            leaderlinkedLabel.Text = Gang.LeaderName == " " ? "None": Gang.LeaderName;
+            if(User.Role == UserRole.User)
             {
                 foreach(Control c in Controls)
                 {
-                    TextBox t = c as TextBox;
-                    if (t != null)
+                    if (c is TextBox t)
                     {
                         t.ReadOnly = true;
                     }
-                    GroupBox g = c as GroupBox;
-                    if(g!=null)
+                    if (c is GroupBox g)
                     {
-                        foreach(Control gc in g.Controls)
+                        foreach (Control gc in g.Controls)
                         {
-                            RichTextBox rt = gc as RichTextBox;
-                            if(rt != null)
+                            if (gc is RichTextBox rt)
                             {
                                 rt.ReadOnly = true;
                             }
@@ -64,7 +63,7 @@ namespace AdminView
                         dt.Enabled = false;
                     }
                     imageChoseButton.Hide();
-                    editButton.Hide();
+                    addButton.Hide();
                     leaderChoseButton.Hide();
                     saveButton.Hide();
                 }
@@ -103,7 +102,24 @@ namespace AdminView
         }
         private void leaderChoseButton_Click(object sender, EventArgs e)
         {
+            if (gangMembersGrid.CurrentRow != null)
+            {
+                var c = gangMembersGrid.CurrentRow.DataBoundItem as Criminal;
+                var mbResult = MessageBox.Show($"Do you realy want {c.Name} {c.Surname} to be a leader?", "Message", MessageBoxButtons.YesNo);
+                if (mbResult == DialogResult.Yes)
+                {
+                    Gang.Leader = c;
+                    leaderlinkedLabel.Text = Gang.LeaderName;
+                }
+            }
+            else
+            {
 
+                MessageBox.Show("There is no gang member in the gang. You should add gang members before");
+            }
+           
+            
+            
         }
         private void showButton_Click(object sender, EventArgs e)
         {
@@ -119,10 +135,33 @@ namespace AdminView
                 {
                     Gang.GangMambers.Add(c);
                     c.Gang = Gang;
+                    criminalBindingSource.ResetBindings(false);
                 }
             }
         }
         #endregion
 
+        private void GangInfo_Load(object sender, EventArgs e)
+        {
+            criminalBindingSource.DataSource = Gang.GangMambers;
+            criminalBindingSource.ResetBindings(false);
+        }
+
+        private void leaderlinkedLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            if(Gang.Leader != null)
+            {
+                new CriminalInfo(Gang.Leader).ShowDialog();
+            }
+        }
+
+        private void gangMembersGrid_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (gangMembersGrid.CurrentRow != null)
+            {
+                var c = gangMembersGrid.CurrentRow.DataBoundItem as Criminal;
+                new CriminalInfo(c).ShowDialog();
+            }
+        }
     }
 }

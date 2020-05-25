@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.nameLabel = new System.Windows.Forms.Label();
             this.featuresBoxContainer = new System.Windows.Forms.GroupBox();
             this.featuresBox = new System.Windows.Forms.RichTextBox();
@@ -46,10 +47,22 @@
             this.cancelButton = new System.Windows.Forms.Button();
             this.IdLabelText = new System.Windows.Forms.Label();
             this.IdLabelValue = new System.Windows.Forms.Label();
-            this.editButton = new System.Windows.Forms.Button();
-            this.showButton = new System.Windows.Forms.Button();
+            this.addButton = new System.Windows.Forms.Button();
+            this.gangMembersGrid = new System.Windows.Forms.DataGridView();
+            this.criminalBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.imageDataGridViewImageColumn = new System.Windows.Forms.DataGridViewImageColumn();
+            this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.surnameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.aliasDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ageDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.genderDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nationalityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.birthDayDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.deleteButton = new System.Windows.Forms.Button();
             this.featuresBoxContainer.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gangImageBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gangMembersGrid)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.criminalBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // nameLabel
@@ -63,6 +76,9 @@
             // 
             // featuresBoxContainer
             // 
+            this.featuresBoxContainer.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.featuresBoxContainer.Controls.Add(this.featuresBox);
             this.featuresBoxContainer.Location = new System.Drawing.Point(547, 23);
             this.featuresBoxContainer.Name = "featuresBoxContainer";
@@ -73,7 +89,8 @@
             // 
             // featuresBox
             // 
-            this.featuresBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.featuresBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.featuresBox.Location = new System.Drawing.Point(3, 16);
             this.featuresBox.Name = "featuresBox";
             this.featuresBox.Size = new System.Drawing.Size(194, 117);
@@ -107,6 +124,7 @@
             this.leaderlinkedLabel.TabIndex = 4;
             this.leaderlinkedLabel.TabStop = true;
             this.leaderlinkedLabel.Text = "None";
+            this.leaderlinkedLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.leaderlinkedLabel_LinkClicked);
             // 
             // leaderChoseButton
             // 
@@ -373,6 +391,7 @@
             // 
             // saveButton
             // 
+            this.saveButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.saveButton.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.saveButton.Location = new System.Drawing.Point(547, 208);
             this.saveButton.Name = "saveButton";
@@ -383,6 +402,7 @@
             // 
             // cancelButton
             // 
+            this.cancelButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.cancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.cancelButton.Location = new System.Drawing.Point(672, 208);
             this.cancelButton.Name = "cancelButton";
@@ -394,47 +414,143 @@
             // IdLabelText
             // 
             this.IdLabelText.AutoSize = true;
-            this.IdLabelText.Location = new System.Drawing.Point(214, 304);
+            this.IdLabelText.Location = new System.Drawing.Point(33, 265);
             this.IdLabelText.Name = "IdLabelText";
-            this.IdLabelText.Size = new System.Drawing.Size(16, 13);
+            this.IdLabelText.Size = new System.Drawing.Size(19, 13);
             this.IdLabelText.TabIndex = 15;
-            this.IdLabelText.Text = "Id";
+            this.IdLabelText.Text = "Id:";
             // 
             // IdLabelValue
             // 
             this.IdLabelValue.AutoSize = true;
-            this.IdLabelValue.Location = new System.Drawing.Point(256, 304);
+            this.IdLabelValue.Location = new System.Drawing.Point(67, 265);
             this.IdLabelValue.Name = "IdLabelValue";
             this.IdLabelValue.Size = new System.Drawing.Size(0, 13);
             this.IdLabelValue.TabIndex = 16;
             // 
-            // editButton
+            // addButton
             // 
-            this.editButton.Location = new System.Drawing.Point(217, 382);
-            this.editButton.Name = "editButton";
-            this.editButton.Size = new System.Drawing.Size(138, 23);
-            this.editButton.TabIndex = 17;
-            this.editButton.Text = "Edit gang members";
-            this.editButton.UseVisualStyleBackColor = true;
-            this.editButton.Click += new System.EventHandler(this.editButton_Click);
+            this.addButton.Location = new System.Drawing.Point(36, 308);
+            this.addButton.Name = "addButton";
+            this.addButton.Size = new System.Drawing.Size(138, 23);
+            this.addButton.TabIndex = 17;
+            this.addButton.Text = "Add gang members";
+            this.addButton.UseVisualStyleBackColor = true;
+            this.addButton.Click += new System.EventHandler(this.editButton_Click);
             // 
-            // showButton
+            // gangMembersGrid
             // 
-            this.showButton.Location = new System.Drawing.Point(217, 340);
-            this.showButton.Name = "showButton";
-            this.showButton.Size = new System.Drawing.Size(138, 23);
-            this.showButton.TabIndex = 18;
-            this.showButton.Text = "Show gang members";
-            this.showButton.UseVisualStyleBackColor = true;
-            this.showButton.Click += new System.EventHandler(this.showButton_Click);
+            this.gangMembersGrid.AllowUserToAddRows = false;
+            this.gangMembersGrid.AllowUserToDeleteRows = false;
+            this.gangMembersGrid.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.gangMembersGrid.AutoGenerateColumns = false;
+            this.gangMembersGrid.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
+            this.gangMembersGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gangMembersGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.imageDataGridViewImageColumn,
+            this.nameDataGridViewTextBoxColumn,
+            this.surnameDataGridViewTextBoxColumn,
+            this.aliasDataGridViewTextBoxColumn,
+            this.ageDataGridViewTextBoxColumn,
+            this.genderDataGridViewTextBoxColumn,
+            this.nationalityDataGridViewTextBoxColumn,
+            this.birthDayDataGridViewTextBoxColumn});
+            this.gangMembersGrid.DataSource = this.criminalBindingSource;
+            this.gangMembersGrid.Location = new System.Drawing.Point(240, 308);
+            this.gangMembersGrid.Name = "gangMembersGrid";
+            this.gangMembersGrid.ReadOnly = true;
+            this.gangMembersGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.gangMembersGrid.Size = new System.Drawing.Size(543, 237);
+            this.gangMembersGrid.TabIndex = 18;
+            this.gangMembersGrid.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gangMembersGrid_CellDoubleClick);
+            // 
+            // criminalBindingSource
+            // 
+            this.criminalBindingSource.DataSource = typeof(Cursovaya.Model.Criminal);
+            // 
+            // imageDataGridViewImageColumn
+            // 
+            this.imageDataGridViewImageColumn.DataPropertyName = "Image";
+            this.imageDataGridViewImageColumn.HeaderText = "Image";
+            this.imageDataGridViewImageColumn.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.imageDataGridViewImageColumn.Name = "imageDataGridViewImageColumn";
+            this.imageDataGridViewImageColumn.ReadOnly = true;
+            // 
+            // nameDataGridViewTextBoxColumn
+            // 
+            this.nameDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
+            this.nameDataGridViewTextBoxColumn.HeaderText = "Name";
+            this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
+            this.nameDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // surnameDataGridViewTextBoxColumn
+            // 
+            this.surnameDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.surnameDataGridViewTextBoxColumn.DataPropertyName = "Surname";
+            this.surnameDataGridViewTextBoxColumn.HeaderText = "Surname";
+            this.surnameDataGridViewTextBoxColumn.Name = "surnameDataGridViewTextBoxColumn";
+            this.surnameDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // aliasDataGridViewTextBoxColumn
+            // 
+            this.aliasDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.aliasDataGridViewTextBoxColumn.DataPropertyName = "Alias";
+            this.aliasDataGridViewTextBoxColumn.HeaderText = "Alias";
+            this.aliasDataGridViewTextBoxColumn.Name = "aliasDataGridViewTextBoxColumn";
+            this.aliasDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // ageDataGridViewTextBoxColumn
+            // 
+            this.ageDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ageDataGridViewTextBoxColumn.DataPropertyName = "Age";
+            this.ageDataGridViewTextBoxColumn.HeaderText = "Age";
+            this.ageDataGridViewTextBoxColumn.Name = "ageDataGridViewTextBoxColumn";
+            this.ageDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // genderDataGridViewTextBoxColumn
+            // 
+            this.genderDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.genderDataGridViewTextBoxColumn.DataPropertyName = "Gender";
+            this.genderDataGridViewTextBoxColumn.HeaderText = "Gender";
+            this.genderDataGridViewTextBoxColumn.Name = "genderDataGridViewTextBoxColumn";
+            this.genderDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // nationalityDataGridViewTextBoxColumn
+            // 
+            this.nationalityDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.nationalityDataGridViewTextBoxColumn.DataPropertyName = "Nationality";
+            this.nationalityDataGridViewTextBoxColumn.HeaderText = "Nationality";
+            this.nationalityDataGridViewTextBoxColumn.Name = "nationalityDataGridViewTextBoxColumn";
+            this.nationalityDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // birthDayDataGridViewTextBoxColumn
+            // 
+            this.birthDayDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.birthDayDataGridViewTextBoxColumn.DataPropertyName = "BirthDay";
+            this.birthDayDataGridViewTextBoxColumn.HeaderText = "BirthDay";
+            this.birthDayDataGridViewTextBoxColumn.Name = "birthDayDataGridViewTextBoxColumn";
+            this.birthDayDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // deleteButton
+            // 
+            this.deleteButton.Location = new System.Drawing.Point(36, 354);
+            this.deleteButton.Name = "deleteButton";
+            this.deleteButton.Size = new System.Drawing.Size(138, 23);
+            this.deleteButton.TabIndex = 19;
+            this.deleteButton.Text = "Delete gang members";
+            this.deleteButton.UseVisualStyleBackColor = true;
             // 
             // GangInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(795, 433);
-            this.Controls.Add(this.showButton);
-            this.Controls.Add(this.editButton);
+            this.ClientSize = new System.Drawing.Size(795, 557);
+            this.Controls.Add(this.deleteButton);
+            this.Controls.Add(this.gangMembersGrid);
+            this.Controls.Add(this.addButton);
             this.Controls.Add(this.IdLabelValue);
             this.Controls.Add(this.IdLabelText);
             this.Controls.Add(this.cancelButton);
@@ -454,8 +570,11 @@
             this.Name = "GangInfo";
             this.Text = "GangInfo";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.GangInfo_FormClosing);
+            this.Load += new System.EventHandler(this.GangInfo_Load);
             this.featuresBoxContainer.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gangImageBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gangMembersGrid)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.criminalBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -481,7 +600,17 @@
         private System.Windows.Forms.Button cancelButton;
         private System.Windows.Forms.Label IdLabelText;
         private System.Windows.Forms.Label IdLabelValue;
-        private System.Windows.Forms.Button editButton;
-        private System.Windows.Forms.Button showButton;
+        private System.Windows.Forms.Button addButton;
+        private System.Windows.Forms.DataGridView gangMembersGrid;
+        private System.Windows.Forms.BindingSource criminalBindingSource;
+        private System.Windows.Forms.DataGridViewImageColumn imageDataGridViewImageColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn surnameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn aliasDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ageDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn genderDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nationalityDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn birthDayDataGridViewTextBoxColumn;
+        private System.Windows.Forms.Button deleteButton;
     }
 }

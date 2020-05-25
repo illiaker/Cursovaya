@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using Cursovaya.Model;
-
-
+using FileCabinetLibrary.Model;
 
 namespace AdminView.Presenter
 {
@@ -28,7 +27,7 @@ namespace AdminView.Presenter
             if (auView.Password == admin.Password && auView.Login == admin.Login)
             {
                 auView.Close();
-                User.Role = "admin";
+                User.Role = UserRole.Admin;
             }
             else
             {

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FileCabinetLibrary.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +9,6 @@ namespace Cursovaya.Model
 {
     static public class User
     {
-        static public string Role { get; set; } = "user";
+        static public UserRole Role { get; set; } = UserRole.Admin;
     }
 }

@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace Cursovaya.Model
 {
     [Serializable]
-    public class Criminal : IDisplayedCriminal
+    public class Criminal
     {
         public Criminal()
         {
@@ -20,9 +20,13 @@ namespace Cursovaya.Model
         public string Surname { get; set; }
         public string Alias { get; set; }
         public int Height { get; set; }
-        public string HairColor { get; set; }
-        public string EyeColor { get; set; }
-        public int Age { get; set; }
+        public int Age
+        { 
+            get
+            {
+                return DateTime.Now.Year - BirthDay.Year;
+            }
+        }
         public string Gender { get; set; }
         public string Nationality { get; set; }
         public DateTime BirthDay { get; set; }

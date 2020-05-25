@@ -12,14 +12,14 @@ namespace Cursovaya.Model
     {
         public CriminalGang()
         {
-            GangMambers = new List<IDisplayedCriminal>();
+            GangMambers = new List<Criminal>();
             EnemyGangs = new List<CriminalGang>();
             AllyGang = new List<CriminalGang>();
             Id = Guid.NewGuid();
         }
         public Bitmap Image { get; set; }
         public string Name { get; set; }
-        public List<IDisplayedCriminal> GangMambers { get; set; }
+        public List<Criminal> GangMambers { get; set; }
         public List<CriminalGang> EnemyGangs { get; set; }
         public List<CriminalGang> AllyGang { get; set; }
         public string Features { get; set; }
@@ -27,6 +27,15 @@ namespace Cursovaya.Model
         public Criminal Leader { get; set; }
         public string Country { get; set; }         
         public Guid Id { get; private set; }
+
+        public string LeaderName
+        {
+            get
+            {
+                return Leader == null ? " " : Leader.Name + " " + Leader.Surname;
+                
+            }
+        } 
         
     }
 }

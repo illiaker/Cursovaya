@@ -10,6 +10,7 @@ namespace Admin
     interface ISort
     {
         event EventHandler SearchEvent;
+
         event EventHandler NationalityChangedEvent;
         BindingSource CBS { get; set; }
     }

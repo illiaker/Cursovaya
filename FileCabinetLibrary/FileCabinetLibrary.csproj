@@ -48,8 +48,8 @@
     <Compile Include="Model\Criminal.cs" />
     <Compile Include="Model\CriminalGang.cs" />
     <Compile Include="Model\FileCabinet.cs" />
-    <Compile Include="Model\IDisplayed.cs" />
     <Compile Include="Model\User.cs" />
+    <Compile Include="Model\UserRole.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -435,6 +435,7 @@
             this.birthdayBox.Name = "birthdayBox";
             this.birthdayBox.Size = new System.Drawing.Size(121, 20);
             this.birthdayBox.TabIndex = 16;
+            this.birthdayBox.ValueChanged += new System.EventHandler(this.birthdayBox_ValueChanged);
             // 
             // label7
             // 
@@ -866,16 +867,16 @@
             // label
             // 
             this.label.AutoSize = true;
-            this.label.Location = new System.Drawing.Point(543, 339);
+            this.label.Location = new System.Drawing.Point(451, 339);
             this.label.Name = "label";
-            this.label.Size = new System.Drawing.Size(18, 13);
+            this.label.Size = new System.Drawing.Size(22, 13);
             this.label.TabIndex = 33;
-            this.label.Text = "ID";
+            this.label.Text = "Id: ";
             // 
             // IdLable
             // 
             this.IdLable.AutoSize = true;
-            this.IdLable.Location = new System.Drawing.Point(585, 339);
+            this.IdLable.Location = new System.Drawing.Point(486, 339);
             this.IdLable.Name = "IdLable";
             this.IdLable.Size = new System.Drawing.Size(0, 13);
             this.IdLable.TabIndex = 34;
@@ -885,7 +886,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CausesValidation = false;
-            this.ClientSize = new System.Drawing.Size(883, 450);
+            this.ClientSize = new System.Drawing.Size(883, 452);
             this.Controls.Add(this.IdLable);
             this.Controls.Add(this.label);
             this.Controls.Add(this.groupBox3);

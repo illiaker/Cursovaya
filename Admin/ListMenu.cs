@@ -2,6 +2,7 @@
 using Admin.Presenter;
 using AdminView.Presenter;
 using Cursovaya.Model;
+using FileCabinetLibrary.Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -21,6 +22,9 @@ namespace AdminView
             InitializeComponent();
             new ListMenuPresenter(this);
             new SortPresenter(this);
+            criminalsDataGridView.AutoGenerateColumns = false;
+            gangGridView.AutoGenerateColumns = false;
+            archiveDataGridView.AutoGenerateColumns = false;
         }
         #region Events
         public event EventHandler LoadEvent = null;
@@ -46,17 +50,17 @@ namespace AdminView
         public event EventHandler ResetEvent;
 
         public event EventHandler NationalityChangedEvent;
-        public event EventHandler TabChanged;
+        
         #endregion
 
         #region Properties
         public MenuStrip MenuStrip { get => adminMenuStrip; set => adminMenuStrip = value; }
-        public DataGridView List { get { return criminalsList; } set { criminalsList = value; } }
+        public DataGridView List { get { return criminalsDataGridView; } set { criminalsDataGridView = value; } }
         public DataGridView GangList { get => gangGridView; set => gangGridView = value; }
-        public DataGridView ArchiveList { get { return archiveList; } set { archiveList = value; } }
-        public BindingSource ABS { get => archiveBindingSource; set => archiveBindingSource = value; }
-        public BindingSource GBS { get => criminalGangsBindingSource; set => criminalGangsBindingSource = value; }
-        public BindingSource CBS { get => criminalsBindingSource; set => criminalsBindingSource = value; }
+        public DataGridView ArchiveList { get { return archiveDataGridView; } set { archiveDataGridView = value; } }
+        public BindingSource ABS { get =>archiveBindingSource ; set => archiveBindingSource = value; }
+        public BindingSource GBS { get => criminalGangBindingSource; set => criminalGangBindingSource = value; }
+        public BindingSource CBS { get => criminalBindingSource; set => criminalBindingSource = value; }
 
         #endregion
 
@@ -65,6 +69,7 @@ namespace AdminView
         {
             LoadEvent(sender, e);
             OnUserCahngeEvent(sender, e);
+            
         }
         private void addToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -91,13 +96,16 @@ namespace AdminView
             {
                 new GangInfo((CriminalGang)i).ShowDialog();
             }
+            CBS.ResetBindings(false);
+            ABS.ResetBindings(false);
+            GBS.ResetBindings(false);
         }
 
             
 
         private void tabControl1_Selecting(object sender, TabControlCancelEventArgs e)
         {
-            TabChanged(sender, e);
+            
         }
         private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -153,7 +161,7 @@ namespace AdminView
         }
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            User.Role = "user";
+            User.Role = UserRole.User;
             OnUserCahngeEvent(sender, e);
         }
         private void ListMenu_FormClosing(object sender, FormClosingEventArgs e)
@@ -161,8 +169,12 @@ namespace AdminView
             SaveEvent(sender, e);
         }
 
+
         #endregion
 
+        private void criminalBindingSource_CurrentChanged(object sender, EventArgs e)
+        {
 
+        }
     }
 }

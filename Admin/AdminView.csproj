@@ -125,6 +125,8 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\Cursovaya.Model.Criminal.datasource" />
+    <None Include="Properties\DataSources\Cursovaya.Model.CriminalGang.datasource" />
     <None Include="Properties\DataSources\Cursovaya.Model.FileCabinet.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.ListBox;
 using Admin;
+using FileCabinetLibrary.Model;
 
 namespace AdminView.Presenter
 {
@@ -30,8 +31,7 @@ namespace AdminView.Presenter
             listView.AddGangEvent += ListView_AddGangEvent;
             listView.DeleteEvent += ListView_DeleteEvent;
             listView.ResetEvent += ListView_ResetEvent;
-            listView.TabChanged += ListView_TabChanged;
-           
+            
         }
 
         
@@ -42,17 +42,7 @@ namespace AdminView.Presenter
         #endregion
 
         #region EventHandler
-        private void ListView_TabChanged(object sender, EventArgs e)
-        {
-            TabControl tc = sender as TabControl;
-            foreach(TabPage c in tc.TabPages)
-            {
-                if(c != tc.SelectedTab)
-                {
-                    c.SuspendLayout();    
-                }                
-            }
-        }
+        
         private void ListView_ResetEvent(object sender, EventArgs e)
         {
             listView.CBS.DataSource = fileCabinet.Criminals;
@@ -60,7 +50,13 @@ namespace AdminView.Presenter
         }
         private void ListView_DeleteEvent(object sender, EventArgs e)
         {
-            fileCabinet.Criminals.Remove((Criminal)listView.List.CurrentRow.DataBoundItem);
+            var c = (Criminal)listView.List.CurrentRow.DataBoundItem;
+            if(c.Gang != null)
+            {
+                c.Gang.GangMambers.Remove(c);
+                c.Gang = null;
+            }
+            fileCabinet.Criminals.Remove(c);
             listView.CBS.ResetBindings(false);
 
         }
@@ -86,7 +82,7 @@ namespace AdminView.Presenter
         }
         public void OnUserChange(object sender, EventArgs e)
         {
-            if (User.Role == "user")
+            if (User.Role == UserRole.User)
             {
                 listView.MenuStrip.Hide();
             }
@@ -108,7 +104,13 @@ namespace AdminView.Presenter
             var i = MessageBox.Show("Are you sure you want to move this criminal to archive?", "Conirm", MessageBoxButtons.YesNo);
             if (i == DialogResult.Yes)
             {
-                fileCabinet.MoveToArchive((Criminal)listView.List.CurrentRow.DataBoundItem);
+                var c = (Criminal)listView.List.CurrentRow.DataBoundItem;
+                fileCabinet.MoveToArchive(c);
+                if(c.Gang != null)
+                {
+                    c.Gang.GangMambers.Remove(c);
+                    c.Gang = null;
+                }
                 fileCabinet.Save();
                 listView.CBS.ResetBindings(false);
                 listView.ABS.ResetBindings(false);
@@ -120,6 +122,7 @@ namespace AdminView.Presenter
             try
             {
                 fileCabinet.Load();
+                fileCabinet.GenerateMembers(50);
                 listView.CBS.DataSource = fileCabinet.Criminals;
                 listView.ABS.DataSource = fileCabinet.Archive;
                 listView.GBS.DataSource = fileCabinet.CriminalGangs;
@@ -127,9 +130,10 @@ namespace AdminView.Presenter
                 listView.ABS.ResetBindings(false);
                 listView.GBS.ResetBindings(false);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
+                MessageBox.Show(ex.ToString());
+                MessageBox.Show(ex.Message);
             }
 
 
@@ -146,8 +150,7 @@ namespace AdminView.Presenter
             if (ci.ShowDialog() == DialogResult.OK)
             {
                 fileCabinet.Criminals.Add(ci.Criminal);
-                fileCabinet.Save();
-                listView.CBS.DataSource = fileCabinet.Criminals;
+                fileCabinet.Save();                
                 listView.CBS.ResetBindings(false);
 
 

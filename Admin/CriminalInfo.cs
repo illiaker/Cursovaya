@@ -1,4 +1,5 @@
 ﻿using Cursovaya.Model;
+using FileCabinetLibrary.Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -55,46 +56,36 @@ namespace AdminView
             }
 
             
-            if (User.Role == "user")
+            if (User.Role == UserRole.User)
             {
                 foreach (Control i in Controls)
                 {
-                    TextBox t = i as TextBox;
-                    if (t != null)
+                    if (i is TextBox t)
                     {
-                        
                         t.ReadOnly = true;
-                        
-
                     }
-                    ComboBox c = i as ComboBox;
-                    if (c != null)
+                    if (i is ComboBox c)
                     {
                         c.Enabled = false;
                     }
-                    NumericUpDown n = i as NumericUpDown;
-                    if (n != null)
+                    if (i is NumericUpDown n)
                     {
-                        n.ReadOnly = true;
+                        n.Enabled = false;
                     }
-                    DateTimePicker d = i as DateTimePicker;
-                    if (d != null)
+                    if (i is DateTimePicker d)
                     {
                         d.Enabled = false;
                     }
-                    GroupBox g = i as GroupBox;
-                    if (g != null)
+                    if (i is GroupBox g)
                     {
                         foreach (Control j in g.Controls)
                         {
-                            TextBox tb = j as TextBox;
-                            if (tb != null)
+                            if (j is TextBox tb)
                             {
                                 tb.ReadOnly = true;
 
                             }
-                            RichTextBox rb = j as RichTextBox;
-                            if (rb != null)
+                            if (j is RichTextBox rb)
                             {
                                 rb.ReadOnly = true;
 
@@ -146,7 +137,6 @@ namespace AdminView
                 Criminal.Surname = surnameBox.Text;
                 Criminal.Alias = aliasBox.Text;
                 Criminal.Height = (int)heightBox.Value;
-                Criminal.Age = (int)ageBox.Value;
                 Criminal.Gender = (string)genderBox.SelectedItem;
                 Criminal.Nationality = (string)nationalityBox.SelectedItem;
                 Criminal.BirthDay = birthdayBox.Value;
@@ -170,7 +160,12 @@ namespace AdminView
         {
 
         }
+        private void birthdayBox_ValueChanged(object sender, EventArgs e)
+        {
+            ageBox.Value = DateTime.Now.Year - birthdayBox.Value.Year;
+        }
         #endregion
+
 
     }
 }

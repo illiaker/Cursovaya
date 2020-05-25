@@ -17,22 +17,22 @@ namespace Admin
         
 
         //Constructor
-        public CriminalsList(List<IDisplayedCriminal> criminals)
+        public CriminalsList(List<Criminal> criminals)
         {
             InitializeComponent();            
-            GangMembers = new List<IDisplayedCriminal>();
+            GangMembers = new List<Criminal>();
             CriminalsToSelect = criminals;
-            criminalList.DataSource = criminalBindingSourse;
-            criminalBindingSourse.DataSource = criminals;
+            criminalList.DataSource = criminalBindingSource;
+            criminalBindingSource.DataSource = criminals;
             var i = criminalList.Columns[0] as DataGridViewImageColumn;
             i.ImageLayout = DataGridViewImageCellLayout.Zoom;
-            criminalBindingSourse.ResetBindings(false);
+            criminalBindingSource.ResetBindings(false);
         }
 
         #region Properties
-        public List<IDisplayedCriminal> GangMembers { get; set; }
-        List<IDisplayedCriminal> CriminalsToSelect { get; set; }
-        public BindingSource CBS { get => criminalBindingSourse; set => criminalBindingSourse = value; }
+        public List<Criminal> GangMembers { get; set; }
+        List<Criminal> CriminalsToSelect { get; set; }
+        public BindingSource CBS { get => criminalBindingSource; set => criminalBindingSource = value; }
         #endregion
 
         #region EventHandlers
@@ -45,7 +45,7 @@ namespace Admin
                 CriminalsToSelect.Remove(c);
             }
             CBS.DataSource = CriminalsToSelect;
-            criminalBindingSourse.ResetBindings(false);
+            criminalBindingSource.ResetBindings(false);
         }
 
         private void searchBox_TextChanged(object sender, EventArgs e)
@@ -57,7 +57,7 @@ namespace Admin
             }
             else
             {
-                List<IDisplayedCriminal> displayedCriminals = new List<IDisplayedCriminal>();
+                List<Criminal> displayedCriminals = new List<Criminal>();
                 foreach (Criminal c in CriminalsToSelect)
                 {
                     if (c.Surname.Contains(searchBox.Text))
@@ -79,7 +79,7 @@ namespace Admin
             }
             else
             {
-                List<IDisplayedCriminal> displayedCriminals = new List<IDisplayedCriminal>();
+                List<Criminal> displayedCriminals = new List<Criminal>();
                 foreach (Criminal c in CriminalsToSelect)
                 {
                     if (c.Nationality == (string)nationalityBox.SelectedItem)
@@ -93,5 +93,6 @@ namespace Admin
         }
         #endregion
 
+        
     }
 }
