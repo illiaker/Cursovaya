@@ -122,7 +122,7 @@ namespace AdminView.Presenter
             try
             {
                 fileCabinet.Load();
-                fileCabinet.GenerateMembers(50);
+                fileCabinet.GenerateMembers(200);
                 listView.CBS.DataSource = fileCabinet.Criminals;
                 listView.ABS.DataSource = fileCabinet.Archive;
                 listView.GBS.DataSource = fileCabinet.CriminalGangs;

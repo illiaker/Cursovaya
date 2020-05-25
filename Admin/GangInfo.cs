@@ -66,6 +66,7 @@ namespace AdminView
                     addButton.Hide();
                     leaderChoseButton.Hide();
                     saveButton.Hide();
+                    deleteButton.Hide();
                 }
             }
         }
@@ -139,8 +140,6 @@ namespace AdminView
                 }
             }
         }
-        #endregion
-
         private void GangInfo_Load(object sender, EventArgs e)
         {
             criminalBindingSource.DataSource = Gang.GangMambers;
@@ -149,7 +148,7 @@ namespace AdminView
 
         private void leaderlinkedLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            if(Gang.Leader != null)
+            if (Gang.Leader != null)
             {
                 new CriminalInfo(Gang.Leader).ShowDialog();
             }
@@ -163,5 +162,29 @@ namespace AdminView
                 new CriminalInfo(c).ShowDialog();
             }
         }
+
+        private void deleteButton_Click(object sender, EventArgs e)
+        {
+            
+            if (gangMembersGrid.CurrentRow != null)
+            {
+                var c = gangMembersGrid.CurrentRow.DataBoundItem as Criminal;
+                var ds = MessageBox.Show($"Are you sure you want to delete {c.Name} {c.Surname} from gang members?", "Message", MessageBoxButtons.YesNo);
+                if (ds == DialogResult.Yes)
+                {
+                    if (c == Gang.Leader)
+                    {
+                        Gang.Leader = null;
+                        leaderlinkedLabel.Text = "None";
+                    }
+                    Gang.GangMambers.Remove(c);
+                    c.Gang = null;
+                    criminalBindingSource.ResetBindings(false);
+                }
+            }
+        }
+        #endregion
+
+
     }
 }

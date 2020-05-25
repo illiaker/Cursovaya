@@ -43,26 +43,34 @@
             this.addToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.changeToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.criminalsDataGridView = new System.Windows.Forms.DataGridView();
-            this.criminalBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.listControl = new System.Windows.Forms.TabControl();
             this.criminalsPage = new System.Windows.Forms.TabPage();
             this.gangPage = new System.Windows.Forms.TabPage();
             this.gangGridView = new System.Windows.Forms.DataGridView();
-            this.imageDataGridViewImageColumn2 = new System.Windows.Forms.DataGridViewImageColumn();
-            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.LeaderName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.foundationDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.countryDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.featuresDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.criminalGangBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.archivePage = new System.Windows.Forms.TabPage();
             this.archiveDataGridView = new System.Windows.Forms.DataGridView();
-            this.archiveBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.searchBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.nationalityBox = new System.Windows.Forms.ComboBox();
             this.showInfoButton = new System.Windows.Forms.Button();
+            this.Age = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.criminalBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.imageDataGridViewImageColumn2 = new System.Windows.Forms.DataGridViewImageColumn();
+            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.foundationDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.countryDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.featuresDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.criminalGangBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.imageDataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.surnameDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.aliasDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.genderDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nationalityDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.birthDayDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.archiveBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.Image = new System.Windows.Forms.DataGridViewImageColumn();
             this.txtName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Surname = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -71,24 +79,16 @@
             this.Gender = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Nationality = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.BirthDay = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.imageDataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.surnameDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.aliasDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Age = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.genderDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nationalityDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.birthDayDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.adminMenuStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.criminalsDataGridView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.criminalBindingSource)).BeginInit();
             this.listControl.SuspendLayout();
             this.criminalsPage.SuspendLayout();
             this.gangPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gangGridView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.criminalGangBindingSource)).BeginInit();
             this.archivePage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.archiveDataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.criminalBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.criminalGangBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.archiveBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
@@ -226,12 +226,6 @@
             this.criminalsDataGridView.Size = new System.Drawing.Size(837, 401);
             this.criminalsDataGridView.TabIndex = 3;
             // 
-            // criminalBindingSource
-            // 
-            this.criminalBindingSource.DataSource = typeof(Cursovaya.Model.Criminal);
-            this.criminalBindingSource.Sort = "";
-            this.criminalBindingSource.CurrentChanged += new System.EventHandler(this.criminalBindingSource_CurrentChanged);
-            // 
             // listControl
             // 
             this.listControl.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -295,53 +289,12 @@
             this.gangGridView.Size = new System.Drawing.Size(837, 401);
             this.gangGridView.TabIndex = 0;
             // 
-            // imageDataGridViewImageColumn2
-            // 
-            this.imageDataGridViewImageColumn2.DataPropertyName = "Image";
-            this.imageDataGridViewImageColumn2.HeaderText = "Image";
-            this.imageDataGridViewImageColumn2.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.imageDataGridViewImageColumn2.Name = "imageDataGridViewImageColumn2";
-            this.imageDataGridViewImageColumn2.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn7
-            // 
-            this.dataGridViewTextBoxColumn7.DataPropertyName = "Name";
-            this.dataGridViewTextBoxColumn7.HeaderText = "Name";
-            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
-            this.dataGridViewTextBoxColumn7.ReadOnly = true;
-            // 
             // LeaderName
             // 
             this.LeaderName.DataPropertyName = "LeaderName";
             this.LeaderName.HeaderText = "Leader Name";
             this.LeaderName.Name = "LeaderName";
             this.LeaderName.ReadOnly = true;
-            // 
-            // foundationDateDataGridViewTextBoxColumn
-            // 
-            this.foundationDateDataGridViewTextBoxColumn.DataPropertyName = "FoundationDate";
-            this.foundationDateDataGridViewTextBoxColumn.HeaderText = "Foundation Date";
-            this.foundationDateDataGridViewTextBoxColumn.Name = "foundationDateDataGridViewTextBoxColumn";
-            this.foundationDateDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // countryDataGridViewTextBoxColumn
-            // 
-            this.countryDataGridViewTextBoxColumn.DataPropertyName = "Country";
-            this.countryDataGridViewTextBoxColumn.HeaderText = "Country";
-            this.countryDataGridViewTextBoxColumn.Name = "countryDataGridViewTextBoxColumn";
-            this.countryDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // featuresDataGridViewTextBoxColumn
-            // 
-            this.featuresDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.featuresDataGridViewTextBoxColumn.DataPropertyName = "Features";
-            this.featuresDataGridViewTextBoxColumn.HeaderText = "Features";
-            this.featuresDataGridViewTextBoxColumn.Name = "featuresDataGridViewTextBoxColumn";
-            this.featuresDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // criminalGangBindingSource
-            // 
-            this.criminalGangBindingSource.DataSource = typeof(Cursovaya.Model.CriminalGang);
             // 
             // archivePage
             // 
@@ -382,11 +335,6 @@
             this.archiveDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.archiveDataGridView.Size = new System.Drawing.Size(843, 407);
             this.archiveDataGridView.TabIndex = 0;
-            // 
-            // archiveBindingSource
-            // 
-            this.archiveBindingSource.DataSource = typeof(Cursovaya.Model.Criminal);
-            this.archiveBindingSource.Sort = "";
             // 
             // searchBox
             // 
@@ -635,6 +583,122 @@
             this.showInfoButton.UseVisualStyleBackColor = true;
             this.showInfoButton.Click += new System.EventHandler(this.showInfoButton_Click);
             // 
+            // Age
+            // 
+            this.Age.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Age.DataPropertyName = "Age";
+            this.Age.HeaderText = "Age";
+            this.Age.Name = "Age";
+            this.Age.ReadOnly = true;
+            // 
+            // criminalBindingSource
+            // 
+            this.criminalBindingSource.DataSource = typeof(Cursovaya.Model.Criminal);
+            this.criminalBindingSource.Sort = "";
+            this.criminalBindingSource.CurrentChanged += new System.EventHandler(this.criminalBindingSource_CurrentChanged);
+            // 
+            // imageDataGridViewImageColumn2
+            // 
+            this.imageDataGridViewImageColumn2.DataPropertyName = "Image";
+            this.imageDataGridViewImageColumn2.HeaderText = "Image";
+            this.imageDataGridViewImageColumn2.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.imageDataGridViewImageColumn2.Name = "imageDataGridViewImageColumn2";
+            this.imageDataGridViewImageColumn2.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn7
+            // 
+            this.dataGridViewTextBoxColumn7.DataPropertyName = "Name";
+            this.dataGridViewTextBoxColumn7.HeaderText = "Name";
+            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
+            this.dataGridViewTextBoxColumn7.ReadOnly = true;
+            // 
+            // foundationDateDataGridViewTextBoxColumn
+            // 
+            this.foundationDateDataGridViewTextBoxColumn.DataPropertyName = "FoundationDate";
+            this.foundationDateDataGridViewTextBoxColumn.HeaderText = "Foundation Date";
+            this.foundationDateDataGridViewTextBoxColumn.Name = "foundationDateDataGridViewTextBoxColumn";
+            this.foundationDateDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // countryDataGridViewTextBoxColumn
+            // 
+            this.countryDataGridViewTextBoxColumn.DataPropertyName = "Country";
+            this.countryDataGridViewTextBoxColumn.HeaderText = "Country";
+            this.countryDataGridViewTextBoxColumn.Name = "countryDataGridViewTextBoxColumn";
+            this.countryDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // featuresDataGridViewTextBoxColumn
+            // 
+            this.featuresDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.featuresDataGridViewTextBoxColumn.DataPropertyName = "Features";
+            this.featuresDataGridViewTextBoxColumn.HeaderText = "Features";
+            this.featuresDataGridViewTextBoxColumn.Name = "featuresDataGridViewTextBoxColumn";
+            this.featuresDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // criminalGangBindingSource
+            // 
+            this.criminalGangBindingSource.DataSource = typeof(Cursovaya.Model.CriminalGang);
+            // 
+            // imageDataGridViewImageColumn1
+            // 
+            this.imageDataGridViewImageColumn1.DataPropertyName = "Image";
+            this.imageDataGridViewImageColumn1.HeaderText = "Image";
+            this.imageDataGridViewImageColumn1.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.imageDataGridViewImageColumn1.Name = "imageDataGridViewImageColumn1";
+            this.imageDataGridViewImageColumn1.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn4.DataPropertyName = "Name";
+            this.dataGridViewTextBoxColumn4.HeaderText = "Name";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.ReadOnly = true;
+            // 
+            // surnameDataGridViewTextBoxColumn1
+            // 
+            this.surnameDataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.surnameDataGridViewTextBoxColumn1.DataPropertyName = "Surname";
+            this.surnameDataGridViewTextBoxColumn1.HeaderText = "Surname";
+            this.surnameDataGridViewTextBoxColumn1.Name = "surnameDataGridViewTextBoxColumn1";
+            this.surnameDataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // aliasDataGridViewTextBoxColumn1
+            // 
+            this.aliasDataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.aliasDataGridViewTextBoxColumn1.DataPropertyName = "Alias";
+            this.aliasDataGridViewTextBoxColumn1.HeaderText = "Alias";
+            this.aliasDataGridViewTextBoxColumn1.Name = "aliasDataGridViewTextBoxColumn1";
+            this.aliasDataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // genderDataGridViewTextBoxColumn1
+            // 
+            this.genderDataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.genderDataGridViewTextBoxColumn1.DataPropertyName = "Gender";
+            this.genderDataGridViewTextBoxColumn1.HeaderText = "Gender";
+            this.genderDataGridViewTextBoxColumn1.Name = "genderDataGridViewTextBoxColumn1";
+            this.genderDataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // nationalityDataGridViewTextBoxColumn1
+            // 
+            this.nationalityDataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.nationalityDataGridViewTextBoxColumn1.DataPropertyName = "Nationality";
+            this.nationalityDataGridViewTextBoxColumn1.HeaderText = "Nationality";
+            this.nationalityDataGridViewTextBoxColumn1.Name = "nationalityDataGridViewTextBoxColumn1";
+            this.nationalityDataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // birthDayDataGridViewTextBoxColumn1
+            // 
+            this.birthDayDataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.birthDayDataGridViewTextBoxColumn1.DataPropertyName = "BirthDay";
+            this.birthDayDataGridViewTextBoxColumn1.HeaderText = "BirthDay";
+            this.birthDayDataGridViewTextBoxColumn1.Name = "birthDayDataGridViewTextBoxColumn1";
+            this.birthDayDataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // archiveBindingSource
+            // 
+            this.archiveBindingSource.DataSource = typeof(Cursovaya.Model.Criminal);
+            this.archiveBindingSource.Sort = "";
+            // 
             // Image
             // 
             this.Image.DataPropertyName = "Image";
@@ -700,70 +764,6 @@
             this.BirthDay.Name = "BirthDay";
             this.BirthDay.ReadOnly = true;
             // 
-            // imageDataGridViewImageColumn1
-            // 
-            this.imageDataGridViewImageColumn1.DataPropertyName = "Image";
-            this.imageDataGridViewImageColumn1.HeaderText = "Image";
-            this.imageDataGridViewImageColumn1.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.imageDataGridViewImageColumn1.Name = "imageDataGridViewImageColumn1";
-            this.imageDataGridViewImageColumn1.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            this.dataGridViewTextBoxColumn4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumn4.DataPropertyName = "Name";
-            this.dataGridViewTextBoxColumn4.HeaderText = "Name";
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            this.dataGridViewTextBoxColumn4.ReadOnly = true;
-            // 
-            // surnameDataGridViewTextBoxColumn1
-            // 
-            this.surnameDataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.surnameDataGridViewTextBoxColumn1.DataPropertyName = "Surname";
-            this.surnameDataGridViewTextBoxColumn1.HeaderText = "Surname";
-            this.surnameDataGridViewTextBoxColumn1.Name = "surnameDataGridViewTextBoxColumn1";
-            this.surnameDataGridViewTextBoxColumn1.ReadOnly = true;
-            // 
-            // aliasDataGridViewTextBoxColumn1
-            // 
-            this.aliasDataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.aliasDataGridViewTextBoxColumn1.DataPropertyName = "Alias";
-            this.aliasDataGridViewTextBoxColumn1.HeaderText = "Alias";
-            this.aliasDataGridViewTextBoxColumn1.Name = "aliasDataGridViewTextBoxColumn1";
-            this.aliasDataGridViewTextBoxColumn1.ReadOnly = true;
-            // 
-            // Age
-            // 
-            this.Age.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Age.DataPropertyName = "Age";
-            this.Age.HeaderText = "Age";
-            this.Age.Name = "Age";
-            this.Age.ReadOnly = true;
-            // 
-            // genderDataGridViewTextBoxColumn1
-            // 
-            this.genderDataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.genderDataGridViewTextBoxColumn1.DataPropertyName = "Gender";
-            this.genderDataGridViewTextBoxColumn1.HeaderText = "Gender";
-            this.genderDataGridViewTextBoxColumn1.Name = "genderDataGridViewTextBoxColumn1";
-            this.genderDataGridViewTextBoxColumn1.ReadOnly = true;
-            // 
-            // nationalityDataGridViewTextBoxColumn1
-            // 
-            this.nationalityDataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.nationalityDataGridViewTextBoxColumn1.DataPropertyName = "Nationality";
-            this.nationalityDataGridViewTextBoxColumn1.HeaderText = "Nationality";
-            this.nationalityDataGridViewTextBoxColumn1.Name = "nationalityDataGridViewTextBoxColumn1";
-            this.nationalityDataGridViewTextBoxColumn1.ReadOnly = true;
-            // 
-            // birthDayDataGridViewTextBoxColumn1
-            // 
-            this.birthDayDataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.birthDayDataGridViewTextBoxColumn1.DataPropertyName = "BirthDay";
-            this.birthDayDataGridViewTextBoxColumn1.HeaderText = "BirthDay";
-            this.birthDayDataGridViewTextBoxColumn1.Name = "birthDayDataGridViewTextBoxColumn1";
-            this.birthDayDataGridViewTextBoxColumn1.ReadOnly = true;
-            // 
             // ListMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -786,14 +786,14 @@
             this.adminMenuStrip.ResumeLayout(false);
             this.adminMenuStrip.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.criminalsDataGridView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.criminalBindingSource)).EndInit();
             this.listControl.ResumeLayout(false);
             this.criminalsPage.ResumeLayout(false);
             this.gangPage.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gangGridView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.criminalGangBindingSource)).EndInit();
             this.archivePage.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.archiveDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.criminalBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.criminalGangBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.archiveBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -835,14 +835,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn foundationDateDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn countryDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn featuresDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewImageColumn Image;
-        private System.Windows.Forms.DataGridViewTextBoxColumn txtName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Surname;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Alias;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Gender;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Nationality;
-        private System.Windows.Forms.DataGridViewTextBoxColumn BirthDay;
         private System.Windows.Forms.DataGridViewImageColumn imageDataGridViewImageColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
         private System.Windows.Forms.DataGridViewTextBoxColumn surnameDataGridViewTextBoxColumn1;
@@ -851,5 +843,13 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn genderDataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn nationalityDataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn birthDayDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewImageColumn Image;
+        private System.Windows.Forms.DataGridViewTextBoxColumn txtName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Surname;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Alias;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Gender;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Nationality;
+        private System.Windows.Forms.DataGridViewTextBoxColumn BirthDay;
     }
 }
