@@ -24,7 +24,13 @@ namespace Cursovaya.Model
         { 
             get
             {
-                return DateTime.Now.Year - BirthDay.Year;
+                var i = DateTime.Now.Year - BirthDay.Year;
+                if (DateTime.Now.DayOfYear - BirthDay.DayOfYear < 0)
+                {
+                    i--;
+                }
+                return i;
+                   
             }
         }
         public string Gender { get; set; }

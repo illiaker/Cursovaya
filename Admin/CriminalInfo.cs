@@ -1,4 +1,5 @@
-﻿using Cursovaya.Model;
+﻿using Admin;
+using Cursovaya.Model;
 using FileCabinetLibrary.Model;
 using System;
 using System.Collections.Generic;
@@ -35,7 +36,7 @@ namespace AdminView
             surnameBox.Text = Criminal.Surname;
             aliasBox.Text = Criminal.Alias;
             heightBox.Value = Criminal.Height;
-            ageBox.Value = Criminal.Age;
+            ageBox.Text = Criminal.Age.ToString();
             genderBox.SelectedItem = Criminal.Gender;
             nationalityBox.SelectedItem = Criminal.Nationality;
             birthdayBox.Value = Criminal.BirthDay;
@@ -132,6 +133,24 @@ namespace AdminView
         {
             if (DialogResult.OK == DialogResult)
             {
+                foreach(Control c in Controls)
+                {
+                    if(c is TextBox t)
+                    {
+                        CheckIfFilled(t, e);
+                       
+                    }
+                    if(c is ComboBox cb)
+                    {
+                        CheckIfFilled(cb, e);
+                        
+                    }
+                }
+
+                if (e.Cancel == true)
+                {
+                    MessageBox.Show("You have to fill all reqiered fileds");
+                }
                 Criminal.Name = nameBox.Text;
                 Criminal.Image = (Bitmap)CriminalImage.Image;
                 Criminal.Surname = surnameBox.Text;
@@ -148,6 +167,25 @@ namespace AdminView
 
         }
 
+        private void ControlOnFocus(Control cb)
+        {
+            cb.BackColor = Color.White;
+        }
+
+        private void CheckIfFilled(Control sender, FormClosingEventArgs e)
+        {
+            if(string.IsNullOrWhiteSpace(sender.Text))
+            {
+                sender.BackColor = Color.Pink;
+                e.Cancel = true;
+            }
+            else
+            {
+                sender.BackColor = Color.White;
+            }
+            
+        }
+
         private void ganglabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             if (Criminal.Gang != null)
@@ -158,11 +196,22 @@ namespace AdminView
 
         private void chooseButton_Click(object sender, EventArgs e)
         {
-
+            var gangListForm = new GangList();
+            if(gangListForm.ShowDialog() == DialogResult.OK)
+            {
+                Criminal.Gang = gangListForm.Gang;
+                gangListForm.Gang.GangMambers.Add(Criminal);
+                ganglabel.Text = Criminal.Gang.Name;
+            }
         }
         private void birthdayBox_ValueChanged(object sender, EventArgs e)
         {
-            ageBox.Value = DateTime.Now.Year - birthdayBox.Value.Year;
+            Criminal.BirthDay = birthdayBox.Value;
+            ageBox.Text = Criminal.Age.ToString();
+        }
+        private void aliasBox_MouseClick(object sender, MouseEventArgs e)
+        {
+            ControlOnFocus((Control)sender);
         }
         #endregion
 

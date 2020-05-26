@@ -16,3 +16,4 @@ D:\Project\C#\OOP\Cursova\Cursovaya\Admin\obj\Debug\AdminView.ListMenu.resources
 D:\Project\C#\OOP\Cursova\Cursovaya\Admin\obj\Debug\AdminView.GangInfo.resources
 D:\Project\C#\OOP\Cursova\Cursovaya\Admin\obj\Debug\AdminView.csproj.CoreCompileInputs.cache
 D:\Project\C#\OOP\Cursova\Cursovaya\Admin\obj\Debug\Admin.CriminalsList.resources
+D:\Project\C#\OOP\Cursova\Cursovaya\Admin\obj\Debug\Admin.GangList.resources

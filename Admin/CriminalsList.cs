@@ -1,4 +1,4 @@
-﻿using Admin.Presenter;
+﻿
 using Cursovaya.Model;
 using System;
 using System.Collections.Generic;
@@ -13,9 +13,7 @@ using System.Windows.Forms;
 namespace Admin
 {
     public partial class CriminalsList : Form
-    {
-        
-
+    {        
         //Constructor
         public CriminalsList(List<Criminal> criminals)
         {
@@ -38,11 +36,15 @@ namespace Admin
         #region EventHandlers
         private void selectButton_Click(object sender, EventArgs e)
         {
+            
             foreach (DataGridViewRow r in criminalList.SelectedRows)
             {
-                Criminal c = (Criminal)r.DataBoundItem;
+                Criminal c = r.DataBoundItem as Criminal;
                 GangMembers.Add(c);
-                CriminalsToSelect.Remove(c);
+            }
+            foreach(Criminal i in GangMembers)
+            {
+                CriminalsToSelect.Remove(i);
             }
             CBS.DataSource = CriminalsToSelect;
             criminalBindingSource.ResetBindings(false);

@@ -101,6 +101,7 @@
             this.Controls.Add(this.password);
             this.Controls.Add(this.login);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.MinimumSize = new System.Drawing.Size(290, 278);
             this.Name = "Autorization";
             this.Text = "Autorization";
             this.ResumeLayout(false);

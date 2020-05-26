@@ -88,7 +88,12 @@
     <Compile Include="GangInfo.Designer.cs">
       <DependentUpon>GangInfo.cs</DependentUpon>
     </Compile>
-    <Compile Include="ISort.cs" />
+    <Compile Include="GangList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GangList.Designer.cs">
+      <DependentUpon>GangList.cs</DependentUpon>
+    </Compile>
     <Compile Include="ListMenu.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -97,7 +102,6 @@
     </Compile>
     <Compile Include="Presenter\AutorizationPresenter.cs" />
     <Compile Include="Presenter\ListMenuPresenter.cs" />
-    <Compile Include="Presenter\SortPresenter.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Autorization.resx">
@@ -111,6 +115,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GangInfo.resx">
       <DependentUpon>GangInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GangList.resx">
+      <DependentUpon>GangList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ListMenu.resx">
       <DependentUpon>ListMenu.cs</DependentUpon>

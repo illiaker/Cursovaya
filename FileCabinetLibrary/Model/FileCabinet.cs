@@ -75,7 +75,7 @@ namespace Cursovaya.Model
                     Alias = $"Alias{i}",
                     Height = i,
                     Gender = "Other",
-                    Nationality = "",
+                    Nationality = null,
                     BirthDay = DateTime.Now - TimeSpan.FromDays(i * 365),
                     Description = $"Description{i}" 
                 };
@@ -95,7 +95,7 @@ namespace Cursovaya.Model
                     Alias = $"Alias{i}",
                     Height = i,
                     Gender = "Other",
-                    Nationality = "",
+                    Nationality = null,
                     BirthDay = DateTime.Now - TimeSpan.FromDays(i * 365),
                     Description = $"Description{i}"
                 };
@@ -115,7 +115,7 @@ namespace Cursovaya.Model
         {
             Criminals.Add(criminal);
             Archive.Remove(criminal);
-        }        
+       }        
         public void Add(Criminal criminal)
         {
             Criminals.Add(criminal);
@@ -134,23 +134,57 @@ namespace Cursovaya.Model
             return res;
         }
        
-        public List<Criminal> Search(string surname)
+        public List<Criminal> Search(string value, string criteria, List<Criminal> list)
         {
-            surname = surname.ToLower();
+            value = value.ToLower();
             List<Criminal> res = new List<Criminal>();
-            foreach (Criminal c in Criminals)
+            switch (criteria)
             {
-                if (c.Surname.ToLower().Contains(surname))
-                {
-                    res.Add(c);
-                }
+                case "Surname":
+                    foreach(Criminal i in list)
+                    {
+                        if(i.Surname.ToLower().StartsWith(value))
+                        {
+                            res.Add(i);
+                        }
+                    }
+                    break;
+                    
+                case "Name":
+                    foreach (Criminal i in list)
+                    {
+                        if (i.Name.ToLower().StartsWith(value))
+                        {
+                            res.Add(i);
+                        }
+                    }
+                    break;
+                    
+                case "Alias":
+                    foreach (Criminal i in list)
+                    {
+                        if (i.Alias.ToLower().StartsWith(value))
+                        {
+                            res.Add(i);
+                        }
+                    }
+                    break;
+                                  
             }
             return res;
+
+           
         }
-        public List<Criminal> Nationality(string nationality)
+
+
+        /*public List<CriminalGang> Search(string value, List<CriminalGang> list)
+        {
+
+        }*/
+        public List<Criminal> Nationality(string nationality, List<Criminal> list)
         {
             List<Criminal> res = new List<Criminal>();
-            foreach (Criminal c in Criminals)
+            foreach (Criminal c in list)
             {
                 if (c.Nationality==nationality)
                 {
@@ -159,6 +193,19 @@ namespace Cursovaya.Model
             }
             return res;
         }
+        public List<Criminal> Age(int from, int to, List<Criminal> list)
+        {
+            List<Criminal> res = new List<Criminal>();
+            foreach(Criminal i in list)
+            {
+                if(i.Age >= from && i.Age <= to)
+                {
+                    res.Add(i);
+                }
+            }
+            return res;
+        }
+
         public void Save()
         {
             new Dao(fileCabinet).Save();

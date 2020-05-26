@@ -31,10 +31,13 @@ namespace AdminView.Presenter
             listView.AddGangEvent += ListView_AddGangEvent;
             listView.DeleteEvent += ListView_DeleteEvent;
             listView.ResetEvent += ListView_ResetEvent;
+           
+            listView.SearchCriminalEvent += ListView_SearchCriminalEvent;
             
+            listView.SearchInArchiveEvent += ListView_SearchInArchiveEvent;
         }
 
-        
+       
 
         #region Field
         ListMenu listView;
@@ -42,21 +45,77 @@ namespace AdminView.Presenter
         #endregion
 
         #region EventHandler
-        
+        private void ListView_SearchInArchiveEvent(object sender, EventArgs e)
+        {
+            TextBox t = sender as TextBox;
+            List<Criminal> list = new List<Criminal>();
+            if (listView.tmpList != null)
+            {
+                list = listView.tmpList as List<Criminal>;
+            }
+            else
+            {
+                 list = fileCabinet.Archive;
+            }
+            listView.ABS.DataSource = fileCabinet.Search(t.Text, listView.CriteriaArchiveBox.Text, list); ;
+            listView.ABS.ResetBindings(false);
+        }
+
+        private void ListView_AgeCriminalChangedEvent(object sender, EventArgs e)
+        {
+            List<Criminal> list = listView.CBS.DataSource as List<Criminal>;
+            listView.CBS.DataSource = fileCabinet.Age((int)listView.FromAgeCriteriaBox.Value,
+                                                        (int)listView.ToAgeCriteriaBox.Value,
+                                                        list);
+            listView.CBS.ResetBindings(false);
+        }
+
+        private void ListView_SearchCriminalEvent(object sender, EventArgs e)
+        {
+            TextBox t = sender as TextBox;
+            List<Criminal> list = new List<Criminal>();
+            if (listView.tmpList != null)
+            {
+                list = listView.tmpList as List<Criminal>;
+            }
+            else
+            {
+                list = fileCabinet.Criminals;
+            }
+            listView.CBS.DataSource = fileCabinet.Search(t.Text, listView.CriteriaBox.Text, list); ;
+            listView.CBS.ResetBindings(false);
+        }
+
+        private void ListView_NationalityCriminalChangedEvent(object sender, EventArgs e)
+        {
+            ComboBox c = sender as ComboBox;
+            List<Criminal> list = listView.CBS.DataSource as List<Criminal>;
+            listView.CBS.DataSource = fileCabinet.Nationality(c.Text, list);
+            listView.CBS.ResetBindings(false);
+        }
+
         private void ListView_ResetEvent(object sender, EventArgs e)
         {
+            listView.FromAgeCriteriaBox.Value = 0;
+            listView.ToAgeCriteriaBox.Value = 100;
+            listView.tmpList = null;
+            listView.ABS.DataSource = fileCabinet.Archive;
+            listView.GBS.DataSource = fileCabinet.CriminalGangs;
             listView.CBS.DataSource = fileCabinet.Criminals;
             listView.CBS.ResetBindings(false);
+            listView.ABS.ResetBindings(false);
+            listView.GBS.ResetBindings(false);
         }
         private void ListView_DeleteEvent(object sender, EventArgs e)
         {
-            var c = (Criminal)listView.List.CurrentRow.DataBoundItem;
+            var c = (Criminal)listView.CriminalList.CurrentRow.DataBoundItem;
             if(c.Gang != null)
             {
                 c.Gang.GangMambers.Remove(c);
                 c.Gang = null;
             }
             fileCabinet.Criminals.Remove(c);
+            listView.CBS.DataSource = fileCabinet.Criminals;
             listView.CBS.ResetBindings(false);
 
         }
@@ -68,6 +127,10 @@ namespace AdminView.Presenter
                 fileCabinet.CriminalGangs.Add(gi.Gang);
                 listView.GBS.DataSource = fileCabinet.CriminalGangs;
                 listView.GBS.ResetBindings(false);
+                // select and scroll to the last row
+                var lastIdx = listView.GangList.Rows.Count - 1;
+                listView.GangList.Rows[lastIdx].Selected = true;
+                listView.GangList.FirstDisplayedScrollingRowIndex = lastIdx;
 
             }
         }
@@ -85,6 +148,7 @@ namespace AdminView.Presenter
             if (User.Role == UserRole.User)
             {
                 listView.MenuStrip.Hide();
+                listView.ListControl.TabPages[2].Hide();
             }
             else
             {
@@ -94,6 +158,8 @@ namespace AdminView.Presenter
         private void ListView_MoveToListevent(object sender, EventArgs e)
         {
             fileCabinet.MoveToList((Criminal)listView.ArchiveList.CurrentRow.DataBoundItem);
+            listView.CBS.DataSource = fileCabinet.Criminals;
+            listView.ABS.DataSource = fileCabinet.Archive;
             listView.CBS.ResetBindings(false);
             listView.ABS.ResetBindings(false);
             fileCabinet.Save();
@@ -104,13 +170,15 @@ namespace AdminView.Presenter
             var i = MessageBox.Show("Are you sure you want to move this criminal to archive?", "Conirm", MessageBoxButtons.YesNo);
             if (i == DialogResult.Yes)
             {
-                var c = (Criminal)listView.List.CurrentRow.DataBoundItem;
+                var c = (Criminal)listView.CriminalList.CurrentRow.DataBoundItem;
                 fileCabinet.MoveToArchive(c);
                 if(c.Gang != null)
                 {
                     c.Gang.GangMambers.Remove(c);
                     c.Gang = null;
                 }
+                listView.CBS.DataSource = fileCabinet.Criminals;
+                listView.ABS.DataSource = fileCabinet.Archive;
                 fileCabinet.Save();
                 listView.CBS.ResetBindings(false);
                 listView.ABS.ResetBindings(false);
@@ -122,10 +190,11 @@ namespace AdminView.Presenter
             try
             {
                 fileCabinet.Load();
-                fileCabinet.GenerateMembers(200);
+                //fileCabinet.GenerateMembers(50);
                 listView.CBS.DataSource = fileCabinet.Criminals;
                 listView.ABS.DataSource = fileCabinet.Archive;
                 listView.GBS.DataSource = fileCabinet.CriminalGangs;
+                
                 listView.CBS.ResetBindings(false);
                 listView.ABS.ResetBindings(false);
                 listView.GBS.ResetBindings(false);
@@ -150,10 +219,15 @@ namespace AdminView.Presenter
             if (ci.ShowDialog() == DialogResult.OK)
             {
                 fileCabinet.Criminals.Add(ci.Criminal);
+                listView.CBS.DataSource = fileCabinet.Criminals;
+                listView.tmpList = fileCabinet.Criminals;
                 fileCabinet.Save();                
                 listView.CBS.ResetBindings(false);
 
-
+                // select and scroll to the last row
+                var lastIdx = listView.CriminalList.Rows.Count - 1;
+                listView.CriminalList.Rows[lastIdx].Selected = true;
+                listView.CriminalList.FirstDisplayedScrollingRowIndex = lastIdx;
             }
         }
         #endregion

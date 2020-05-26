@@ -40,7 +40,6 @@
             this.aliasBox = new System.Windows.Forms.TextBox();
             this.heightBox = new System.Windows.Forms.NumericUpDown();
             this.HeightLabel = new System.Windows.Forms.Label();
-            this.ageBox = new System.Windows.Forms.NumericUpDown();
             this.label4 = new System.Windows.Forms.Label();
             this.genderBox = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
@@ -74,9 +73,9 @@
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.label = new System.Windows.Forms.Label();
             this.IdLable = new System.Windows.Forms.Label();
+            this.ageBox = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.CriminalImage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.heightBox)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ageBox)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -114,6 +113,7 @@
             this.nameBox.Name = "nameBox";
             this.nameBox.Size = new System.Drawing.Size(122, 20);
             this.nameBox.TabIndex = 2;
+            this.nameBox.MouseClick += new System.Windows.Forms.MouseEventHandler(this.aliasBox_MouseClick);
             // 
             // label1
             // 
@@ -130,6 +130,7 @@
             this.surnameBox.Name = "surnameBox";
             this.surnameBox.Size = new System.Drawing.Size(122, 20);
             this.surnameBox.TabIndex = 4;
+            this.surnameBox.MouseClick += new System.Windows.Forms.MouseEventHandler(this.aliasBox_MouseClick);
             // 
             // label2
             // 
@@ -155,6 +156,7 @@
             this.aliasBox.Name = "aliasBox";
             this.aliasBox.Size = new System.Drawing.Size(122, 20);
             this.aliasBox.TabIndex = 7;
+            this.aliasBox.MouseClick += new System.Windows.Forms.MouseEventHandler(this.aliasBox_MouseClick);
             // 
             // heightBox
             // 
@@ -167,6 +169,7 @@
             this.heightBox.Name = "heightBox";
             this.heightBox.Size = new System.Drawing.Size(122, 20);
             this.heightBox.TabIndex = 8;
+            this.heightBox.MouseClick += new System.Windows.Forms.MouseEventHandler(this.aliasBox_MouseClick);
             // 
             // HeightLabel
             // 
@@ -176,13 +179,6 @@
             this.HeightLabel.Size = new System.Drawing.Size(38, 13);
             this.HeightLabel.TabIndex = 9;
             this.HeightLabel.Text = "Height";
-            // 
-            // ageBox
-            // 
-            this.ageBox.Location = new System.Drawing.Point(279, 183);
-            this.ageBox.Name = "ageBox";
-            this.ageBox.Size = new System.Drawing.Size(122, 20);
-            this.ageBox.TabIndex = 10;
             // 
             // label4
             // 
@@ -196,6 +192,7 @@
             // genderBox
             // 
             this.genderBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.genderBox.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.genderBox.FormattingEnabled = true;
             this.genderBox.Items.AddRange(new object[] {
             "Male",
@@ -205,6 +202,7 @@
             this.genderBox.Name = "genderBox";
             this.genderBox.Size = new System.Drawing.Size(121, 21);
             this.genderBox.TabIndex = 12;
+            this.genderBox.MouseClick += new System.Windows.Forms.MouseEventHandler(this.aliasBox_MouseClick);
             // 
             // label5
             // 
@@ -227,6 +225,7 @@
             // nationalityBox
             // 
             this.nationalityBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.nationalityBox.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.nationalityBox.FormattingEnabled = true;
             this.nationalityBox.Items.AddRange(new object[] {
             "Afghan",
@@ -427,6 +426,7 @@
             this.nationalityBox.Name = "nationalityBox";
             this.nationalityBox.Size = new System.Drawing.Size(121, 21);
             this.nationalityBox.TabIndex = 15;
+            this.nationalityBox.MouseClick += new System.Windows.Forms.MouseEventHandler(this.aliasBox_MouseClick);
             // 
             // birthdayBox
             // 
@@ -584,6 +584,7 @@
             // countryWhereWantedBox
             // 
             this.countryWhereWantedBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.countryWhereWantedBox.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.countryWhereWantedBox.ForeColor = System.Drawing.SystemColors.MenuText;
             this.countryWhereWantedBox.FormattingEnabled = true;
             this.countryWhereWantedBox.Items.AddRange(new object[] {
@@ -787,6 +788,7 @@
             this.countryWhereWantedBox.Name = "countryWhereWantedBox";
             this.countryWhereWantedBox.Size = new System.Drawing.Size(122, 21);
             this.countryWhereWantedBox.TabIndex = 24;
+            this.countryWhereWantedBox.MouseClick += new System.Windows.Forms.MouseEventHandler(this.aliasBox_MouseClick);
             // 
             // label16
             // 
@@ -881,12 +883,21 @@
             this.IdLable.Size = new System.Drawing.Size(0, 13);
             this.IdLable.TabIndex = 34;
             // 
+            // ageBox
+            // 
+            this.ageBox.Location = new System.Drawing.Point(279, 183);
+            this.ageBox.Name = "ageBox";
+            this.ageBox.ReadOnly = true;
+            this.ageBox.Size = new System.Drawing.Size(122, 20);
+            this.ageBox.TabIndex = 35;
+            // 
             // CriminalInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CausesValidation = false;
             this.ClientSize = new System.Drawing.Size(883, 452);
+            this.Controls.Add(this.ageBox);
             this.Controls.Add(this.IdLable);
             this.Controls.Add(this.label);
             this.Controls.Add(this.groupBox3);
@@ -908,7 +919,6 @@
             this.Controls.Add(this.label5);
             this.Controls.Add(this.genderBox);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.ageBox);
             this.Controls.Add(this.HeightLabel);
             this.Controls.Add(this.heightBox);
             this.Controls.Add(this.aliasBox);
@@ -918,13 +928,13 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.nameBox);
             this.Controls.Add(this.OpenImage);
+            this.MinimumSize = new System.Drawing.Size(899, 491);
             this.Name = "CriminalInfo";
             this.RightToLeftLayout = true;
             this.Text = "CriminalInfo";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.CriminalInfo_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.CriminalImage)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.heightBox)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ageBox)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
@@ -948,7 +958,6 @@
         private System.Windows.Forms.TextBox aliasBox;
         private System.Windows.Forms.NumericUpDown heightBox;
         private System.Windows.Forms.Label HeightLabel;
-        private System.Windows.Forms.NumericUpDown ageBox;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ComboBox genderBox;
         private System.Windows.Forms.Label label5;
@@ -982,5 +991,6 @@
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Label label;
         private System.Windows.Forms.Label IdLable;
+        private System.Windows.Forms.TextBox ageBox;
     }
 }

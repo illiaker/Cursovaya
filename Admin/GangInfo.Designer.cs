@@ -49,6 +49,7 @@
             this.IdLabelValue = new System.Windows.Forms.Label();
             this.addButton = new System.Windows.Forms.Button();
             this.gangMembersGrid = new System.Windows.Forms.DataGridView();
+            this.deleteButton = new System.Windows.Forms.Button();
             this.imageDataGridViewImageColumn = new System.Windows.Forms.DataGridViewImageColumn();
             this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.surnameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -58,7 +59,6 @@
             this.nationalityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.birthDayDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.criminalBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.deleteButton = new System.Windows.Forms.Button();
             this.featuresBoxContainer.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gangImageBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gangMembersGrid)).BeginInit();
@@ -76,8 +76,7 @@
             // 
             // featuresBoxContainer
             // 
-            this.featuresBoxContainer.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.featuresBoxContainer.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.featuresBoxContainer.Controls.Add(this.featuresBox);
             this.featuresBoxContainer.Location = new System.Drawing.Point(547, 23);
@@ -457,14 +456,27 @@
             this.genderDataGridViewTextBoxColumn,
             this.nationalityDataGridViewTextBoxColumn,
             this.birthDayDataGridViewTextBoxColumn});
+            this.gangMembersGrid.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.gangMembersGrid.DataSource = this.criminalBindingSource;
             this.gangMembersGrid.Location = new System.Drawing.Point(240, 308);
+            this.gangMembersGrid.MultiSelect = false;
             this.gangMembersGrid.Name = "gangMembersGrid";
             this.gangMembersGrid.ReadOnly = true;
+            this.gangMembersGrid.RowHeadersVisible = false;
             this.gangMembersGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.gangMembersGrid.Size = new System.Drawing.Size(543, 237);
             this.gangMembersGrid.TabIndex = 18;
             this.gangMembersGrid.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gangMembersGrid_CellDoubleClick);
+            // 
+            // deleteButton
+            // 
+            this.deleteButton.Location = new System.Drawing.Point(36, 354);
+            this.deleteButton.Name = "deleteButton";
+            this.deleteButton.Size = new System.Drawing.Size(138, 23);
+            this.deleteButton.TabIndex = 19;
+            this.deleteButton.Text = "Delete gang members";
+            this.deleteButton.UseVisualStyleBackColor = true;
+            this.deleteButton.Click += new System.EventHandler(this.deleteButton_Click);
             // 
             // imageDataGridViewImageColumn
             // 
@@ -534,16 +546,6 @@
             // 
             this.criminalBindingSource.DataSource = typeof(Cursovaya.Model.Criminal);
             // 
-            // deleteButton
-            // 
-            this.deleteButton.Location = new System.Drawing.Point(36, 354);
-            this.deleteButton.Name = "deleteButton";
-            this.deleteButton.Size = new System.Drawing.Size(138, 23);
-            this.deleteButton.TabIndex = 19;
-            this.deleteButton.Text = "Delete gang members";
-            this.deleteButton.UseVisualStyleBackColor = true;
-            this.deleteButton.Click += new System.EventHandler(this.deleteButton_Click);
-            // 
             // GangInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -568,6 +570,7 @@
             this.Controls.Add(this.countrylabel);
             this.Controls.Add(this.featuresBoxContainer);
             this.Controls.Add(this.nameLabel);
+            this.MinimumSize = new System.Drawing.Size(811, 596);
             this.Name = "GangInfo";
             this.Text = "GangInfo";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.GangInfo_FormClosing);
