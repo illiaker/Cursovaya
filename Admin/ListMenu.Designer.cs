@@ -91,6 +91,9 @@
             this.searchBox2 = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.archiveDataGridView = new System.Windows.Forms.DataGridView();
+            this.archiveBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.showInfoButton = new System.Windows.Forms.Button();
+            this.exitButton = new System.Windows.Forms.Button();
             this.imageDataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.surnameDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -98,10 +101,7 @@
             this.Age = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.genderDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nationalityDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.birthDayDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.archiveBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.showInfoButton = new System.Windows.Forms.Button();
-            this.exitButton = new System.Windows.Forms.Button();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.adminMenuStrip.SuspendLayout();
             this.listControl.SuspendLayout();
             this.criminalsPage.SuspendLayout();
@@ -146,35 +146,35 @@
             // addToolStripMenuItem
             // 
             this.addToolStripMenuItem.Name = "addToolStripMenuItem";
-            this.addToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.addToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
             this.addToolStripMenuItem.Text = "Add";
             this.addToolStripMenuItem.Click += new System.EventHandler(this.addToolStripMenuItem_Click);
             // 
             // moveToArchive
             // 
             this.moveToArchive.Name = "moveToArchive";
-            this.moveToArchive.Size = new System.Drawing.Size(180, 22);
+            this.moveToArchive.Size = new System.Drawing.Size(159, 22);
             this.moveToArchive.Text = "Move to archive";
             this.moveToArchive.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
             // 
             // changeToolStripMenuItem
             // 
             this.changeToolStripMenuItem.Name = "changeToolStripMenuItem";
-            this.changeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.changeToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
             this.changeToolStripMenuItem.Text = "Edit";
             this.changeToolStripMenuItem.Click += new System.EventHandler(this.changeToolStripMenuItem_Click);
             // 
             // moveToListToolStripMenuItem
             // 
             this.moveToListToolStripMenuItem.Name = "moveToListToolStripMenuItem";
-            this.moveToListToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.moveToListToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
             this.moveToListToolStripMenuItem.Text = "Move to list";
             this.moveToListToolStripMenuItem.Click += new System.EventHandler(this.moveToListToolStripMenuItem_Click);
             // 
             // deleteToolStripMenuItem1
             // 
             this.deleteToolStripMenuItem1.Name = "deleteToolStripMenuItem1";
-            this.deleteToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.deleteToolStripMenuItem1.Size = new System.Drawing.Size(159, 22);
             this.deleteToolStripMenuItem1.Text = "Delete";
             this.deleteToolStripMenuItem1.Click += new System.EventHandler(this.deleteToolStripMenuItem1_Click);
             // 
@@ -190,14 +190,14 @@
             // addToolStripMenuItem1
             // 
             this.addToolStripMenuItem1.Name = "addToolStripMenuItem1";
-            this.addToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.addToolStripMenuItem1.Size = new System.Drawing.Size(96, 22);
             this.addToolStripMenuItem1.Text = "Add";
             this.addToolStripMenuItem1.Click += new System.EventHandler(this.addToolStripMenuItem1_Click);
             // 
             // changeToolStripMenuItem1
             // 
             this.changeToolStripMenuItem1.Name = "changeToolStripMenuItem1";
-            this.changeToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.changeToolStripMenuItem1.Size = new System.Drawing.Size(96, 22);
             this.changeToolStripMenuItem1.Text = "Edit";
             this.changeToolStripMenuItem1.Click += new System.EventHandler(this.changeToolStripMenuItem1_Click);
             // 
@@ -213,12 +213,12 @@
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(177, 6);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(90, 6);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(93, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -1172,7 +1172,7 @@
             this.Age,
             this.genderDataGridViewTextBoxColumn1,
             this.nationalityDataGridViewTextBoxColumn1,
-            this.birthDayDataGridViewTextBoxColumn1});
+            this.dataGridViewTextBoxColumn1});
             this.archiveDataGridView.DataSource = this.archiveBindingSource;
             this.archiveDataGridView.GridColor = System.Drawing.SystemColors.ButtonShadow;
             this.archiveDataGridView.Location = new System.Drawing.Point(0, 0);
@@ -1185,6 +1185,33 @@
             this.archiveDataGridView.TabIndex = 0;
             this.archiveDataGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.criminalsDataGridView_CellDoubleClick);
             this.archiveDataGridView.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.archiveDataGridView_ColumnHeaderMouseClick);
+            // 
+            // archiveBindingSource
+            // 
+            this.archiveBindingSource.DataSource = typeof(Cursovaya.Model.Criminal);
+            this.archiveBindingSource.Sort = "";
+            // 
+            // showInfoButton
+            // 
+            this.showInfoButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.showInfoButton.Location = new System.Drawing.Point(12, 529);
+            this.showInfoButton.Name = "showInfoButton";
+            this.showInfoButton.Size = new System.Drawing.Size(75, 23);
+            this.showInfoButton.TabIndex = 9;
+            this.showInfoButton.Text = "Show info";
+            this.showInfoButton.UseVisualStyleBackColor = true;
+            this.showInfoButton.Click += new System.EventHandler(this.showInfoButton_Click);
+            // 
+            // exitButton
+            // 
+            this.exitButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.exitButton.Location = new System.Drawing.Point(668, 534);
+            this.exitButton.Name = "exitButton";
+            this.exitButton.Size = new System.Drawing.Size(75, 23);
+            this.exitButton.TabIndex = 10;
+            this.exitButton.Text = "Exit";
+            this.exitButton.UseVisualStyleBackColor = true;
+            this.exitButton.Click += new System.EventHandler(this.exitButton_Click);
             // 
             // imageDataGridViewImageColumn1
             // 
@@ -1242,40 +1269,13 @@
             this.nationalityDataGridViewTextBoxColumn1.Name = "nationalityDataGridViewTextBoxColumn1";
             this.nationalityDataGridViewTextBoxColumn1.ReadOnly = true;
             // 
-            // birthDayDataGridViewTextBoxColumn1
+            // dataGridViewTextBoxColumn1
             // 
-            this.birthDayDataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.birthDayDataGridViewTextBoxColumn1.DataPropertyName = "BirthDay";
-            this.birthDayDataGridViewTextBoxColumn1.HeaderText = "Birth Day";
-            this.birthDayDataGridViewTextBoxColumn1.Name = "birthDayDataGridViewTextBoxColumn1";
-            this.birthDayDataGridViewTextBoxColumn1.ReadOnly = true;
-            // 
-            // archiveBindingSource
-            // 
-            this.archiveBindingSource.DataSource = typeof(Cursovaya.Model.Criminal);
-            this.archiveBindingSource.Sort = "";
-            // 
-            // showInfoButton
-            // 
-            this.showInfoButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.showInfoButton.Location = new System.Drawing.Point(12, 529);
-            this.showInfoButton.Name = "showInfoButton";
-            this.showInfoButton.Size = new System.Drawing.Size(75, 23);
-            this.showInfoButton.TabIndex = 9;
-            this.showInfoButton.Text = "Show info";
-            this.showInfoButton.UseVisualStyleBackColor = true;
-            this.showInfoButton.Click += new System.EventHandler(this.showInfoButton_Click);
-            // 
-            // exitButton
-            // 
-            this.exitButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.exitButton.Location = new System.Drawing.Point(668, 534);
-            this.exitButton.Name = "exitButton";
-            this.exitButton.Size = new System.Drawing.Size(75, 23);
-            this.exitButton.TabIndex = 10;
-            this.exitButton.Text = "Exit";
-            this.exitButton.UseVisualStyleBackColor = true;
-            this.exitButton.Click += new System.EventHandler(this.exitButton_Click);
+            this.dataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "Date";
+            this.dataGridViewTextBoxColumn1.HeaderText = "Date";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
             // 
             // ListMenu
             // 
@@ -1372,14 +1372,6 @@
         private System.Windows.Forms.ComboBox nationalityArchiveBox;
         private System.Windows.Forms.TextBox searchBox2;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.DataGridViewImageColumn imageDataGridViewImageColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn surnameDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn aliasDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Age;
-        private System.Windows.Forms.DataGridViewTextBoxColumn genderDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nationalityDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn birthDayDataGridViewTextBoxColumn1;
         public System.Windows.Forms.TabPage archivePage;
         private System.Windows.Forms.DataGridView criminalsDataGridView;
         private System.Windows.Forms.DataGridViewImageColumn imageDataGridViewImageColumn;
@@ -1391,5 +1383,13 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn nationalityDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn Date;
         private System.Windows.Forms.Button exitButton;
+        private System.Windows.Forms.DataGridViewImageColumn imageDataGridViewImageColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn surnameDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn aliasDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Age;
+        private System.Windows.Forms.DataGridViewTextBoxColumn genderDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nationalityDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
     }
 }

@@ -49,6 +49,8 @@
             this.IdLabelValue = new System.Windows.Forms.Label();
             this.addButton = new System.Windows.Forms.Button();
             this.gangMembersGrid = new System.Windows.Forms.DataGridView();
+            this.criminalBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.deleteButton = new System.Windows.Forms.Button();
             this.imageDataGridViewImageColumn = new System.Windows.Forms.DataGridViewImageColumn();
             this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.surnameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -56,9 +58,7 @@
             this.ageDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.genderDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nationalityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.birthDayDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.criminalBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.deleteButton = new System.Windows.Forms.Button();
+            this.Date = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.featuresBoxContainer.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gangImageBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gangMembersGrid)).BeginInit();
@@ -459,7 +459,7 @@
             this.ageDataGridViewTextBoxColumn,
             this.genderDataGridViewTextBoxColumn,
             this.nationalityDataGridViewTextBoxColumn,
-            this.birthDayDataGridViewTextBoxColumn});
+            this.Date});
             this.gangMembersGrid.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.gangMembersGrid.DataSource = this.criminalBindingSource;
             this.gangMembersGrid.Location = new System.Drawing.Point(229, 238);
@@ -471,6 +471,20 @@
             this.gangMembersGrid.Size = new System.Drawing.Size(554, 278);
             this.gangMembersGrid.TabIndex = 18;
             this.gangMembersGrid.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gangMembersGrid_CellDoubleClick);
+            // 
+            // criminalBindingSource
+            // 
+            this.criminalBindingSource.DataSource = typeof(Cursovaya.Model.Criminal);
+            // 
+            // deleteButton
+            // 
+            this.deleteButton.Location = new System.Drawing.Point(36, 388);
+            this.deleteButton.Name = "deleteButton";
+            this.deleteButton.Size = new System.Drawing.Size(138, 23);
+            this.deleteButton.TabIndex = 19;
+            this.deleteButton.Text = "Delete gang members";
+            this.deleteButton.UseVisualStyleBackColor = true;
+            this.deleteButton.Click += new System.EventHandler(this.deleteButton_Click);
             // 
             // imageDataGridViewImageColumn
             // 
@@ -528,27 +542,13 @@
             this.nationalityDataGridViewTextBoxColumn.Name = "nationalityDataGridViewTextBoxColumn";
             this.nationalityDataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // birthDayDataGridViewTextBoxColumn
+            // Date
             // 
-            this.birthDayDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.birthDayDataGridViewTextBoxColumn.DataPropertyName = "BirthDay";
-            this.birthDayDataGridViewTextBoxColumn.HeaderText = "BirthDay";
-            this.birthDayDataGridViewTextBoxColumn.Name = "birthDayDataGridViewTextBoxColumn";
-            this.birthDayDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // criminalBindingSource
-            // 
-            this.criminalBindingSource.DataSource = typeof(Cursovaya.Model.Criminal);
-            // 
-            // deleteButton
-            // 
-            this.deleteButton.Location = new System.Drawing.Point(36, 388);
-            this.deleteButton.Name = "deleteButton";
-            this.deleteButton.Size = new System.Drawing.Size(138, 23);
-            this.deleteButton.TabIndex = 19;
-            this.deleteButton.Text = "Delete gang members";
-            this.deleteButton.UseVisualStyleBackColor = true;
-            this.deleteButton.Click += new System.EventHandler(this.deleteButton_Click);
+            this.Date.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Date.DataPropertyName = "Date";
+            this.Date.HeaderText = "Date";
+            this.Date.Name = "Date";
+            this.Date.ReadOnly = true;
             // 
             // GangInfo
             // 
@@ -611,6 +611,7 @@
         private System.Windows.Forms.Button addButton;
         private System.Windows.Forms.DataGridView gangMembersGrid;
         private System.Windows.Forms.BindingSource criminalBindingSource;
+        private System.Windows.Forms.Button deleteButton;
         private System.Windows.Forms.DataGridViewImageColumn imageDataGridViewImageColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn surnameDataGridViewTextBoxColumn;
@@ -618,7 +619,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ageDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn genderDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn nationalityDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn birthDayDataGridViewTextBoxColumn;
-        private System.Windows.Forms.Button deleteButton;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Date;
     }
 }

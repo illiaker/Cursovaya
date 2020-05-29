@@ -173,8 +173,7 @@ namespace AdminView
 
 
         private void criminalsDataGridView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            
+        {  
             ShowResult();
         }
         private void clearButton_Click(object sender, EventArgs e)
