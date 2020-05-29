@@ -5,6 +5,7 @@ using FileCabinetLibrary.Model;
 
 namespace AdminView.Presenter
 {
+    //Класс - презентер связывает между собой модель и форму Autorization
     class AutorizationPresenter
     {
         //Constructor

@@ -22,10 +22,12 @@ namespace AdminView
 
         }
         #region Events
+        
         public event EventHandler LogInEvent = null;
         #endregion
 
         #region Properties
+        //Свойство которое хранит екземпляр класса ListMenu
         public ListMenu ListMenu { get; set; }
         public string Login { get { return login.Text; } set { login.Text = value; } }
         public string Password { get { return password.Text; } set { password.Text = value; } }

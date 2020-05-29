@@ -30,19 +30,18 @@
         {
             this.components = new System.ComponentModel.Container();
             this.adminMenuStrip = new System.Windows.Forms.MenuStrip();
-            this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
-            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.criminalsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.moveToArchive = new System.Windows.Forms.ToolStripMenuItem();
             this.changeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.moveToListToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.gangToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.changeToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.criminalBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
+            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.listControl = new System.Windows.Forms.TabControl();
             this.criminalsPage = new System.Windows.Forms.TabPage();
             this.criminalsDataGridView = new System.Windows.Forms.DataGridView();
@@ -53,7 +52,8 @@
             this.ageDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.genderDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nationalityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.birthDayDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Date = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.criminalBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.label6 = new System.Windows.Forms.Label();
             this.genderBox = new System.Windows.Forms.ComboBox();
             this.filterOutButton = new System.Windows.Forms.Button();
@@ -101,11 +101,12 @@
             this.birthDayDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.archiveBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.showInfoButton = new System.Windows.Forms.Button();
+            this.exitButton = new System.Windows.Forms.Button();
             this.adminMenuStrip.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.criminalBindingSource)).BeginInit();
             this.listControl.SuspendLayout();
             this.criminalsPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.criminalsDataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.criminalBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.toAgeCriteriaBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fromAgeCriteriaBox)).BeginInit();
             this.gangPage.SuspendLayout();
@@ -121,41 +122,20 @@
             // adminMenuStrip
             // 
             this.adminMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.fileToolStripMenuItem,
             this.criminalsToolStripMenuItem,
-            this.gangToolStripMenuItem});
+            this.gangToolStripMenuItem,
+            this.fileToolStripMenuItem});
             this.adminMenuStrip.Location = new System.Drawing.Point(0, 0);
             this.adminMenuStrip.Name = "adminMenuStrip";
-            this.adminMenuStrip.Size = new System.Drawing.Size(851, 24);
+            this.adminMenuStrip.Size = new System.Drawing.Size(750, 24);
             this.adminMenuStrip.TabIndex = 2;
             this.adminMenuStrip.Text = "menuStrip1";
-            // 
-            // fileToolStripMenuItem
-            // 
-            this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem1,
-            this.exitToolStripMenuItem});
-            this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
-            this.fileToolStripMenuItem.Text = "File";
-            // 
-            // toolStripMenuItem1
-            // 
-            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(90, 6);
-            // 
-            // exitToolStripMenuItem
-            // 
-            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(93, 22);
-            this.exitToolStripMenuItem.Text = "Exit";
-            this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
             // criminalsToolStripMenuItem
             // 
             this.criminalsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.addToolStripMenuItem,
-            this.deleteToolStripMenuItem,
+            this.moveToArchive,
             this.changeToolStripMenuItem,
             this.moveToListToolStripMenuItem,
             this.deleteToolStripMenuItem1});
@@ -166,35 +146,35 @@
             // addToolStripMenuItem
             // 
             this.addToolStripMenuItem.Name = "addToolStripMenuItem";
-            this.addToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
+            this.addToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.addToolStripMenuItem.Text = "Add";
             this.addToolStripMenuItem.Click += new System.EventHandler(this.addToolStripMenuItem_Click);
             // 
-            // deleteToolStripMenuItem
+            // moveToArchive
             // 
-            this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
-            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
-            this.deleteToolStripMenuItem.Text = "Move to archive";
-            this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
+            this.moveToArchive.Name = "moveToArchive";
+            this.moveToArchive.Size = new System.Drawing.Size(180, 22);
+            this.moveToArchive.Text = "Move to archive";
+            this.moveToArchive.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
             // 
             // changeToolStripMenuItem
             // 
             this.changeToolStripMenuItem.Name = "changeToolStripMenuItem";
-            this.changeToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
-            this.changeToolStripMenuItem.Text = "Change";
+            this.changeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.changeToolStripMenuItem.Text = "Edit";
             this.changeToolStripMenuItem.Click += new System.EventHandler(this.changeToolStripMenuItem_Click);
             // 
             // moveToListToolStripMenuItem
             // 
             this.moveToListToolStripMenuItem.Name = "moveToListToolStripMenuItem";
-            this.moveToListToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
+            this.moveToListToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.moveToListToolStripMenuItem.Text = "Move to list";
             this.moveToListToolStripMenuItem.Click += new System.EventHandler(this.moveToListToolStripMenuItem_Click);
             // 
             // deleteToolStripMenuItem1
             // 
             this.deleteToolStripMenuItem1.Name = "deleteToolStripMenuItem1";
-            this.deleteToolStripMenuItem1.Size = new System.Drawing.Size(159, 22);
+            this.deleteToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.deleteToolStripMenuItem1.Text = "Delete";
             this.deleteToolStripMenuItem1.Click += new System.EventHandler(this.deleteToolStripMenuItem1_Click);
             // 
@@ -210,21 +190,37 @@
             // addToolStripMenuItem1
             // 
             this.addToolStripMenuItem1.Name = "addToolStripMenuItem1";
-            this.addToolStripMenuItem1.Size = new System.Drawing.Size(115, 22);
+            this.addToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.addToolStripMenuItem1.Text = "Add";
             this.addToolStripMenuItem1.Click += new System.EventHandler(this.addToolStripMenuItem1_Click);
             // 
             // changeToolStripMenuItem1
             // 
             this.changeToolStripMenuItem1.Name = "changeToolStripMenuItem1";
-            this.changeToolStripMenuItem1.Size = new System.Drawing.Size(115, 22);
-            this.changeToolStripMenuItem1.Text = "Change";
+            this.changeToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.changeToolStripMenuItem1.Text = "Edit";
             this.changeToolStripMenuItem1.Click += new System.EventHandler(this.changeToolStripMenuItem1_Click);
             // 
-            // criminalBindingSource
+            // fileToolStripMenuItem
             // 
-            this.criminalBindingSource.DataSource = typeof(Cursovaya.Model.Criminal);
-            this.criminalBindingSource.Sort = "";
+            this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem1,
+            this.exitToolStripMenuItem});
+            this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(64, 20);
+            this.fileToolStripMenuItem.Text = "Account";
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(177, 6);
+            // 
+            // exitToolStripMenuItem
+            // 
+            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.exitToolStripMenuItem.Text = "Exit";
+            this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
             // listControl
             // 
@@ -237,7 +233,7 @@
             this.listControl.Location = new System.Drawing.Point(0, 27);
             this.listControl.Name = "listControl";
             this.listControl.SelectedIndex = 0;
-            this.listControl.Size = new System.Drawing.Size(851, 604);
+            this.listControl.Size = new System.Drawing.Size(750, 496);
             this.listControl.TabIndex = 4;
             this.listControl.Selecting += new System.Windows.Forms.TabControlCancelEventHandler(this.tabControl1_Selecting);
             // 
@@ -260,7 +256,7 @@
             this.criminalsPage.Location = new System.Drawing.Point(4, 22);
             this.criminalsPage.Name = "criminalsPage";
             this.criminalsPage.Padding = new System.Windows.Forms.Padding(3);
-            this.criminalsPage.Size = new System.Drawing.Size(843, 578);
+            this.criminalsPage.Size = new System.Drawing.Size(742, 470);
             this.criminalsPage.TabIndex = 0;
             this.criminalsPage.Text = "Criminals";
             this.criminalsPage.UseVisualStyleBackColor = true;
@@ -283,7 +279,7 @@
             this.ageDataGridViewTextBoxColumn,
             this.genderDataGridViewTextBoxColumn,
             this.nationalityDataGridViewTextBoxColumn,
-            this.birthDayDataGridViewTextBoxColumn});
+            this.Date});
             this.criminalsDataGridView.DataSource = this.criminalBindingSource;
             this.criminalsDataGridView.Location = new System.Drawing.Point(0, 0);
             this.criminalsDataGridView.MultiSelect = false;
@@ -291,9 +287,9 @@
             this.criminalsDataGridView.ReadOnly = true;
             this.criminalsDataGridView.RowHeadersVisible = false;
             this.criminalsDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.criminalsDataGridView.Size = new System.Drawing.Size(840, 428);
+            this.criminalsDataGridView.Size = new System.Drawing.Size(739, 320);
             this.criminalsDataGridView.TabIndex = 19;
-            this.criminalsDataGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.criminalsDataGridView_CellDoubleClick);
+            this.criminalsDataGridView.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.criminalsDataGridView_CellDoubleClick);
             this.criminalsDataGridView.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.criminalsDataGridView_ColumnHeaderMouseClick);
             // 
             // imageDataGridViewImageColumn
@@ -352,19 +348,24 @@
             this.nationalityDataGridViewTextBoxColumn.Name = "nationalityDataGridViewTextBoxColumn";
             this.nationalityDataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // birthDayDataGridViewTextBoxColumn
+            // Date
             // 
-            this.birthDayDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.birthDayDataGridViewTextBoxColumn.DataPropertyName = "BirthDay";
-            this.birthDayDataGridViewTextBoxColumn.HeaderText = "BirthDay";
-            this.birthDayDataGridViewTextBoxColumn.Name = "birthDayDataGridViewTextBoxColumn";
-            this.birthDayDataGridViewTextBoxColumn.ReadOnly = true;
+            this.Date.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Date.DataPropertyName = "Date";
+            this.Date.HeaderText = "Date";
+            this.Date.Name = "Date";
+            this.Date.ReadOnly = true;
+            // 
+            // criminalBindingSource
+            // 
+            this.criminalBindingSource.DataSource = typeof(Cursovaya.Model.Criminal);
+            this.criminalBindingSource.Sort = "";
             // 
             // label6
             // 
             this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(13, 501);
+            this.label6.Location = new System.Drawing.Point(13, 393);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(42, 13);
             this.label6.TabIndex = 18;
@@ -380,7 +381,7 @@
             "Male",
             "Female",
             "Other"});
-            this.genderBox.Location = new System.Drawing.Point(71, 498);
+            this.genderBox.Location = new System.Drawing.Point(71, 390);
             this.genderBox.Name = "genderBox";
             this.genderBox.Size = new System.Drawing.Size(121, 21);
             this.genderBox.TabIndex = 17;
@@ -388,7 +389,7 @@
             // filterOutButton
             // 
             this.filterOutButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.filterOutButton.Location = new System.Drawing.Point(12, 548);
+            this.filterOutButton.Location = new System.Drawing.Point(8, 417);
             this.filterOutButton.Name = "filterOutButton";
             this.filterOutButton.Size = new System.Drawing.Size(75, 23);
             this.filterOutButton.TabIndex = 16;
@@ -399,7 +400,7 @@
             // clearButton
             // 
             this.clearButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.clearButton.Location = new System.Drawing.Point(121, 548);
+            this.clearButton.Location = new System.Drawing.Point(117, 417);
             this.clearButton.Name = "clearButton";
             this.clearButton.Size = new System.Drawing.Size(75, 23);
             this.clearButton.TabIndex = 15;
@@ -410,7 +411,7 @@
             // toAgeCriteriaBox
             // 
             this.toAgeCriteriaBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.toAgeCriteriaBox.Location = new System.Drawing.Point(147, 472);
+            this.toAgeCriteriaBox.Location = new System.Drawing.Point(147, 364);
             this.toAgeCriteriaBox.Maximum = new decimal(new int[] {
             1000,
             0,
@@ -424,7 +425,7 @@
             // 
             this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(118, 476);
+            this.label5.Location = new System.Drawing.Point(118, 368);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(16, 13);
             this.label5.TabIndex = 13;
@@ -433,7 +434,7 @@
             // fromAgeCriteriaBox
             // 
             this.fromAgeCriteriaBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.fromAgeCriteriaBox.Location = new System.Drawing.Point(71, 472);
+            this.fromAgeCriteriaBox.Location = new System.Drawing.Point(71, 364);
             this.fromAgeCriteriaBox.Maximum = new decimal(new int[] {
             1000,
             0,
@@ -447,7 +448,7 @@
             // 
             this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(13, 474);
+            this.label3.Location = new System.Drawing.Point(13, 366);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(49, 13);
             this.label3.TabIndex = 10;
@@ -462,7 +463,7 @@
             "Surname",
             "Name",
             "Alias"});
-            this.criteriaComboBox.Location = new System.Drawing.Point(667, 434);
+            this.criteriaComboBox.Location = new System.Drawing.Point(589, 331);
             this.criteriaComboBox.Name = "criteriaComboBox";
             this.criteriaComboBox.Size = new System.Drawing.Size(145, 21);
             this.criteriaComboBox.TabIndex = 9;
@@ -471,7 +472,7 @@
             // 
             this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(9, 442);
+            this.label2.Location = new System.Drawing.Point(9, 334);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(56, 13);
             this.label2.TabIndex = 7;
@@ -678,16 +679,15 @@
             "Yemenite",
             "Zambian",
             "Zimbabwean"});
-            this.nationalitycriminalBox.Location = new System.Drawing.Point(71, 442);
+            this.nationalitycriminalBox.Location = new System.Drawing.Point(71, 334);
             this.nationalitycriminalBox.Name = "nationalitycriminalBox";
             this.nationalitycriminalBox.Size = new System.Drawing.Size(116, 21);
             this.nationalitycriminalBox.TabIndex = 8;
-            this.nationalitycriminalBox.SelectedValueChanged += new System.EventHandler(this.nationalitycriminalBox_SelectedValueChanged);
             // 
             // searchcriminalBox
             // 
             this.searchcriminalBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.searchcriminalBox.Location = new System.Drawing.Point(532, 434);
+            this.searchcriminalBox.Location = new System.Drawing.Point(467, 332);
             this.searchcriminalBox.Name = "searchcriminalBox";
             this.searchcriminalBox.Size = new System.Drawing.Size(116, 20);
             this.searchcriminalBox.TabIndex = 5;
@@ -697,7 +697,7 @@
             // 
             this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(485, 438);
+            this.label1.Location = new System.Drawing.Point(420, 337);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(41, 13);
             this.label1.TabIndex = 6;
@@ -709,7 +709,7 @@
             this.gangPage.Location = new System.Drawing.Point(4, 22);
             this.gangPage.Name = "gangPage";
             this.gangPage.Padding = new System.Windows.Forms.Padding(3);
-            this.gangPage.Size = new System.Drawing.Size(843, 578);
+            this.gangPage.Size = new System.Drawing.Size(742, 470);
             this.gangPage.TabIndex = 1;
             this.gangPage.Text = "Gang";
             this.gangPage.UseVisualStyleBackColor = true;
@@ -737,7 +737,7 @@
             this.gangGridView.ReadOnly = true;
             this.gangGridView.RowHeadersVisible = false;
             this.gangGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.gangGridView.Size = new System.Drawing.Size(837, 572);
+            this.gangGridView.Size = new System.Drawing.Size(736, 464);
             this.gangGridView.TabIndex = 0;
             this.gangGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.criminalsDataGridView_CellDoubleClick);
             // 
@@ -807,7 +807,7 @@
             this.archivePage.Controls.Add(this.archiveDataGridView);
             this.archivePage.Location = new System.Drawing.Point(4, 22);
             this.archivePage.Name = "archivePage";
-            this.archivePage.Size = new System.Drawing.Size(843, 578);
+            this.archivePage.Size = new System.Drawing.Size(742, 470);
             this.archivePage.TabIndex = 2;
             this.archivePage.Text = "Archive";
             this.archivePage.UseVisualStyleBackColor = true;
@@ -816,7 +816,7 @@
             // 
             this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(11, 500);
+            this.label4.Location = new System.Drawing.Point(21, 406);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(42, 13);
             this.label4.TabIndex = 31;
@@ -832,7 +832,7 @@
             "Male",
             "Female",
             "Other"});
-            this.genderBox2.Location = new System.Drawing.Point(69, 497);
+            this.genderBox2.Location = new System.Drawing.Point(64, 403);
             this.genderBox2.Name = "genderBox2";
             this.genderBox2.Size = new System.Drawing.Size(121, 21);
             this.genderBox2.TabIndex = 30;
@@ -840,7 +840,7 @@
             // filterButton
             // 
             this.filterButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.filterButton.Location = new System.Drawing.Point(10, 547);
+            this.filterButton.Location = new System.Drawing.Point(23, 434);
             this.filterButton.Name = "filterButton";
             this.filterButton.Size = new System.Drawing.Size(75, 23);
             this.filterButton.TabIndex = 29;
@@ -851,7 +851,7 @@
             // clearButton2
             // 
             this.clearButton2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.clearButton2.Location = new System.Drawing.Point(119, 547);
+            this.clearButton2.Location = new System.Drawing.Point(115, 434);
             this.clearButton2.Name = "clearButton2";
             this.clearButton2.Size = new System.Drawing.Size(75, 23);
             this.clearButton2.TabIndex = 28;
@@ -862,7 +862,7 @@
             // toCriteriaArchiveBox
             // 
             this.toCriteriaArchiveBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.toCriteriaArchiveBox.Location = new System.Drawing.Point(145, 471);
+            this.toCriteriaArchiveBox.Location = new System.Drawing.Point(145, 367);
             this.toCriteriaArchiveBox.Maximum = new decimal(new int[] {
             1000,
             0,
@@ -876,7 +876,7 @@
             // 
             this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(116, 475);
+            this.label7.Location = new System.Drawing.Point(123, 371);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(16, 13);
             this.label7.TabIndex = 26;
@@ -885,7 +885,7 @@
             // fromCriteriaArchiveBox
             // 
             this.fromCriteriaArchiveBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.fromCriteriaArchiveBox.Location = new System.Drawing.Point(69, 471);
+            this.fromCriteriaArchiveBox.Location = new System.Drawing.Point(69, 367);
             this.fromCriteriaArchiveBox.Maximum = new decimal(new int[] {
             1000,
             0,
@@ -899,7 +899,7 @@
             // 
             this.label8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(11, 473);
+            this.label8.Location = new System.Drawing.Point(20, 372);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(49, 13);
             this.label8.TabIndex = 24;
@@ -914,7 +914,7 @@
             "Surname",
             "Name",
             "Alias"});
-            this.criteriaBox.Location = new System.Drawing.Point(665, 433);
+            this.criteriaBox.Location = new System.Drawing.Point(584, 341);
             this.criteriaBox.Name = "criteriaBox";
             this.criteriaBox.Size = new System.Drawing.Size(145, 21);
             this.criteriaBox.TabIndex = 23;
@@ -923,7 +923,7 @@
             // 
             this.label9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(7, 441);
+            this.label9.Location = new System.Drawing.Point(13, 348);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(56, 13);
             this.label9.TabIndex = 21;
@@ -1130,7 +1130,7 @@
             "Yemenite",
             "Zambian",
             "Zimbabwean"});
-            this.nationalityArchiveBox.Location = new System.Drawing.Point(69, 441);
+            this.nationalityArchiveBox.Location = new System.Drawing.Point(69, 340);
             this.nationalityArchiveBox.Name = "nationalityArchiveBox";
             this.nationalityArchiveBox.Size = new System.Drawing.Size(116, 21);
             this.nationalityArchiveBox.TabIndex = 22;
@@ -1138,7 +1138,7 @@
             // searchBox2
             // 
             this.searchBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.searchBox2.Location = new System.Drawing.Point(530, 433);
+            this.searchBox2.Location = new System.Drawing.Point(462, 341);
             this.searchBox2.Name = "searchBox2";
             this.searchBox2.Size = new System.Drawing.Size(116, 20);
             this.searchBox2.TabIndex = 19;
@@ -1148,7 +1148,7 @@
             // 
             this.label10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(483, 437);
+            this.label10.Location = new System.Drawing.Point(415, 349);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(41, 13);
             this.label10.TabIndex = 20;
@@ -1181,7 +1181,7 @@
             this.archiveDataGridView.RowHeadersVisible = false;
             this.archiveDataGridView.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.archiveDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.archiveDataGridView.Size = new System.Drawing.Size(843, 427);
+            this.archiveDataGridView.Size = new System.Drawing.Size(739, 334);
             this.archiveDataGridView.TabIndex = 0;
             this.archiveDataGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.criminalsDataGridView_CellDoubleClick);
             this.archiveDataGridView.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.archiveDataGridView_ColumnHeaderMouseClick);
@@ -1258,7 +1258,7 @@
             // showInfoButton
             // 
             this.showInfoButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.showInfoButton.Location = new System.Drawing.Point(12, 637);
+            this.showInfoButton.Location = new System.Drawing.Point(12, 529);
             this.showInfoButton.Name = "showInfoButton";
             this.showInfoButton.Size = new System.Drawing.Size(75, 23);
             this.showInfoButton.TabIndex = 9;
@@ -1266,17 +1266,29 @@
             this.showInfoButton.UseVisualStyleBackColor = true;
             this.showInfoButton.Click += new System.EventHandler(this.showInfoButton_Click);
             // 
+            // exitButton
+            // 
+            this.exitButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.exitButton.Location = new System.Drawing.Point(668, 534);
+            this.exitButton.Name = "exitButton";
+            this.exitButton.Size = new System.Drawing.Size(75, 23);
+            this.exitButton.TabIndex = 10;
+            this.exitButton.Text = "Exit";
+            this.exitButton.UseVisualStyleBackColor = true;
+            this.exitButton.Click += new System.EventHandler(this.exitButton_Click);
+            // 
             // ListMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(851, 677);
+            this.ClientSize = new System.Drawing.Size(750, 569);
+            this.Controls.Add(this.exitButton);
             this.Controls.Add(this.listControl);
             this.Controls.Add(this.adminMenuStrip);
             this.Controls.Add(this.showInfoButton);
             this.KeyPreview = true;
             this.MainMenuStrip = this.adminMenuStrip;
-            this.MinimumSize = new System.Drawing.Size(867, 716);
+            this.MinimumSize = new System.Drawing.Size(540, 500);
             this.Name = "ListMenu";
             this.Text = "ListMenu";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ListMenu_FormClosing);
@@ -1284,11 +1296,11 @@
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.ListMenu_KeyDown);
             this.adminMenuStrip.ResumeLayout(false);
             this.adminMenuStrip.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.criminalBindingSource)).EndInit();
             this.listControl.ResumeLayout(false);
             this.criminalsPage.ResumeLayout(false);
             this.criminalsPage.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.criminalsDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.criminalBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.toAgeCriteriaBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.fromAgeCriteriaBox)).EndInit();
             this.gangPage.ResumeLayout(false);
@@ -1312,7 +1324,7 @@
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem criminalsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem addToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem moveToArchive;
         private System.Windows.Forms.ToolStripMenuItem changeToolStripMenuItem;
         private System.Windows.Forms.TabControl listControl;
         private System.Windows.Forms.TabPage criminalsPage;
@@ -1377,6 +1389,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ageDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn genderDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn nationalityDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn birthDayDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Date;
+        private System.Windows.Forms.Button exitButton;
     }
 }

@@ -14,6 +14,7 @@ using System.Windows.Forms;
 
 namespace AdminView
 {
+    //Форма на которая служит для отображения, изменения или создания данных преступника 
     public partial class CriminalInfo : Form
     {
 
@@ -55,10 +56,10 @@ namespace AdminView
                 lastStreetBox.Text = Criminal.LastAdress.Street;
                 lastHouseBox.Text = Criminal.LastAdress.House;
             }
-
-            
-            if (User.Role == UserRole.User)
-            {
+             // если текущий пользователь программы это обычный пользователь
+             // то от него скрываются все елементы управления которые служат для изменения информации
+            if (User.Role == UserRole.User)                                            
+            {                                  
                 foreach (Control i in Controls)
                 {
                     if (i is TextBox t)
@@ -123,9 +124,9 @@ namespace AdminView
             {
                 CriminalImage.Image = Image.FromFile(ChooseCriminalImage.FileName);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                MessageBox.Show($"File '{ex.Message}' was not found", "Error!!!");
+               
             }
         }
 

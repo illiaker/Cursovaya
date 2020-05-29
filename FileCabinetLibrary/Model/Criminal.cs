@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 namespace Cursovaya.Model
 {
     [Serializable]
+    //Класс преступника в котором хранится вся известная информация о преступнике
     public class Criminal
     {
         public Criminal()
@@ -35,7 +36,8 @@ namespace Cursovaya.Model
         }
         public string Gender { get; set; }
         public string Nationality { get; set; }
-        public DateTime BirthDay { get; set; }
+        public DateTime BirthDay { get ; set ; }
+        public string Date { get => BirthDay.ToShortDateString(); }
         public Adress Adress { get; set; }
         public Adress LastAdress { get; set; }
         public string Description { get; set; }

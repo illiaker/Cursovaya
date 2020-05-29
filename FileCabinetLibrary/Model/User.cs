@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace Cursovaya.Model
 {
+    //Класс отвечает за идентификацию пользователя
     static public class User
     {
         static public UserRole Role { get; set; } = UserRole.Admin;

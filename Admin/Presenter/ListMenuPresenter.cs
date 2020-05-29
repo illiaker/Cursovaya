@@ -10,9 +10,11 @@ using System.Windows.Forms;
 using static System.Windows.Forms.ListBox;
 using Admin;
 using FileCabinetLibrary.Model;
+using System.Net.Mail;
 
 namespace AdminView.Presenter
 {
+    //Класс - презентер связывает между собой модель и форму ListMenu
     class ListMenuPresenter
     {
         
@@ -109,14 +111,22 @@ namespace AdminView.Presenter
         private void ListView_DeleteEvent(object sender, EventArgs e)
         {
             var c = (Criminal)listView.CriminalList.CurrentRow.DataBoundItem;
-            if(c.Gang != null)
+            var mbResult = MessageBox.Show($"Are you sure you want to delete {c.Name} {c.Surname}?", "Confirm", MessageBoxButtons.YesNo);
+            if (mbResult == DialogResult.Yes)
             {
-                c.Gang.GangMambers.Remove(c);
-                c.Gang = null;
+                if (c.Gang != null)
+                {
+                    if (c.Gang.Leader == c)
+                    {
+                        c.Gang.Leader = null;
+                    }
+                    c.Gang.GangMambers.Remove(c);
+                    c.Gang = null;
+                }
+                fileCabinet.Criminals.Remove(c);
+                listView.CBS.DataSource = fileCabinet.Criminals;
+                listView.CBS.ResetBindings(false);
             }
-            fileCabinet.Criminals.Remove(c);
-            listView.CBS.DataSource = fileCabinet.Criminals;
-            listView.CBS.ResetBindings(false);
 
         }
         private void ListView_AddGangEvent(object sender, EventArgs e)
@@ -143,7 +153,7 @@ namespace AdminView.Presenter
                 new Autorization(listView).ShowDialog();
             }
         }
-        public void OnUserChange(object sender, EventArgs e)
+        private void OnUserChange(object sender, EventArgs e)
         {
             if (User.Role == UserRole.User)
             {
@@ -167,13 +177,18 @@ namespace AdminView.Presenter
 
         private void ListView_MoveToArchiveEvent(object sender, EventArgs e)
         {
-            var i = MessageBox.Show("Are you sure you want to move this criminal to archive?", "Conirm", MessageBoxButtons.YesNo);
+            var c = (Criminal)listView.CriminalList.CurrentRow.DataBoundItem;
+            var i = MessageBox.Show($"Are you sure you want to move {c.Name} {c.Surname} to archive?", "Confirm", MessageBoxButtons.YesNo);
             if (i == DialogResult.Yes)
             {
-                var c = (Criminal)listView.CriminalList.CurrentRow.DataBoundItem;
+                
                 fileCabinet.MoveToArchive(c);
-                if(c.Gang != null)
+                if (c.Gang != null)
                 {
+                    if (c.Gang.Leader == c)
+                    {
+                        c.Gang.Leader = null;
+                    }
                     c.Gang.GangMambers.Remove(c);
                     c.Gang = null;
                 }
@@ -199,10 +214,9 @@ namespace AdminView.Presenter
                 listView.ABS.ResetBindings(false);
                 listView.GBS.ResetBindings(false);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                MessageBox.Show(ex.ToString());
-                MessageBox.Show(ex.Message);
+               
             }
 
 

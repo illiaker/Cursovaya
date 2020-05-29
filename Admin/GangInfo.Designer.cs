@@ -49,7 +49,6 @@
             this.IdLabelValue = new System.Windows.Forms.Label();
             this.addButton = new System.Windows.Forms.Button();
             this.gangMembersGrid = new System.Windows.Forms.DataGridView();
-            this.deleteButton = new System.Windows.Forms.Button();
             this.imageDataGridViewImageColumn = new System.Windows.Forms.DataGridViewImageColumn();
             this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.surnameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -59,6 +58,7 @@
             this.nationalityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.birthDayDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.criminalBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.deleteButton = new System.Windows.Forms.Button();
             this.featuresBoxContainer.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gangImageBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gangMembersGrid)).BeginInit();
@@ -150,6 +150,7 @@
             this.nameBox.Name = "nameBox";
             this.nameBox.Size = new System.Drawing.Size(138, 20);
             this.nameBox.TabIndex = 7;
+            this.nameBox.MouseClick += new System.Windows.Forms.MouseEventHandler(this.nameBox_MouseClick);
             // 
             // foundationtimebox
             // 
@@ -161,20 +162,21 @@
             // 
             // gangImageBox
             // 
+            this.gangImageBox.BackColor = System.Drawing.SystemColors.AppWorkspace;
             this.gangImageBox.Location = new System.Drawing.Point(13, 13);
             this.gangImageBox.Name = "gangImageBox";
-            this.gangImageBox.Size = new System.Drawing.Size(148, 143);
+            this.gangImageBox.Size = new System.Drawing.Size(161, 190);
             this.gangImageBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.gangImageBox.TabIndex = 10;
             this.gangImageBox.TabStop = false;
             // 
             // imageChoseButton
             // 
-            this.imageChoseButton.Location = new System.Drawing.Point(45, 168);
+            this.imageChoseButton.Location = new System.Drawing.Point(54, 209);
             this.imageChoseButton.Name = "imageChoseButton";
             this.imageChoseButton.Size = new System.Drawing.Size(75, 23);
             this.imageChoseButton.TabIndex = 11;
-            this.imageChoseButton.Text = "Chose";
+            this.imageChoseButton.Text = "Open";
             this.imageChoseButton.UseVisualStyleBackColor = true;
             this.imageChoseButton.Click += new System.EventHandler(this.imageChoseButton_Click);
             // 
@@ -185,6 +187,7 @@
             // countryBox
             // 
             this.countryBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.countryBox.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.countryBox.FormattingEnabled = true;
             this.countryBox.Items.AddRange(new object[] {
             "Afghanistan",
@@ -387,12 +390,13 @@
             this.countryBox.Name = "countryBox";
             this.countryBox.Size = new System.Drawing.Size(138, 21);
             this.countryBox.TabIndex = 12;
+            this.countryBox.MouseClick += new System.Windows.Forms.MouseEventHandler(this.nameBox_MouseClick);
             // 
             // saveButton
             // 
-            this.saveButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.saveButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.saveButton.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.saveButton.Location = new System.Drawing.Point(547, 208);
+            this.saveButton.Location = new System.Drawing.Point(607, 522);
             this.saveButton.Name = "saveButton";
             this.saveButton.Size = new System.Drawing.Size(82, 23);
             this.saveButton.TabIndex = 13;
@@ -401,9 +405,9 @@
             // 
             // cancelButton
             // 
-            this.cancelButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.cancelButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.cancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.cancelButton.Location = new System.Drawing.Point(672, 208);
+            this.cancelButton.Location = new System.Drawing.Point(708, 522);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(75, 23);
             this.cancelButton.TabIndex = 14;
@@ -413,7 +417,7 @@
             // IdLabelText
             // 
             this.IdLabelText.AutoSize = true;
-            this.IdLabelText.Location = new System.Drawing.Point(33, 265);
+            this.IdLabelText.Location = new System.Drawing.Point(325, 214);
             this.IdLabelText.Name = "IdLabelText";
             this.IdLabelText.Size = new System.Drawing.Size(19, 13);
             this.IdLabelText.TabIndex = 15;
@@ -422,14 +426,14 @@
             // IdLabelValue
             // 
             this.IdLabelValue.AutoSize = true;
-            this.IdLabelValue.Location = new System.Drawing.Point(67, 265);
+            this.IdLabelValue.Location = new System.Drawing.Point(350, 214);
             this.IdLabelValue.Name = "IdLabelValue";
             this.IdLabelValue.Size = new System.Drawing.Size(0, 13);
             this.IdLabelValue.TabIndex = 16;
             // 
             // addButton
             // 
-            this.addButton.Location = new System.Drawing.Point(36, 308);
+            this.addButton.Location = new System.Drawing.Point(36, 333);
             this.addButton.Name = "addButton";
             this.addButton.Size = new System.Drawing.Size(138, 23);
             this.addButton.TabIndex = 17;
@@ -458,25 +462,15 @@
             this.birthDayDataGridViewTextBoxColumn});
             this.gangMembersGrid.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.gangMembersGrid.DataSource = this.criminalBindingSource;
-            this.gangMembersGrid.Location = new System.Drawing.Point(240, 308);
+            this.gangMembersGrid.Location = new System.Drawing.Point(229, 238);
             this.gangMembersGrid.MultiSelect = false;
             this.gangMembersGrid.Name = "gangMembersGrid";
             this.gangMembersGrid.ReadOnly = true;
             this.gangMembersGrid.RowHeadersVisible = false;
             this.gangMembersGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.gangMembersGrid.Size = new System.Drawing.Size(543, 237);
+            this.gangMembersGrid.Size = new System.Drawing.Size(554, 278);
             this.gangMembersGrid.TabIndex = 18;
             this.gangMembersGrid.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gangMembersGrid_CellDoubleClick);
-            // 
-            // deleteButton
-            // 
-            this.deleteButton.Location = new System.Drawing.Point(36, 354);
-            this.deleteButton.Name = "deleteButton";
-            this.deleteButton.Size = new System.Drawing.Size(138, 23);
-            this.deleteButton.TabIndex = 19;
-            this.deleteButton.Text = "Delete gang members";
-            this.deleteButton.UseVisualStyleBackColor = true;
-            this.deleteButton.Click += new System.EventHandler(this.deleteButton_Click);
             // 
             // imageDataGridViewImageColumn
             // 
@@ -545,6 +539,16 @@
             // criminalBindingSource
             // 
             this.criminalBindingSource.DataSource = typeof(Cursovaya.Model.Criminal);
+            // 
+            // deleteButton
+            // 
+            this.deleteButton.Location = new System.Drawing.Point(36, 388);
+            this.deleteButton.Name = "deleteButton";
+            this.deleteButton.Size = new System.Drawing.Size(138, 23);
+            this.deleteButton.TabIndex = 19;
+            this.deleteButton.Text = "Delete gang members";
+            this.deleteButton.UseVisualStyleBackColor = true;
+            this.deleteButton.Click += new System.EventHandler(this.deleteButton_Click);
             // 
             // GangInfo
             // 

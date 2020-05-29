@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CriminalInfo));
             this.CriminalImage = new System.Windows.Forms.PictureBox();
             this.ChooseCriminalImage = new System.Windows.Forms.OpenFileDialog();
             this.OpenImage = new System.Windows.Forms.Button();
@@ -83,11 +82,11 @@
             // 
             // CriminalImage
             // 
-            this.CriminalImage.Image = ((System.Drawing.Image)(resources.GetObject("CriminalImage.Image")));
-            this.CriminalImage.InitialImage = ((System.Drawing.Image)(resources.GetObject("CriminalImage.InitialImage")));
+            this.CriminalImage.BackColor = System.Drawing.SystemColors.AppWorkspace;
+            this.CriminalImage.InitialImage = null;
             this.CriminalImage.Location = new System.Drawing.Point(12, 12);
             this.CriminalImage.Name = "CriminalImage";
-            this.CriminalImage.Size = new System.Drawing.Size(150, 150);
+            this.CriminalImage.Size = new System.Drawing.Size(150, 172);
             this.CriminalImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.CriminalImage.TabIndex = 0;
             this.CriminalImage.TabStop = false;
@@ -98,7 +97,7 @@
             // 
             // OpenImage
             // 
-            this.OpenImage.Location = new System.Drawing.Point(35, 168);
+            this.OpenImage.Location = new System.Drawing.Point(31, 190);
             this.OpenImage.Name = "OpenImage";
             this.OpenImage.Size = new System.Drawing.Size(103, 23);
             this.OpenImage.TabIndex = 1;

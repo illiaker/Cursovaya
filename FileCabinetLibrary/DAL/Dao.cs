@@ -10,18 +10,19 @@ using System.Threading.Tasks;
 namespace Cursovaya.DAL
 {
     [Serializable]
+    //Класс отвечающий за серриализацию данных 
     public class Dao
     {
         private FileCabinet  fileCabinet;
         const string filePath = "fileCabinet.bin";
-
+        //Конструктор принимающий на вход екземпляр класса FileCabinet
         public Dao(FileCabinet store)
         {
             fileCabinet = store;
         }
 
        
-
+        //Метод серриализации
         public void Save()
         {
             using (Stream stream = File.Create(filePath))
@@ -30,7 +31,7 @@ namespace Cursovaya.DAL
                 serializer.Serialize(stream, fileCabinet);
             }
         }
-
+        //Метод десериализации
         public void Load()
         {
             using (Stream stream = File.OpenRead(filePath))

@@ -10,20 +10,24 @@ using System.Threading.Tasks;
 namespace Cursovaya.Model
 {
     [Serializable]
+    //Класс в котором хранятся коллекции преступников, архивных преступников и преступныъ группировко
+    
     public class FileCabinet
     {
+        
         static private FileCabinet fileCabinet;
+        //Возвращает текущий екземпляр класса
         static public FileCabinet GetInstance()
         {
-            if (fileCabinet == null)
+            if (fileCabinet == null) // если текущий екзепляр еще не создан, то создаем его
             {
                 fileCabinet = new FileCabinet();
             }
 
-            return fileCabinet;
+            return fileCabinet; 
         }
 
-       
+        //Конструктор
         protected FileCabinet()
         {
             Criminals = new List<Criminal>();
@@ -36,7 +40,7 @@ namespace Cursovaya.Model
         public List<Criminal> Criminals { get; set; }
         public List<CriminalGang> CriminalGangs { get; set; }        
        
-
+        //Метод для генерации тестовых данных
         public void GenerateMembers(int n)
         {
             GenerateCriminals(n);
@@ -105,22 +109,20 @@ namespace Cursovaya.Model
 
 
 
-
+        //Метод перемещания преступника в архив
         public void MoveToArchive(Criminal criminal)
         {
             Criminals.Remove(criminal);
             Archive.Add(criminal);
         }
+        //Метод перемещения преступника в коллекцию текущих из архива
         public void MoveToList(Criminal criminal)
         {
             Criminals.Add(criminal);
             Archive.Remove(criminal);
        }        
-        public void Add(Criminal criminal)
-        {
-            Criminals.Add(criminal);
-        }
-        
+       
+        //Метод возвращает всех преступников у которые не состоят в преступных групировках
         public List<Criminal> GetGanglessCriminals()
         {
             List<Criminal> res = new List<Criminal>();
@@ -134,6 +136,7 @@ namespace Cursovaya.Model
             return res;
         }
        
+        //Производит поиск преступников из данного списка по определенным критериям(фамилии, имени, кличке)
         public List<Criminal> Search(string value, string criteria, List<Criminal> list)
         {
             value = value.ToLower();
@@ -181,6 +184,8 @@ namespace Cursovaya.Model
         {
 
         }*/
+
+        //Производит поиск из данного списка по национальности
         public List<Criminal> Nationality(string nationality, List<Criminal> list)
         {
             List<Criminal> res = new List<Criminal>();
@@ -193,6 +198,7 @@ namespace Cursovaya.Model
             }
             return res;
         }
+
         public List<Criminal> Age(int from, int to, List<Criminal> list)
         {
             List<Criminal> res = new List<Criminal>();
@@ -206,14 +212,15 @@ namespace Cursovaya.Model
             return res;
         }
 
+        //Сохраняет данные
         public void Save()
         {
             new Dao(fileCabinet).Save();
         }
+        //Загружает данные
         public void Load()
         {
             new Dao(fileCabinet).Load();
-           
         }
     }
 }

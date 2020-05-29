@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 namespace Cursovaya.Model
 {
     [Serializable]
+    //Класс адресных данных
     public class Adress
     {
         public string City{ get; set; }

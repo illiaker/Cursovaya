@@ -86,13 +86,31 @@ namespace AdminView
             }
             catch (Exception)
             {
-                MessageBox.Show("There is no such file");
+               
             }
         }
         private void GangInfo_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (DialogResult == DialogResult.OK)
             {
+                foreach (Control c in Controls)
+                {
+                    if (c is TextBox t)
+                    {
+                        CheckIfFilled(t, e);
+
+                    }
+                    if (c is ComboBox cb)
+                    {
+                        CheckIfFilled(cb, e);
+
+                    }
+                }
+                if (e.Cancel == true)
+                {
+                    MessageBox.Show("You have to fill all reqiered fileds");
+                }
+
                 Gang.Name = nameBox.Text;
                 Gang.Image = (Bitmap)gangImageBox.Image;
                 Gang.FoundationDate = foundationtimebox.Value;
@@ -115,7 +133,6 @@ namespace AdminView
             }
             else
             {
-
                 MessageBox.Show("There is no gang member in the gang. You should add gang members before");
             }
            
@@ -185,6 +202,28 @@ namespace AdminView
         }
         #endregion
 
+        private void ControlOnFocus(Control cb)
+        {
+            cb.BackColor = Color.White;
+        }
 
+        private void CheckIfFilled(Control sender, FormClosingEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(sender.Text))
+            {
+                sender.BackColor = Color.Pink;
+                e.Cancel = true;
+            }
+            else
+            {
+                sender.BackColor = Color.White;
+            }
+
+        }
+
+        private void nameBox_MouseClick(object sender, MouseEventArgs e)
+        {
+            ControlOnFocus((Control)sender);
+        }
     }
 }

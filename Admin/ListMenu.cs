@@ -83,6 +83,7 @@ namespace AdminView
             fileCabinet = FileCabinet.GetInstance();
             ToAgeCriteriaBox.Value = 100;
             toCriteriaArchiveBox.Value = 100;
+            DisableButtons(listControl);
             OnUserCahngeEvent(sender, e);
             
         }
@@ -110,6 +111,13 @@ namespace AdminView
         {
             ResetEvent(sender, e);
             lastSelectedColumnIdx = -1;
+            nationalityArchiveBox.SelectedIndex = 0;
+            nationalitycriminalBox.SelectedIndex = 0;
+            genderBox.SelectedIndex = 0;
+            genderBox2.SelectedIndex = 0;
+            DisableButtons((TabControl)sender);
+
+
         }
         private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -152,14 +160,7 @@ namespace AdminView
                 CBS.DataSource = tmpList == null ? fileCabinet.Criminals : tmpList;
             }
         }
-        private void nationalitycriminalBox_SelectedValueChanged(object sender, EventArgs e)
-        {
-            if (string.IsNullOrWhiteSpace((string)nationalitycriminalBox.SelectedItem))
-            {
-                ResetEvent(sender, e);
-            }
-            
-        }
+       
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             User.Role = UserRole.User;
@@ -173,11 +174,17 @@ namespace AdminView
 
         private void criminalsDataGridView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
+            
             ShowResult();
         }
         private void clearButton_Click(object sender, EventArgs e)
         {
             ResetEvent(sender, e);
+            lastSelectedColumnIdx = -1;
+            nationalityArchiveBox.SelectedIndex = 0;
+            nationalitycriminalBox.SelectedIndex = 0;
+            genderBox.SelectedIndex = 0;
+            genderBox2.SelectedIndex = 0;
         }
 
         private void filterCriminalsOutButton_Click(object sender, EventArgs e)
@@ -205,6 +212,12 @@ namespace AdminView
                 tmpList = list;
                 
             }
+            else
+            {
+                var list = fileCabinet.Criminals.Where(o => o.Age <= toAgeCriteriaBox.Value
+                                                       && o.Age >= fromAgeCriteriaBox.Value).ToList();
+                tmpList = list;
+            }
 
             CBS.DataSource = tmpList == null ? fileCabinet.Criminals: tmpList;
             CBS.ResetBindings(false);
@@ -223,6 +236,7 @@ namespace AdminView
             {
                 if (j is DataGridView c)
                 {
+                    
                     var i = c.CurrentRow.DataBoundItem;
                     if (i is Criminal)
                     {
@@ -268,6 +282,12 @@ namespace AdminView
                 var list = fileCabinet.Archive.Where(o => o.Age <= toCriteriaArchiveBox.Value
                                                         && o.Age >= fromCriteriaArchiveBox.Value
                                                         && o.Gender == genderBox2.Text).ToList();
+                tmpList = list;
+            }
+            else 
+            {
+                var list = fileCabinet.Archive.Where(o => o.Age <= toCriteriaArchiveBox.Value
+                                                        && o.Age >= fromCriteriaArchiveBox.Value).ToList();
                 tmpList = list;
             }
 
@@ -417,6 +437,39 @@ namespace AdminView
             if (tmpList != null)
                 ABS.DataSource = tmpList;
             ABS.ResetBindings(false);
+        }
+
+        private void exitButton_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void DisableButtons(TabControl tabControl)
+        {
+            if(tabControl.SelectedIndex == 0)
+            {
+                changeToolStripMenuItem1.Enabled = false;
+                moveToListToolStripMenuItem.Enabled = false;
+                deleteToolStripMenuItem1.Enabled = true;
+                changeToolStripMenuItem.Enabled = true;
+                moveToArchive.Enabled = true;
+            }
+            else if(tabControl.SelectedIndex == 1)
+            {
+                changeToolStripMenuItem1.Enabled = true;
+                moveToListToolStripMenuItem.Enabled = false;
+                deleteToolStripMenuItem1.Enabled = false;
+                changeToolStripMenuItem.Enabled = false;
+                moveToArchive.Enabled = false;
+            }
+            else if(tabControl.SelectedIndex == 2)
+            {
+                changeToolStripMenuItem1.Enabled = false;
+                moveToArchive.Enabled = false;
+                deleteToolStripMenuItem1.Enabled = false;
+                changeToolStripMenuItem.Enabled = false;
+                moveToListToolStripMenuItem.Enabled = true;
+            }
         }
     }
 }

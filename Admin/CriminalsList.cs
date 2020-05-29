@@ -12,6 +12,7 @@ using System.Windows.Forms;
 
 namespace Admin
 {
+    //Класс для отобраения списка преступников
     public partial class CriminalsList : Form
     {        
         //Constructor
@@ -28,7 +29,9 @@ namespace Admin
         }
 
         #region Properties
+        //Хранит коллекцию преступников, которая в дальнейшем послужит коллекцией членов определенной преступной групировки
         public List<Criminal> GangMembers { get; set; }
+        //Коллекция которая отображается на форме
         List<Criminal> CriminalsToSelect { get; set; }
         public BindingSource CBS { get => criminalBindingSource; set => criminalBindingSource = value; }
         #endregion
@@ -50,49 +53,7 @@ namespace Admin
             criminalBindingSource.ResetBindings(false);
         }
 
-        private void searchBox_TextChanged(object sender, EventArgs e)
-        {
-            if (string.IsNullOrWhiteSpace(searchBox.Text))
-            {
-                CBS.DataSource = CriminalsToSelect;
-                CBS.ResetBindings(false);
-            }
-            else
-            {
-                List<Criminal> displayedCriminals = new List<Criminal>();
-                foreach (Criminal c in CriminalsToSelect)
-                {
-                    if (c.Surname.Contains(searchBox.Text))
-                    {
-                        displayedCriminals.Add(c);
-                    }
-                }
-                CBS.DataSource = displayedCriminals;
-                CBS.ResetBindings(false);
-            }
-        }
-
-        private void nationalityBox_SelectedValueChanged(object sender, EventArgs e)
-        {
-            if (string.IsNullOrWhiteSpace((string)nationalityBox.SelectedItem))
-            {
-                CBS.DataSource = CriminalsToSelect;
-                CBS.ResetBindings(false);
-            }
-            else
-            {
-                List<Criminal> displayedCriminals = new List<Criminal>();
-                foreach (Criminal c in CriminalsToSelect)
-                {
-                    if (c.Nationality == (string)nationalityBox.SelectedItem)
-                    {
-                        displayedCriminals.Add(c);
-                    }
-                }
-                CBS.DataSource = displayedCriminals;
-                CBS.ResetBindings(false);
-            }
-        }
+        
         #endregion
 
         
