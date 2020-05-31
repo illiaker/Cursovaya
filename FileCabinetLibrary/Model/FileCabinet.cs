@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace Cursovaya.Model
 {
     [Serializable]
-    //Класс в котором хранятся коллекции преступников, архивных преступников и преступныъ группировко
+    //Клас у якому зберігаються колекції злочинців, архівних злочинців та злочинних угруповань
     
     public class FileCabinet
     {
@@ -53,8 +53,7 @@ namespace Cursovaya.Model
             for(int i = 0; i < n;i++)
             {
                 var c = new CriminalGang()
-                {
-                    Image = new Bitmap("D:/Project/C#/OOP/Cursova/Cursovaya/Images/1.png"),
+                { 
                     Name = $"Gang{i}",
                     Features = $"Features{i}",
                     FoundationDate = DateTime.Now - TimeSpan.FromDays(i * 365),
@@ -73,7 +72,6 @@ namespace Cursovaya.Model
                 
                 var c = new Criminal()
                 {
-                    Image = new Bitmap("D:/Project/C#/OOP/Cursova/Cursovaya/Images/criminal.png"),
                     Name = $"Name{i}",
                     Surname = $"Surname{i}",
                     Alias = $"Alias{i}",
@@ -93,7 +91,6 @@ namespace Cursovaya.Model
             {
                 var c = new Criminal()
                 {
-                    Image = new Bitmap("D:/Project/C#/OOP/Cursova/Cursovaya/Images/criminal.png"),
                     Name = $"Name{i}",
                     Surname = $"Surname{i}",
                     Alias = $"Alias{i}",
@@ -179,38 +176,6 @@ namespace Cursovaya.Model
            
         }
 
-
-        /*public List<CriminalGang> Search(string value, List<CriminalGang> list)
-        {
-
-        }*/
-
-        //Производит поиск из данного списка по национальности
-        public List<Criminal> Nationality(string nationality, List<Criminal> list)
-        {
-            List<Criminal> res = new List<Criminal>();
-            foreach (Criminal c in list)
-            {
-                if (c.Nationality==nationality)
-                {
-                    res.Add(c);
-                }
-            }
-            return res;
-        }
-
-        public List<Criminal> Age(int from, int to, List<Criminal> list)
-        {
-            List<Criminal> res = new List<Criminal>();
-            foreach(Criminal i in list)
-            {
-                if(i.Age >= from && i.Age <= to)
-                {
-                    res.Add(i);
-                }
-            }
-            return res;
-        }
 
         //Сохраняет данные
         public void Save()

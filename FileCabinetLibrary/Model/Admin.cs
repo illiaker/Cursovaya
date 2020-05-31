@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Cursovaya.Model
 {
-    //Класс Admin в котором хранятся логин и пароль
+    //Класс Admin в якому зберігається логін та пароль адміна
     public class Admin
     {
         public string Login { get; } = "admin";

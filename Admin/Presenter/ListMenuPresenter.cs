@@ -63,14 +63,7 @@ namespace AdminView.Presenter
             listView.ABS.ResetBindings(false);
         }
 
-        private void ListView_AgeCriminalChangedEvent(object sender, EventArgs e)
-        {
-            List<Criminal> list = listView.CBS.DataSource as List<Criminal>;
-            listView.CBS.DataSource = fileCabinet.Age((int)listView.FromAgeCriteriaBox.Value,
-                                                        (int)listView.ToAgeCriteriaBox.Value,
-                                                        list);
-            listView.CBS.ResetBindings(false);
-        }
+       
 
         private void ListView_SearchCriminalEvent(object sender, EventArgs e)
         {
@@ -88,13 +81,7 @@ namespace AdminView.Presenter
             listView.CBS.ResetBindings(false);
         }
 
-        private void ListView_NationalityCriminalChangedEvent(object sender, EventArgs e)
-        {
-            ComboBox c = sender as ComboBox;
-            List<Criminal> list = listView.CBS.DataSource as List<Criminal>;
-            listView.CBS.DataSource = fileCabinet.Nationality(c.Text, list);
-            listView.CBS.ResetBindings(false);
-        }
+        
 
         private void ListView_ResetEvent(object sender, EventArgs e)
         {
@@ -110,22 +97,25 @@ namespace AdminView.Presenter
         }
         private void ListView_DeleteEvent(object sender, EventArgs e)
         {
-            var c = (Criminal)listView.CriminalList.CurrentRow.DataBoundItem;
-            var mbResult = MessageBox.Show($"Are you sure you want to delete {c.Name} {c.Surname}?", "Confirm", MessageBoxButtons.YesNo);
-            if (mbResult == DialogResult.Yes)
-            {
-                if (c.Gang != null)
+            if(listView.CriminalList.CurrentRow != null)
+            { 
+                Criminal c = listView.CriminalList.CurrentRow.DataBoundItem as Criminal;
+                var mbResult = MessageBox.Show($"Are you sure you want to delete {c.Name} {c.Surname}?", "Confirm", MessageBoxButtons.YesNo);
+                if (mbResult == DialogResult.Yes)
                 {
-                    if (c.Gang.Leader == c)
+                    if (c.Gang != null)
                     {
-                        c.Gang.Leader = null;
+                        if (c.Gang.Leader == c)
+                        {
+                            c.Gang.Leader = null;
+                        }
+                        c.Gang.GangMambers.Remove(c);
+                        c.Gang = null;
                     }
-                    c.Gang.GangMambers.Remove(c);
-                    c.Gang = null;
+                    fileCabinet.Criminals.Remove(c);
+                    listView.CBS.DataSource = fileCabinet.Criminals;
+                    listView.CBS.ResetBindings(false);
                 }
-                fileCabinet.Criminals.Remove(c);
-                listView.CBS.DataSource = fileCabinet.Criminals;
-                listView.CBS.ResetBindings(false);
             }
 
         }
@@ -158,45 +148,56 @@ namespace AdminView.Presenter
             if (User.Role == UserRole.User)
             {
                 listView.MenuStrip.Hide();
-                listView.ListControl.TabPages[2].Hide();
+                
             }
             else
             {
                 listView.MenuStrip.Show();
+                
             }
         }
         private void ListView_MoveToListevent(object sender, EventArgs e)
         {
-            fileCabinet.MoveToList((Criminal)listView.ArchiveList.CurrentRow.DataBoundItem);
-            listView.CBS.DataSource = fileCabinet.Criminals;
-            listView.ABS.DataSource = fileCabinet.Archive;
-            listView.CBS.ResetBindings(false);
-            listView.ABS.ResetBindings(false);
-            fileCabinet.Save();
+            if (listView.ArchiveList.CurrentRow != null)
+            {
+                Criminal c = listView.ArchiveList.CurrentRow.DataBoundItem as Criminal;
+            
+                fileCabinet.MoveToList(c);
+                listView.CBS.DataSource = fileCabinet.Criminals;
+                listView.ABS.DataSource = fileCabinet.Archive;
+                listView.CBS.ResetBindings(false);
+                listView.ABS.ResetBindings(false);
+                fileCabinet.Save();
+            }
         }
 
         private void ListView_MoveToArchiveEvent(object sender, EventArgs e)
         {
-            var c = (Criminal)listView.CriminalList.CurrentRow.DataBoundItem;
-            var i = MessageBox.Show($"Are you sure you want to move {c.Name} {c.Surname} to archive?", "Confirm", MessageBoxButtons.YesNo);
-            if (i == DialogResult.Yes)
+            if (listView.CriminalList.CurrentRow != null)
             {
-                
-                fileCabinet.MoveToArchive(c);
-                if (c.Gang != null)
+
+                var c = listView.CriminalList.CurrentRow.DataBoundItem as Criminal;
+           
+                var i = MessageBox.Show($"Are you sure you want to move {c.Name} {c.Surname} to archive?", "Confirm", MessageBoxButtons.YesNo);
+                if (i == DialogResult.Yes)
                 {
-                    if (c.Gang.Leader == c)
+
+                    fileCabinet.MoveToArchive(c);
+                    if (c.Gang != null)
                     {
-                        c.Gang.Leader = null;
+                        if (c.Gang.Leader == c)
+                        {
+                            c.Gang.Leader = null;
+                        }
+                        c.Gang.GangMambers.Remove(c);
+                        c.Gang = null;
                     }
-                    c.Gang.GangMambers.Remove(c);
-                    c.Gang = null;
+                    listView.CBS.DataSource = fileCabinet.Criminals;
+                    listView.ABS.DataSource = fileCabinet.Archive;
+                    fileCabinet.Save();
+                    listView.CBS.ResetBindings(false);
+                    listView.ABS.ResetBindings(false);
                 }
-                listView.CBS.DataSource = fileCabinet.Criminals;
-                listView.ABS.DataSource = fileCabinet.Archive;
-                fileCabinet.Save();
-                listView.CBS.ResetBindings(false);
-                listView.ABS.ResetBindings(false);
             }
         }
 

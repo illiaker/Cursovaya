@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Cursovaya.DAL.Dao">
+    <Position X="8" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgIAAAAAAAAAAAAAAAAAAAAAAAEAAIAAAAAAAAAA=</HashCode>
+      <FileName>DAL\Dao.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="fileCabinet" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Cursovaya.Model.Admin">
+    <Position X="3" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAQAAAAAAA=</HashCode>
+      <FileName>Model\Admin.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Cursovaya.Model.Adress">
+    <Position X="10" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAIAAAAAAAA=</HashCode>
+      <FileName>Model\Adress.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Cursovaya.Model.Criminal">
+    <Position X="7.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAABAIgAACAAEAAAAQABAoIABABAAAAAAAADBA=</HashCode>
+      <FileName>Model\Criminal.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Adress" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Cursovaya.Model.CriminalGang">
+    <Position X="5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAIAAAAAAAAAgABAEQAAAIBABAAAEAAAAAAAAQ=</HashCode>
+      <FileName>Model\CriminalGang.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Cursovaya.Model.FileCabinet">
+    <Position X="5.75" Y="5.75" Width="1.5" />
+    <AssociationLine Name="Archive" Type="Cursovaya.Model.Criminal" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="7.109" Y="5.75" />
+        <Point X="7.109" Y="5.122" />
+        <Point X="8.125" Y="5.122" />
+        <Point X="8.125" Y="4.747" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAAgMAAABAgAAIAAAAAgBAABAAAAAQAIAAIAQAhAAA=</HashCode>
+      <FileName>Model\FileCabinet.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="CriminalGangs" />
+      <Property Name="Criminals" />
+      <Property Name="Archive" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="Cursovaya.Model.User">
+    <Position X="3" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\User.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Role" />
+    </ShowAsAssociation>
+  </Class>
+  <Enum Name="FileCabinetLibrary.Model.UserRole">
+    <Position X="3" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\UserRole.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

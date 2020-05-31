@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace Cursovaya.Model
 {
     [Serializable]
-    //Класс в котором хранится вся информация о преступной группировке
+    //Клас у якому зберігається уся інформація про злочинне угруповання
     public class CriminalGang
     {
         public CriminalGang()

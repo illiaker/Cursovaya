@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace Cursovaya.Model
 {
     [Serializable]
-    //Класс преступника в котором хранится вся известная информация о преступнике
+    //Клас злочинця в якому зберігається вся відома інформація про злочинця
     public class Criminal
     {
         public Criminal()
@@ -43,6 +43,6 @@ namespace Cursovaya.Model
         public string Description { get; set; }
         public string CountryWhereWanted { get; set; }
         public CriminalGang Gang{ get; set; }
-        public Guid Id { get;private set; }       
+        public Guid Id { get;private set; }
     }
 }

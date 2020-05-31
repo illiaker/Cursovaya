@@ -7,12 +7,13 @@ using System.Threading.Tasks;
 namespace Cursovaya.Model
 {
     [Serializable]
-    //Класс адресных данных
+    //Класс адресових даних
     public class Adress
     {
         public string City{ get; set; }
         public string Street { get; set; }
         public string House { get; set; }
+
         public Adress(string city, string street, string house)
         {
             City = city;

@@ -45,5 +45,12 @@ namespace AdminView
         }
         #endregion
 
+        private void Autorization_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.Enter)
+            {
+                LogInEvent(sender, e);
+            }
+        }
     }
 }

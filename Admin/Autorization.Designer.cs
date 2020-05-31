@@ -101,9 +101,11 @@
             this.Controls.Add(this.password);
             this.Controls.Add(this.login);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.KeyPreview = true;
             this.MinimumSize = new System.Drawing.Size(290, 278);
             this.Name = "Autorization";
             this.Text = "Autorization";
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Autorization_KeyDown);
             this.ResumeLayout(false);
             this.PerformLayout();
 

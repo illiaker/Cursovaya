@@ -61,6 +61,7 @@ namespace AdminView
         #endregion
 
         #region Properties
+        
         public ComboBox CriteriaArchiveBox { get => criteriaBox; set => criteriaBox = value; }
         public NumericUpDown FromAgeCriteriaBox { get => fromAgeCriteriaBox; set => fromAgeCriteriaBox = value; }
         public NumericUpDown ToAgeCriteriaBox { get => toAgeCriteriaBox; set => toAgeCriteriaBox = value; }
@@ -86,6 +87,7 @@ namespace AdminView
             DisableButtons(listControl);
             OnUserCahngeEvent(sender, e);
             
+
         }
         private void addToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -93,10 +95,13 @@ namespace AdminView
         }
         private void changeToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var ci = new CriminalInfo((Criminal)CriminalList.CurrentRow.DataBoundItem);
-            if (ci.ShowDialog() == DialogResult.OK)
+            if (CriminalList.CurrentRow != null)
             {
-                CBS.ResetBindings(false);                
+                var ci = new CriminalInfo((Criminal)CriminalList.CurrentRow.DataBoundItem);
+                if (ci.ShowDialog() == DialogResult.OK)
+                {
+                    CBS.ResetBindings(false);
+                }
             }
 
         }
@@ -142,11 +147,14 @@ namespace AdminView
         }
         private void changeToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            var changeresult = new GangInfo((CriminalGang)GangList.CurrentRow.DataBoundItem).ShowDialog();
-            if (changeresult == DialogResult.OK)
+            if (GangList.CurrentRow != null)
             {
-                GangList.CommitEdit(DataGridViewDataErrorContexts.Commit);
-                GBS.ResetBindings(false);                
+                var changeresult = new GangInfo((CriminalGang)GangList.CurrentRow.DataBoundItem).ShowDialog();
+                if (changeresult == DialogResult.OK)
+                {
+                    GangList.CommitEdit(DataGridViewDataErrorContexts.Commit);
+                    GBS.ResetBindings(false);
+                }
             }
         }
         private void searchcriminalBox_TextChanged(object sender, EventArgs e)
@@ -235,20 +243,22 @@ namespace AdminView
             {
                 if (j is DataGridView c)
                 {
-                    
-                    var i = c.CurrentRow.DataBoundItem;
-                    if (i is Criminal)
+                    if (c.CurrentRow != null)
                     {
-                        new CriminalInfo((Criminal)i).ShowDialog();
+                        var i = c.CurrentRow.DataBoundItem;
+                        if (i is Criminal)
+                        {
+                            new CriminalInfo((Criminal)i).ShowDialog();
+                        }
+                        if (i is CriminalGang)
+                        {
+                            new GangInfo((CriminalGang)i).ShowDialog();
+                        }
+                        CBS.ResetBindings(false);
+                        ABS.ResetBindings(false);
+                        GBS.ResetBindings(false);
+                        break;
                     }
-                    if (i is CriminalGang)
-                    {
-                        new GangInfo((CriminalGang)i).ShowDialog();
-                    }
-                    CBS.ResetBindings(false);
-                    ABS.ResetBindings(false);
-                    GBS.ResetBindings(false);
-                    break;
                 }
             }
         }
@@ -470,5 +480,9 @@ namespace AdminView
                 moveToListToolStripMenuItem.Enabled = true;
             }
         }
+
+       
+
+       
     }
 }
